@@ -20,7 +20,14 @@
 
     [[ZHGhostManger manger] congfigHost:@"http://js.uiapple.com"];
 
-    [[ZHGhostManger manger] loginWithUserName:@"15038777234@163.com" passWord:@"zhanghang1990823"];
+    [[ZHGhostManger manger] loginWithUserName:@"1233" passWord:@"zhanghang1990823" success:^{
+
+    } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
+
+        NSLog(@"%@=%@=%d",error,errorMessage,errorCode);
+
+
+    }];
     // Do any additional setup after loading the view, typically from a nib.
 }
 

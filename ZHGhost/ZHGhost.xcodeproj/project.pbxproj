@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B7AA12B3469F5E323B62270 /* ZHFailedErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA176A019649EEF765D1C /* ZHFailedErrors.m */; };
+		9B7AA4B2DE6C6D471720314E /* ZHGTokenResponseBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AAED1644793FBE9F22D16 /* ZHGTokenResponseBaseClass.m */; };
 		9B7AAB8AAA52495C9EE81B9D /* ZHGhostManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA6D1CC8ADA228CDE9C1E /* ZHGhostManger.m */; };
+		9B7AAD4E8ECDE0DB5F0CBF8F /* ZHFailedBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA0AF89185180562BF70A /* ZHFailedBaseClass.m */; };
 		C19507C91AB951F4000DEA92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C19507C81AB951F4000DEA92 /* main.m */; };
 		C19507CC1AB951F4000DEA92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C19507CB1AB951F4000DEA92 /* AppDelegate.m */; };
 		C19507CF1AB951F4000DEA92 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C19507CE1AB951F4000DEA92 /* ViewController.m */; };
@@ -32,9 +35,18 @@
 		6A398DC3A28966382244D916 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		83D5A4DD020E70F8E6273D02 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		860D2FB4614DDB339737D6A6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9B7AA07E279722E164F77595 /* ZHFailedErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHFailedErrors.h; sourceTree = "<group>"; };
+		9B7AA0AF89185180562BF70A /* ZHFailedBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHFailedBaseClass.m; sourceTree = "<group>"; };
+		9B7AA176A019649EEF765D1C /* ZHFailedErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHFailedErrors.m; sourceTree = "<group>"; };
+		9B7AA2888D0D9B2FB12BCF9A /* ZHFailedBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHFailedBaseClass.h; sourceTree = "<group>"; };
+		9B7AA5B50B88E27399617A67 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
 		9B7AA6D1CC8ADA228CDE9C1E /* ZHGhostManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHGhostManger.m; sourceTree = "<group>"; };
+		9B7AA81EBE2A3E89477984B6 /* ZHBlockConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHBlockConfig.h; sourceTree = "<group>"; };
+		9B7AAAA92CA5FCEE968479A7 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		9B7AABE2A9258C4A962DCDED /* ZHGTokenResponseBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHGTokenResponseBaseClass.h; sourceTree = "<group>"; };
 		9B7AAD6A65225E270677BE85 /* ZHGhostManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHGhostManger.h; sourceTree = "<group>"; };
 		9B7AAE26662D966E181C8C85 /* ZHGhostApiConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHGhostApiConfig.h; sourceTree = "<group>"; };
+		9B7AAED1644793FBE9F22D16 /* ZHGTokenResponseBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHGTokenResponseBaseClass.m; sourceTree = "<group>"; };
 		C19507C31AB951F4000DEA92 /* ZHGhost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHGhost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C19507C71AB951F4000DEA92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C19507C81AB951F4000DEA92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -77,12 +89,61 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9B7AA4D1AA97F1B2F74AEE5A /* ZHFailed */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AA5B50B88E27399617A67 /* DataModels.h */,
+				9B7AA07E279722E164F77595 /* ZHFailedErrors.h */,
+				9B7AA176A019649EEF765D1C /* ZHFailedErrors.m */,
+				9B7AA2888D0D9B2FB12BCF9A /* ZHFailedBaseClass.h */,
+				9B7AA0AF89185180562BF70A /* ZHFailedBaseClass.m */,
+			);
+			path = ZHFailed;
+			sourceTree = "<group>";
+		};
+		9B7AA4D54C38085C10C9C906 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AAD8FA9C3BF9AC0808B40 /* submit */,
+				9B7AA981C78A716403D4E430 /* response */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		9B7AA92D20426F0A262D1B8E /* ZHGTokenResponse */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AAAA92CA5FCEE968479A7 /* DataModels.h */,
+				9B7AABE2A9258C4A962DCDED /* ZHGTokenResponseBaseClass.h */,
+				9B7AAED1644793FBE9F22D16 /* ZHGTokenResponseBaseClass.m */,
+			);
+			path = ZHGTokenResponse;
+			sourceTree = "<group>";
+		};
+		9B7AA981C78A716403D4E430 /* response */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AA92D20426F0A262D1B8E /* ZHGTokenResponse */,
+				9B7AA4D1AA97F1B2F74AEE5A /* ZHFailed */,
+			);
+			path = response;
+			sourceTree = "<group>";
+		};
+		9B7AAD8FA9C3BF9AC0808B40 /* submit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = submit;
+			sourceTree = "<group>";
+		};
 		9B7AAFF5414250E14DC9F67D /* ZHGhost */ = {
 			isa = PBXGroup;
 			children = (
 				9B7AAD6A65225E270677BE85 /* ZHGhostManger.h */,
 				9B7AA6D1CC8ADA228CDE9C1E /* ZHGhostManger.m */,
 				9B7AAE26662D966E181C8C85 /* ZHGhostApiConfig.h */,
+				9B7AA4D54C38085C10C9C906 /* model */,
+				9B7AA81EBE2A3E89477984B6 /* ZHBlockConfig.h */,
 			);
 			path = ZHGhost;
 			sourceTree = "<group>";
@@ -297,6 +358,9 @@
 				C19507CC1AB951F4000DEA92 /* AppDelegate.m in Sources */,
 				C19507C91AB951F4000DEA92 /* main.m in Sources */,
 				9B7AAB8AAA52495C9EE81B9D /* ZHGhostManger.m in Sources */,
+				9B7AA4B2DE6C6D471720314E /* ZHGTokenResponseBaseClass.m in Sources */,
+				9B7AA12B3469F5E323B62270 /* ZHFailedErrors.m in Sources */,
+				9B7AAD4E8ECDE0DB5F0CBF8F /* ZHFailedBaseClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

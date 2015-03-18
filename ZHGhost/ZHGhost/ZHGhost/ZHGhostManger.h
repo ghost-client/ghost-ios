@@ -4,8 +4,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZHBlockConfig.h"
 
+typedef NS_ENUM(NSInteger , ZHGhostErrorCode){
 
+   ZHGhostErrorCodeVailedJsonFormatter=99999
+
+};
+#define VAILED_JSON_MESSAGE  @"JSON解析失败"
 @interface ZHGhostManger : NSObject
 
 /**
@@ -21,7 +27,10 @@
 /**
 * 登录
 */
--(void)loginWithUserName:(NSString *)userName passWord:(NSString *)passWord;
+-(void)loginWithUserName:(NSString *)userName
+                passWord:(NSString *)passWord
+                 success:(void(^)(void))success
+                  failed:(ZHFailed)failed;
 
 
 @end

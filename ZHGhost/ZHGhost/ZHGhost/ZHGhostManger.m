@@ -7,16 +7,22 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "ZHGhostApiConfig.h"
 #import "JSONKit.h"
+#import "ZHGTokenResponseBaseClass.h"
+#import "ZHFailedBaseClass.h"
+#import "ZHFailedErrors.h"
 
 static NSString * BaseUrl(NSString *url,NSString *host){
 
-    return [NSString stringWithFormat:@"%@/%@",host,url];
+    return [NSString stringWithFormat:@"%@%@",host,url];
 
 }
 
 @implementation ZHGhostManger {
 
     NSString *_ghostHost;//主机地址
+    void (^_tokenSuccess)();//获取Token成功的返回
+
+    ZHFailed _failed;
 }
 + (instancetype)manger {
 
@@ -41,9 +47,16 @@ password	zhanghang1990823
 client_id	ghost-admin
 *
 */
-- (void)loginWithUserName:(NSString *)userName passWord:(NSString *)passWord {
+-(void)loginWithUserName:(NSString *)userName
+                passWord:(NSString *)passWord
+                 success:(void(^)(void))success
+                  failed:(ZHFailed)failed {
 
 
+    _tokenSuccess=success;
+    
+    _failed=failed;
+    
     AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
 
     NSDictionary *dictionary=@{
@@ -54,15 +67,61 @@ client_id	ghost-admin
 
     };
 
+    __weak typeof(self) safeSelf = self;
+
 
   [manager POST:BaseUrl(ZH_LOGIN_URL, _ghostHost) parameters:dictionary success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
+
       NSLog(@"%@",[responseObject JSONString]);
+
+      if (responseObject){
+
+         // ZHGTokenResponseBaseClass *tokenResponseBaseClass=[ZHGTokenResponseBaseClass modelObjectWithDictionary:responseObject];
+
+
+
+
+      } else{
+          [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+      }
+
+
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"%@",error.userInfo);
+
+
+      [safeSelf showRequestErrorMessage:safeSelf error:error];
+
 
   }];
 
+}
+
+- (void)showRequestErrorMessage:(ZHGhostManger *)safeSelf error:(NSError *)error {
+    NSData *data=error.userInfo[@"com.alamofire.serialization.response.error.data"];
+
+    NSString *string= [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
+
+    NSDictionary *dictionary1=[string objectFromJSONString];
+
+    ZHFailedBaseClass *failedBaseClass=[ZHFailedBaseClass modelObjectWithDictionary:dictionary1];
+
+
+    NSString *errorMessage= nil;
+    if (failedBaseClass.errors.count>0){
+          ZHFailedErrors *errors=failedBaseClass.errors[0];
+          errorMessage=errors.message;
+      }
+
+
+    [safeSelf showError:error errorMessage:errorMessage errorCode:0];
+}
+
+- (void)showError:(NSError *)error errorMessage:(NSString *)errorMessage errorCode:(NSInteger)erroorCode {
+    if (_failed){
+          _failed(error, errorMessage,erroorCode);
+      }
 }
 
 
