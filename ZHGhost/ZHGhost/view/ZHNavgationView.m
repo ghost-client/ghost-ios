@@ -49,7 +49,7 @@
     if (_titleLabel== nil){
         
         _titleLabel= [[UILabel alloc] init];
-                _titleLabel.backgroundColor=[UIColor clearColor];
+        _titleLabel.backgroundColor=[UIColor clearColor];
 
         
         _titleLabel.textAlignment=NSTextAlignmentCenter;
