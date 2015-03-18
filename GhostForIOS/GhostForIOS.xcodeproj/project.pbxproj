@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9B7AA122B9C2896543AC827D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA194B3D9E7B62D548770 /* AppDelegate.m */; };
+		9B7AA543C7C2E107D694A1AB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AA39297464D6B30A8981B /* LaunchScreen.xib */; };
+		9B7AA5709B3DC8B88719B540 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AA78591241CECB33856A1 /* Images.xcassets */; };
+		9B7AA707ED70872C3BEFCCA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AA63C7AD034DFBE5EC242 /* Main.storyboard */; };
+		9B7AA76AFE461DEEF923CEF2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA0573B4BF0719DEADD48 /* main.m */; };
+		9B7AAB3158D0036247889A3F /* GhostForIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA09CCD6C679C3B88A1B8 /* GhostForIOSTests.m */; };
+		9B7AACB71D2889560966D9A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AAAE74EF51515B247F194 /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9B7AA8ED9E272CF6C9008A63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9B7AA8C72EBD8955C58720AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B7AA831C7F350EB6677AC30;
+			remoteInfo = GhostForIOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9B7AA0573B4BF0719DEADD48 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9B7AA0783DE2509A5196266E /* GhostForIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GhostForIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B7AA09CCD6C679C3B88A1B8 /* GhostForIOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GhostForIOSTests.m; sourceTree = "<group>"; };
+		9B7AA11721D4EFD632B8D32A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9B7AA194B3D9E7B62D548770 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9B7AA3D02B2C8DBF5744C80D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		9B7AA78591241CECB33856A1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9B7AA9860B4D86AEAE0ED214 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		9B7AA9EF0811819F97F9EB9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9B7AAAE74EF51515B247F194 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9B7AAB6EC24A81BB02CE989F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		9B7AAD81AA1E120E12313F97 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9B7AAFCA6D90974EA0BCD396 /* GhostForIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GhostForIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9B7AA599B1602D94D72432CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B7AAB6D6685AEB76B4628A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9B7AA22EB6C1A34D7DC16226 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AA9860B4D86AEAE0ED214 /* Info.plist */,
+				9B7AA0573B4BF0719DEADD48 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9B7AA27C08B28E933DA6224B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AA3D02B2C8DBF5744C80D /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9B7AABF6D05E23D462D0B223 /* GhostForIOS */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AA22EB6C1A34D7DC16226 /* Supporting Files */,
+				9B7AA78591241CECB33856A1 /* Images.xcassets */,
+				9B7AA39297464D6B30A8981B /* LaunchScreen.xib */,
+				9B7AAD81AA1E120E12313F97 /* AppDelegate.h */,
+				9B7AA194B3D9E7B62D548770 /* AppDelegate.m */,
+				9B7AA63C7AD034DFBE5EC242 /* Main.storyboard */,
+				9B7AA11721D4EFD632B8D32A /* ViewController.h */,
+				9B7AAAE74EF51515B247F194 /* ViewController.m */,
+			);
+			path = GhostForIOS;
+			sourceTree = "<group>";
+		};
+		9B7AAC137AEB9BA005D4CFEE /* GhostForIOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AA27C08B28E933DA6224B /* Supporting Files */,
+				9B7AA09CCD6C679C3B88A1B8 /* GhostForIOSTests.m */,
+			);
+			path = GhostForIOSTests;
+			sourceTree = "<group>";
+		};
+		9B7AAC8B252CFFB29745F8F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AA0783DE2509A5196266E /* GhostForIOS.app */,
+				9B7AAFCA6D90974EA0BCD396 /* GhostForIOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B7AAF102A5BFAB81A220A15 = {
+			isa = PBXGroup;
+			children = (
+				9B7AAC8B252CFFB29745F8F5 /* Products */,
+				9B7AABF6D05E23D462D0B223 /* GhostForIOS */,
+				9B7AAC137AEB9BA005D4CFEE /* GhostForIOSTests */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9B7AA831C7F350EB6677AC30 /* GhostForIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B7AAE6D2080ADA1A5985594 /* Build configuration list for PBXNativeTarget "GhostForIOS" */;
+			buildPhases = (
+				9B7AABF758483F4EE31AAFBB /* Sources */,
+				9B7AA599B1602D94D72432CC /* Frameworks */,
+				9B7AA29789B66FD1A92E7F60 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GhostForIOS;
+			productName = GhostForIOS;
+			productReference = 9B7AA0783DE2509A5196266E /* GhostForIOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9B7AAEB62ABDA05A7F38D1E1 /* GhostForIOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B7AA3FEB93B3CA309879D43 /* Build configuration list for PBXNativeTarget "GhostForIOSTests" */;
+			buildPhases = (
+				9B7AA739A87841D475EDFE58 /* Sources */,
+				9B7AAB6D6685AEB76B4628A5 /* Frameworks */,
+				9B7AA107F996D36770AC0642 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9B7AA2B0484A8D155020399E /* PBXTargetDependency */,
+			);
+			name = GhostForIOSTests;
+			productName = GhostForIOSTests;
+			productReference = 9B7AAFCA6D90974EA0BCD396 /* GhostForIOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9B7AA8C72EBD8955C58720AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "IOS版GHOST";
+			};
+			buildConfigurationList = 9B7AA7EFA2CBE4DECC4CCD71 /* Build configuration list for PBXProject "GhostForIOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9B7AAF102A5BFAB81A220A15;
+			productRefGroup = 9B7AAC8B252CFFB29745F8F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9B7AA831C7F350EB6677AC30 /* GhostForIOS */,
+				9B7AAEB62ABDA05A7F38D1E1 /* GhostForIOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9B7AA107F996D36770AC0642 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B7AA29789B66FD1A92E7F60 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B7AA5709B3DC8B88719B540 /* Images.xcassets in Resources */,
+				9B7AA543C7C2E107D694A1AB /* LaunchScreen.xib in Resources */,
+				9B7AA707ED70872C3BEFCCA8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9B7AA739A87841D475EDFE58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B7AAB3158D0036247889A3F /* GhostForIOSTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B7AABF758483F4EE31AAFBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B7AA76AFE461DEEF923CEF2 /* main.m in Sources */,
+				9B7AA122B9C2896543AC827D /* AppDelegate.m in Sources */,
+				9B7AACB71D2889560966D9A2 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9B7AA2B0484A8D155020399E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9B7AA831C7F350EB6677AC30 /* GhostForIOS */;
+			targetProxy = 9B7AA8ED9E272CF6C9008A63 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9B7AA39297464D6B30A8981B /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B7AAB6EC24A81BB02CE989F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		9B7AA63C7AD034DFBE5EC242 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B7AA9EF0811819F97F9EB9F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9B7AA0F9A1966C54DF0B34BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GhostForIOS.app/GhostForIOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GhostForIOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Debug;
+		};
+		9B7AA5EAC6FEEE1E382DAC54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GhostForIOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		9B7AA6F458DE21AB59501637 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = GhostForIOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9B7AAACA13F02D3D580CF6B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9B7AAB4D5ABEAC6EA4937E7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GhostForIOS.app/GhostForIOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = GhostForIOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+			};
+			name = Release;
+		};
+		9B7AAF286B18122DA8D74C77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9B7AA3FEB93B3CA309879D43 /* Build configuration list for PBXNativeTarget "GhostForIOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B7AA0F9A1966C54DF0B34BD /* Debug */,
+				9B7AAB4D5ABEAC6EA4937E7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9B7AA7EFA2CBE4DECC4CCD71 /* Build configuration list for PBXProject "GhostForIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B7AAACA13F02D3D580CF6B0 /* Debug */,
+				9B7AAF286B18122DA8D74C77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9B7AAE6D2080ADA1A5985594 /* Build configuration list for PBXNativeTarget "GhostForIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B7AA6F458DE21AB59501637 /* Debug */,
+				9B7AA5EAC6FEEE1E382DAC54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9B7AA8C72EBD8955C58720AC /* Project object */;
+}
