@@ -7,13 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B7AA0168F83502EBB553C95 /* banner4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AAF30E9E361B70D9C9A94 /* banner4.jpg */; };
+		9B7AA047EE3D77F5385F4925 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AAC0AF905D15B59663373 /* homeIcon.png */; };
 		9B7AA12B3469F5E323B62270 /* ZHFailedErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA176A019649EEF765D1C /* ZHFailedErrors.m */; };
+		9B7AA19312D715B43A310E5D /* ghost.pcvd in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AA6A0DDCA2C16B4758CD1 /* ghost.pcvd */; };
+		9B7AA28B39CB34A2963CE184 /* banner3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AA01715D488C73D795E0B /* banner3.jpg */; };
+		9B7AA2B7F8DC0834C813275F /* ZHFounction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AAFB336AE7938CF3B5DAF /* ZHFounction.m */; };
+		9B7AA2DCC478A4B0CE500D4F /* homeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AAB9A6C447A881AFD298D /* homeIcon@2x.png */; };
+		9B7AA474431078194E6DEA24 /* banner1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AA13A0A93870137608A1B /* banner1.jpg */; };
 		9B7AA4B2DE6C6D471720314E /* ZHGTokenResponseBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AAED1644793FBE9F22D16 /* ZHGTokenResponseBaseClass.m */; };
+		9B7AA4CB688486BDD0A8D398 /* homeIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AABD17176A97BFCFCB02C /* homeIcon@3x.png */; };
+		9B7AA4DB99ACBA4957A6ED1A /* ShowMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA3713EB69DAAC7D8B542 /* ShowMessageView.m */; };
+		9B7AA8B2F0537043E180D9F3 /* homeIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AADDA4390D4C9BF5758CA /* homeIcon@2x.png */; };
+		9B7AA8F266ADF950AFC374DF /* ZHHomeBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA41B2E5065FD8E83C8E0 /* ZHHomeBannerView.m */; };
+		9B7AAAF6C20E11A83BEFB672 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA1E1279867D33EC941C5 /* ViewController.m */; };
+		9B7AAB4C12C6E1A082C6319C /* ZHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA19131C2F01F8005FC95 /* ZHBaseViewController.m */; };
 		9B7AAB8AAA52495C9EE81B9D /* ZHGhostManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA6D1CC8ADA228CDE9C1E /* ZHGhostManger.m */; };
+		9B7AABA46E4F142DB36ECD24 /* PanDeleteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AABAC40CDA4126A2FC537 /* PanDeleteButton.m */; };
+		9B7AABDBD621C2AEB9816ED5 /* StyleKitName.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AAB4741ADC41E3474D067 /* StyleKitName.m */; };
+		9B7AAC0BD47596D982A964DE /* ZHNavgationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA1958D55B0F99A55E5E5 /* ZHNavgationView.m */; };
+		9B7AACA7856247C64118038B /* homeIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AA1506721480E1506B6D8 /* homeIcon@3x.png */; };
+		9B7AACF9E762B85EEF07E179 /* ZHHomeViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA81439C5F437F0416FE6 /* ZHHomeViewcontroller.m */; };
+		9B7AAD2F65F4F814AB9E5292 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AAD0F650F9165204173B9 /* homeIcon.png */; };
 		9B7AAD4E8ECDE0DB5F0CBF8F /* ZHFailedBaseClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA0AF89185180562BF70A /* ZHFailedBaseClass.m */; };
+		9B7AAE5E57A83C840249C5C3 /* HomeItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B7AA952352CAECB4825F2B0 /* HomeItemView.m */; };
+		9B7AAFAB72DEDE9AA3487A53 /* banner2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9B7AA9757C5497F3A2CDFF8A /* banner2.jpg */; };
 		C19507C91AB951F4000DEA92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C19507C81AB951F4000DEA92 /* main.m */; };
 		C19507CC1AB951F4000DEA92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C19507CB1AB951F4000DEA92 /* AppDelegate.m */; };
-		C19507CF1AB951F4000DEA92 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C19507CE1AB951F4000DEA92 /* ViewController.m */; };
 		C19507D21AB951F4000DEA92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C19507D01AB951F4000DEA92 /* Main.storyboard */; };
 		C19507D41AB951F4000DEA92 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C19507D31AB951F4000DEA92 /* Images.xcassets */; };
 		C19507D71AB951F4000DEA92 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C19507D51AB951F4000DEA92 /* LaunchScreen.xib */; };
@@ -35,25 +55,55 @@
 		6A398DC3A28966382244D916 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		83D5A4DD020E70F8E6273D02 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		860D2FB4614DDB339737D6A6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		9B7AA01715D488C73D795E0B /* banner3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner3.jpg; sourceTree = "<group>"; };
 		9B7AA07E279722E164F77595 /* ZHFailedErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHFailedErrors.h; sourceTree = "<group>"; };
 		9B7AA0AF89185180562BF70A /* ZHFailedBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHFailedBaseClass.m; sourceTree = "<group>"; };
+		9B7AA0EF9888D9F662AE6482 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9B7AA13A0A93870137608A1B /* banner1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner1.jpg; sourceTree = "<group>"; };
+		9B7AA1506721480E1506B6D8 /* homeIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeIcon@3x.png"; sourceTree = "<group>"; };
 		9B7AA176A019649EEF765D1C /* ZHFailedErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHFailedErrors.m; sourceTree = "<group>"; };
+		9B7AA19131C2F01F8005FC95 /* ZHBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHBaseViewController.m; sourceTree = "<group>"; };
+		9B7AA1958D55B0F99A55E5E5 /* ZHNavgationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHNavgationView.m; sourceTree = "<group>"; };
+		9B7AA1E1279867D33EC941C5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9B7AA2365E24BDEA02AB2A4A /* ZHFounction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHFounction.h; sourceTree = "<group>"; };
 		9B7AA2888D0D9B2FB12BCF9A /* ZHFailedBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHFailedBaseClass.h; sourceTree = "<group>"; };
+		9B7AA3713EB69DAAC7D8B542 /* ShowMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowMessageView.m; sourceTree = "<group>"; };
+		9B7AA39EB10DC2D03CE55868 /* StyleKitName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleKitName.h; sourceTree = "<group>"; };
+		9B7AA3E2C5F1113BEA2FD6FE /* ZHBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHBaseViewController.h; sourceTree = "<group>"; };
+		9B7AA41B2E5065FD8E83C8E0 /* ZHHomeBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHomeBannerView.m; sourceTree = "<group>"; };
+		9B7AA4514A54EE90343D2D2A /* PanDeleteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanDeleteButton.h; sourceTree = "<group>"; };
 		9B7AA5B50B88E27399617A67 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		9B7AA6A0DDCA2C16B4758CD1 /* ghost.pcvd */ = {isa = PBXFileReference; lastKnownFileType = file.pcvd; path = ghost.pcvd; sourceTree = "<group>"; };
+		9B7AA6C72597CEDFF667EFE9 /* ZHHomeViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHomeViewcontroller.h; sourceTree = "<group>"; };
 		9B7AA6D1CC8ADA228CDE9C1E /* ZHGhostManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHGhostManger.m; sourceTree = "<group>"; };
+		9B7AA7717DEDB58251D56AB7 /* ZHHomeBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHHomeBannerView.h; sourceTree = "<group>"; };
+		9B7AA81439C5F437F0416FE6 /* ZHHomeViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHHomeViewcontroller.m; sourceTree = "<group>"; };
 		9B7AA81EBE2A3E89477984B6 /* ZHBlockConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHBlockConfig.h; sourceTree = "<group>"; };
+		9B7AA952352CAECB4825F2B0 /* HomeItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeItemView.m; sourceTree = "<group>"; };
+		9B7AA9757C5497F3A2CDFF8A /* banner2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner2.jpg; sourceTree = "<group>"; };
+		9B7AAA8ADD5423CEA42639C0 /* ZHNavgationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHNavgationView.h; sourceTree = "<group>"; };
 		9B7AAAA92CA5FCEE968479A7 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
+		9B7AAB4741ADC41E3474D067 /* StyleKitName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleKitName.m; sourceTree = "<group>"; };
+		9B7AAB9A6C447A881AFD298D /* homeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeIcon@2x.png"; sourceTree = "<group>"; };
+		9B7AABAC40CDA4126A2FC537 /* PanDeleteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanDeleteButton.m; sourceTree = "<group>"; };
+		9B7AABD17176A97BFCFCB02C /* homeIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeIcon@3x.png"; sourceTree = "<group>"; };
 		9B7AABE2A9258C4A962DCDED /* ZHGTokenResponseBaseClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHGTokenResponseBaseClass.h; sourceTree = "<group>"; };
+		9B7AAC0AF905D15B59663373 /* homeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeIcon.png; sourceTree = "<group>"; };
+		9B7AACC4E9E55698CBDCD3A8 /* ShowMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowMessageView.h; sourceTree = "<group>"; };
+		9B7AAD0F650F9165204173B9 /* homeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeIcon.png; sourceTree = "<group>"; };
 		9B7AAD6A65225E270677BE85 /* ZHGhostManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHGhostManger.h; sourceTree = "<group>"; };
+		9B7AAD9CD10DC91E46587BE6 /* HomeItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeItemView.h; sourceTree = "<group>"; };
+		9B7AADDA4390D4C9BF5758CA /* homeIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeIcon@2x.png"; sourceTree = "<group>"; };
 		9B7AAE26662D966E181C8C85 /* ZHGhostApiConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHGhostApiConfig.h; sourceTree = "<group>"; };
+		9B7AAEA30033D5D804C54303 /* ZHDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHDefine.h; sourceTree = "<group>"; };
 		9B7AAED1644793FBE9F22D16 /* ZHGTokenResponseBaseClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHGTokenResponseBaseClass.m; sourceTree = "<group>"; };
+		9B7AAF30E9E361B70D9C9A94 /* banner4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner4.jpg; sourceTree = "<group>"; };
+		9B7AAFB336AE7938CF3B5DAF /* ZHFounction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHFounction.m; sourceTree = "<group>"; };
 		C19507C31AB951F4000DEA92 /* ZHGhost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZHGhost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C19507C71AB951F4000DEA92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C19507C81AB951F4000DEA92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C19507CA1AB951F4000DEA92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C19507CB1AB951F4000DEA92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C19507CD1AB951F4000DEA92 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C19507CE1AB951F4000DEA92 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C19507D11AB951F4000DEA92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C19507D31AB951F4000DEA92 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C19507D61AB951F4000DEA92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -89,6 +139,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9B7AA49160E336D5B00E9399 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AACC4E9E55698CBDCD3A8 /* ShowMessageView.h */,
+				9B7AA3713EB69DAAC7D8B542 /* ShowMessageView.m */,
+				9B7AA1958D55B0F99A55E5E5 /* ZHNavgationView.m */,
+				9B7AAA8ADD5423CEA42639C0 /* ZHNavgationView.h */,
+				9B7AA952352CAECB4825F2B0 /* HomeItemView.m */,
+				9B7AAD9CD10DC91E46587BE6 /* HomeItemView.h */,
+				9B7AA7717DEDB58251D56AB7 /* ZHHomeBannerView.h */,
+				9B7AA41B2E5065FD8E83C8E0 /* ZHHomeBannerView.m */,
+				9B7AA4514A54EE90343D2D2A /* PanDeleteButton.h */,
+				9B7AABAC40CDA4126A2FC537 /* PanDeleteButton.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		9B7AA4D1AA97F1B2F74AEE5A /* ZHFailed */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +177,16 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		9B7AA8C87C36ED243A96D5B0 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AAC0AF905D15B59663373 /* homeIcon.png */,
+				9B7AADDA4390D4C9BF5758CA /* homeIcon@2x.png */,
+				9B7AA1506721480E1506B6D8 /* homeIcon@3x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		9B7AA92D20426F0A262D1B8E /* ZHGTokenResponse */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +204,54 @@
 				9B7AA4D1AA97F1B2F74AEE5A /* ZHFailed */,
 			);
 			path = response;
+			sourceTree = "<group>";
+		};
+		9B7AABE3F013A321E7CCEF79 /* founction */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AA2365E24BDEA02AB2A4A /* ZHFounction.h */,
+				9B7AAFB336AE7938CF3B5DAF /* ZHFounction.m */,
+				9B7AAEA30033D5D804C54303 /* ZHDefine.h */,
+			);
+			path = founction;
+			sourceTree = "<group>";
+		};
+		9B7AABF549917389273A83B0 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AA13A0A93870137608A1B /* banner1.jpg */,
+				9B7AA9757C5497F3A2CDFF8A /* banner2.jpg */,
+				9B7AA01715D488C73D795E0B /* banner3.jpg */,
+				9B7AAF30E9E361B70D9C9A94 /* banner4.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		9B7AAC79BD274988EE3C1940 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AA1E1279867D33EC941C5 /* ViewController.m */,
+				9B7AA0EF9888D9F662AE6482 /* ViewController.h */,
+				9B7AA3E2C5F1113BEA2FD6FE /* ZHBaseViewController.h */,
+				9B7AA19131C2F01F8005FC95 /* ZHBaseViewController.m */,
+				9B7AA81439C5F437F0416FE6 /* ZHHomeViewcontroller.m */,
+				9B7AA6C72597CEDFF667EFE9 /* ZHHomeViewcontroller.h */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		9B7AAC87E3CEDB0FF4518FD4 /* paintcode */ = {
+			isa = PBXGroup;
+			children = (
+				9B7AA8C87C36ED243A96D5B0 /* images */,
+				9B7AA6A0DDCA2C16B4758CD1 /* ghost.pcvd */,
+				9B7AAD0F650F9165204173B9 /* homeIcon.png */,
+				9B7AA39EB10DC2D03CE55868 /* StyleKitName.h */,
+				9B7AAB4741ADC41E3474D067 /* StyleKitName.m */,
+				9B7AAB9A6C447A881AFD298D /* homeIcon@2x.png */,
+				9B7AABD17176A97BFCFCB02C /* homeIcon@3x.png */,
+			);
+			path = paintcode;
 			sourceTree = "<group>";
 		};
 		9B7AAD8FA9C3BF9AC0808B40 /* submit */ = {
@@ -182,13 +307,16 @@
 			children = (
 				C19507CA1AB951F4000DEA92 /* AppDelegate.h */,
 				C19507CB1AB951F4000DEA92 /* AppDelegate.m */,
-				C19507CD1AB951F4000DEA92 /* ViewController.h */,
-				C19507CE1AB951F4000DEA92 /* ViewController.m */,
 				C19507D01AB951F4000DEA92 /* Main.storyboard */,
 				C19507D31AB951F4000DEA92 /* Images.xcassets */,
 				C19507D51AB951F4000DEA92 /* LaunchScreen.xib */,
 				C19507C61AB951F4000DEA92 /* Supporting Files */,
 				9B7AAFF5414250E14DC9F67D /* ZHGhost */,
+				9B7AAC79BD274988EE3C1940 /* controller */,
+				9B7AA49160E336D5B00E9399 /* view */,
+				9B7AABE3F013A321E7CCEF79 /* founction */,
+				9B7AAC87E3CEDB0FF4518FD4 /* paintcode */,
+				9B7AABF549917389273A83B0 /* images */,
 			);
 			path = ZHGhost;
 			sourceTree = "<group>";
@@ -304,6 +432,17 @@
 				C19507D21AB951F4000DEA92 /* Main.storyboard in Resources */,
 				C19507D71AB951F4000DEA92 /* LaunchScreen.xib in Resources */,
 				C19507D41AB951F4000DEA92 /* Images.xcassets in Resources */,
+				9B7AA047EE3D77F5385F4925 /* homeIcon.png in Resources */,
+				9B7AA8B2F0537043E180D9F3 /* homeIcon@2x.png in Resources */,
+				9B7AACA7856247C64118038B /* homeIcon@3x.png in Resources */,
+				9B7AA19312D715B43A310E5D /* ghost.pcvd in Resources */,
+				9B7AAD2F65F4F814AB9E5292 /* homeIcon.png in Resources */,
+				9B7AA2DCC478A4B0CE500D4F /* homeIcon@2x.png in Resources */,
+				9B7AA4CB688486BDD0A8D398 /* homeIcon@3x.png in Resources */,
+				9B7AA474431078194E6DEA24 /* banner1.jpg in Resources */,
+				9B7AAFAB72DEDE9AA3487A53 /* banner2.jpg in Resources */,
+				9B7AA28B39CB34A2963CE184 /* banner3.jpg in Resources */,
+				9B7AA0168F83502EBB553C95 /* banner4.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,13 +493,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C19507CF1AB951F4000DEA92 /* ViewController.m in Sources */,
 				C19507CC1AB951F4000DEA92 /* AppDelegate.m in Sources */,
 				C19507C91AB951F4000DEA92 /* main.m in Sources */,
 				9B7AAB8AAA52495C9EE81B9D /* ZHGhostManger.m in Sources */,
 				9B7AA4B2DE6C6D471720314E /* ZHGTokenResponseBaseClass.m in Sources */,
 				9B7AA12B3469F5E323B62270 /* ZHFailedErrors.m in Sources */,
 				9B7AAD4E8ECDE0DB5F0CBF8F /* ZHFailedBaseClass.m in Sources */,
+				9B7AAAF6C20E11A83BEFB672 /* ViewController.m in Sources */,
+				9B7AA2B7F8DC0834C813275F /* ZHFounction.m in Sources */,
+				9B7AAB4C12C6E1A082C6319C /* ZHBaseViewController.m in Sources */,
+				9B7AA4DB99ACBA4957A6ED1A /* ShowMessageView.m in Sources */,
+				9B7AAC0BD47596D982A964DE /* ZHNavgationView.m in Sources */,
+				9B7AAE5E57A83C840249C5C3 /* HomeItemView.m in Sources */,
+				9B7AABDBD621C2AEB9816ED5 /* StyleKitName.m in Sources */,
+				9B7AACF9E762B85EEF07E179 /* ZHHomeViewcontroller.m in Sources */,
+				9B7AA8F266ADF950AFC374DF /* ZHHomeBannerView.m in Sources */,
+				9B7AABA46E4F142DB36ECD24 /* PanDeleteButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

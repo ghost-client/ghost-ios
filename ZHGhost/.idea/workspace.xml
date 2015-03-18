@@ -2,10 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0235d04-d307-4dc8-8d18-28ba470d372b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/ViewController.m" afterPath="$PROJECT_DIR$/ZHGhost/ViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.h" afterPath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.m" afterPath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/paintcode/ghost.pcvd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/paintcode/homeIcon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/paintcode/images/homeIcon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/paintcode/homeIcon@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/paintcode/images/homeIcon@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/paintcode/homeIcon@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/paintcode/images/homeIcon@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/HomeItemView.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/HomeItemView.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/PanDeleteButton.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/PanDeleteButton.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/ShowMessageView.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/ShowMessageView.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/paintcode/StyleKitName.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/paintcode/StyleKitName.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/controller/ZHBaseViewController.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/controller/ZHBaseViewController.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/founction/ZHDefine.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/founction/ZHFounction.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/founction/ZHFounction.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/ZHHomeBannerView.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/ZHHomeBannerView.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/ZHNavgationView.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/ZHNavgationView.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ZHGhost/ViewController.h" afterPath="$PROJECT_DIR$/ZHGhost/controller/ViewController.h" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ZHGhost/ViewController.m" afterPath="$PROJECT_DIR$/ZHGhost/controller/ViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/AppDelegate.m" afterPath="$PROJECT_DIR$/ZHGhost/AppDelegate.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Manifest.lock" afterPath="$PROJECT_DIR$/Pods/Manifest.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-AFNetworking/Pods-AFNetworking-Private.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-AFNetworking/Pods-AFNetworking-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-FLEX/Pods-FLEX-Private.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-FLEX/Pods-FLEX-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-JSONKit/Pods-JSONKit-Private.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-JSONKit/Pods-JSONKit-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.markdown" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.markdown" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.plist" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods/Pods-acknowledgements.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods/Pods-environment.h" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods/Pods-environment.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods/Pods.debug.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods/Pods.debug.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods/Pods.release.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods/Pods.release.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/ZHGhost.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ZHGhost.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,79 +62,79 @@
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_iPhone_5s_8.2_x86_64_1" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_iPhone_6_8.2_x86_64_1" />
   <component name="FavoritesManager">
     <favorites_list name="ZHGhost" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ViewController.m" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ZHGhost/ViewController.m">
+      <file leaf-file-name="ZHBaseViewController.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZHGhost/controller/ZHBaseViewController.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71546054" vertical-offset="116" max-vertical-offset="1420">
-              <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="261" max-vertical-offset="2427">
+              <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
               <folding>
-                <element signature="e#465#474#0" expanded="true" />
+                <element signature="e#148#171#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ZHGhostManger.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.m">
+      <file leaf-file-name="ZHNavgationView.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZHGhost/view/ZHNavgationView.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2041" max-vertical-offset="4397">
-              <caret line="95" column="5" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1383">
+              <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ZHHomeViewcontroller.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.3729469" vertical-offset="29" max-vertical-offset="3413">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
                 <element signature="e#0#2#0" expanded="true" />
-                <element signature="e#97#122#0" expanded="true" />
-                <element signature="e#310#427#0" expanded="true" />
-                <element signature="e#459#561#0" expanded="true" />
-                <element signature="e#562#741#0" expanded="true" />
-                <element signature="e#743#856#0" expanded="true" />
-                <element signature="e#858#965#0" expanded="true" />
-                <element signature="e#1606#2021#0" expanded="true" />
-                <element signature="e#2030#2155#0" expanded="true" />
-                <element signature="e#2162#2839#0" expanded="true" />
-                <element signature="e#2841#3026#0" expanded="true" />
+                <element signature="e#97#129#0" expanded="true" />
+                <element signature="e#427#431#0" expanded="true" />
+                <element signature="e#433#1007#0" expanded="true" />
+                <element signature="e#1256#1637#0" expanded="true" />
+                <element signature="e#1639#1746#0" expanded="true" />
+                <element signature="e#1748#2125#0" expanded="true" />
+                <element signature="e#2126#2239#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ZHGhostManger.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.h">
+      <file leaf-file-name="PanDeleteButton.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZHGhost/view/PanDeleteButton.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1439">
-              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-              <folding>
-                <element signature="e#97#120#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ZHBlockConfig.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZHGhost/ZHGhost/ZHBlockConfig.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="116" max-vertical-offset="1497">
-              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="2224">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding>
                 <element signature="e#0#2#0" expanded="true" />
-                <element signature="e#381#425#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppDelegate.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ZHGhost/AppDelegate.m">
+      <file leaf-file-name="PanDeleteButton.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ZHGhost/view/PanDeleteButton.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1816">
-              <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="574" max-vertical-offset="6574">
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
               <folding>
                 <element signature="e#0#2#0" expanded="true" />
-                <marker date="1426660452000" expanded="true" signature="141:180" placeholder="..." />
+                <element signature="e#214#586#0" expanded="true" />
+                <element signature="e#1605#2972#0" expanded="true" />
+                <element signature="e#3107#3848#0" expanded="true" />
+                <element signature="e#4317#4381#0" expanded="true" />
+                <element signature="e#4444#4481#0" expanded="true" />
+                <element signature="e#4488#4748#0" expanded="true" />
+                <element signature="e#4751#4833#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -109,12 +148,28 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Podfile" />
-        <option value="$PROJECT_DIR$/ZHGhost/AppDelegate.m" />
         <option value="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHBlockConfig.h" />
         <option value="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.h" />
         <option value="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.m" />
         <option value="$PROJECT_DIR$/ZHGhost/ViewController.m" />
+        <option value="$PROJECT_DIR$/ZHGhost/view/ZHNavgationView.h" />
+        <option value="$PROJECT_DIR$/Podfile" />
+        <option value="$PROJECT_DIR$/ZHGhost/controller/ZHBaseViewController.h" />
+        <option value="$PROJECT_DIR$/ZHGhost/controller/ZHBaseViewController.m" />
+        <option value="$PROJECT_DIR$/ZHGhost/AppDelegate.m" />
+        <option value="$PROJECT_DIR$/ZHGhost/founction/ZHFounction.m" />
+        <option value="$PROJECT_DIR$/ZHGhost/view/ShowMessageView.m" />
+        <option value="$PROJECT_DIR$/ZHGhost/founction/ZHDefine.h" />
+        <option value="$PROJECT_DIR$/ZHGhost/view/HomeItemView.h" />
+        <option value="$PROJECT_DIR$/ZHGhost/controller/ViewController.h" />
+        <option value="$PROJECT_DIR$/ZHGhost/view/HomeItemView.m" />
+        <option value="$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.h" />
+        <option value="$PROJECT_DIR$/ZHGhost/controller/ViewController.m" />
+        <option value="$PROJECT_DIR$/ZHGhost/view/ZHNavgationView.m" />
+        <option value="$PROJECT_DIR$/ZHGhost/view/ZHHomeBannerView.m" />
+        <option value="$PROJECT_DIR$/ZHGhost/view/PanDeleteButton.h" />
+        <option value="$PROJECT_DIR$/ZHGhost/view/PanDeleteButton.m" />
+        <option value="$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.m" />
       </list>
     </option>
   </component>
@@ -181,16 +236,8 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
+              <option name="myItemId" value="Pods" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -199,82 +246,16 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
+              <option name="myItemId" value="Pods" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
+              <option name="myItemId" value="Frameworks" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
+              <option name="myItemId" value="iOS" />
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="response" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZHGhost" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="response" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZHFailed" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -284,9 +265,15 @@
   </component>
   <component name="PropertiesComponent">
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/ZHGhost/ZHGhost/model/response/ZHFailed" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ios_server/物流商户客户端/Project/LogisticBsusines/LogisticBsusines/View/Custom UIButton/PanDeleteButton.m" />
     <property name="OBJC.PRESERVED_TARGET_SELECTION" value="ZHGhost" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/hangzhang/360云盘/DEMO/ghost-ios-nav/ZHGhost/ZHGhost/ZHGhost/ZHGhostManger.h" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ZHGhost" />
+      <recent name="$PROJECT_DIR$/ZHGhost/paintcode" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.ZHGhost">
     <configuration default="true" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="ZHGhost" TARGET_NAME="ZHGhost" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ZHGhost" RUN_TARGET_NAME="ZHGhost" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
@@ -350,12 +337,20 @@
       </EXTENSION>
       <method />
     </configuration>
-    <list size="5">
+    <configuration default="false" name="Pods-MBProgressHUD" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="Pods" TARGET_NAME="Pods-MBProgressHUD" CONFIG_NAME="Debug" SCHEME_NAME="Pods-MBProgressHUD" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Application.ZHGhost" />
       <item index="1" class="java.lang.String" itemvalue="Application.Pods-AFNetworking" />
       <item index="2" class="java.lang.String" itemvalue="Application.Pods-FLEX" />
       <item index="3" class="java.lang.String" itemvalue="Application.Pods-JSONKit" />
       <item index="4" class="java.lang.String" itemvalue="Application.Pods" />
+      <item index="5" class="java.lang.String" itemvalue="Application.Pods-MBProgressHUD" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -373,7 +368,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2560" height="1354" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -387,7 +382,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24970461" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4854369" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13996764" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -428,32 +423,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Podfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1297">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ZHGhost/AppDelegate.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1816">
-          <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#2#0" expanded="true" />
-            <marker date="1426660452000" expanded="true" signature="141:180" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ZHGhost/ZHGhost/ZHBlockConfig.h">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="116" max-vertical-offset="1497">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
-            <element signature="e#0#2#0" expanded="true" />
-            <element signature="e#381#425#0" expanded="true" />
+            <element signature="e#0#2#0" expanded="false" />
+            <element signature="e#381#425#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -463,17 +439,17 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2041" max-vertical-offset="4397">
           <caret line="95" column="5" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
           <folding>
-            <element signature="e#0#2#0" expanded="true" />
-            <element signature="e#97#122#0" expanded="true" />
-            <element signature="e#310#427#0" expanded="true" />
-            <element signature="e#459#561#0" expanded="true" />
-            <element signature="e#562#741#0" expanded="true" />
-            <element signature="e#743#856#0" expanded="true" />
-            <element signature="e#858#965#0" expanded="true" />
-            <element signature="e#1606#2021#0" expanded="true" />
-            <element signature="e#2030#2155#0" expanded="true" />
-            <element signature="e#2162#2839#0" expanded="true" />
-            <element signature="e#2841#3026#0" expanded="true" />
+            <element signature="e#0#2#0" expanded="false" />
+            <element signature="e#97#122#0" expanded="false" />
+            <element signature="e#310#427#0" expanded="false" />
+            <element signature="e#459#561#0" expanded="false" />
+            <element signature="e#562#741#0" expanded="false" />
+            <element signature="e#743#856#0" expanded="false" />
+            <element signature="e#858#965#0" expanded="false" />
+            <element signature="e#1606#2021#0" expanded="false" />
+            <element signature="e#2030#2155#0" expanded="false" />
+            <element signature="e#2162#2839#0" expanded="false" />
+            <element signature="e#2841#3026#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -483,17 +459,305 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1526">
           <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
           <folding>
-            <element signature="e#97#120#0" expanded="true" />
+            <element signature="e#97#120#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ZHGhost/ViewController.m">
+    <entry file="file://$PROJECT_DIR$/ZHGhost/founction/ZHFounction.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71546054" vertical-offset="116" max-vertical-offset="1420">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="377" max-vertical-offset="2951">
+          <caret line="54" column="30" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="30" />
           <folding>
-            <element signature="e#465#474#0" expanded="true" />
+            <element signature="e#0#2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Podfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.84" vertical-offset="3" max-vertical-offset="921">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/AppDelegate.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1091">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/AppDelegate.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="1961">
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+          <folding>
+            <element signature="e#133#156#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/founction/ZHFounction.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1386" max-vertical-offset="3846">
+          <caret line="174" column="29" selection-start-line="174" selection-start-column="29" selection-end-line="174" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#2#0" expanded="false" />
+            <element signature="e#138#161#0" expanded="false" />
+            <element signature="e#4701#5076#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/view/ShowMessageView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1936">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding>
+            <element signature="e#141#168#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/founction/ZHDefine.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5909">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/view/HomeItemView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1356">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#97#121#0" expanded="true" />
+            <element signature="e#322#326#0" expanded="true" />
+            <element signature="e#327#820#0" expanded="true" />
+            <element signature="e#822#932#0" expanded="true" />
+            <element signature="e#934#1044#0" expanded="true" />
+            <element signature="e#1046#1497#0" expanded="true" />
+            <element signature="e#1499#1798#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIControl.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1936" max-vertical-offset="4343">
+          <caret line="64" column="39" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
+          <folding>
+            <element signature="e#2691#3440#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/paintcode/StyleKitName.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1791">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/controller/ViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1472">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UILabel.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2574">
+          <caret line="33" column="80" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/view/HomeItemView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1559">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#2#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1356">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#2#0" expanded="true" />
+            <element signature="e#97#129#0" expanded="true" />
+            <element signature="e#427#431#0" expanded="true" />
+            <element signature="e#433#1007#0" expanded="true" />
+            <element signature="e#1256#1637#0" expanded="true" />
+            <element signature="e#1639#1746#0" expanded="true" />
+            <element signature="e#1748#2125#0" expanded="true" />
+            <element signature="e#2126#2239#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="1298">
+          <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/view/HomeItemView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3560">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="e#97#121#0" expanded="true" />
+            <element signature="e#322#326#0" expanded="true" />
+            <element signature="e#327#820#0" expanded="true" />
+            <element signature="e#822#932#0" expanded="true" />
+            <element signature="e#934#1044#0" expanded="true" />
+            <element signature="e#1046#1497#0" expanded="true" />
+            <element signature="e#1499#1798#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/controller/ViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="979" max-vertical-offset="5474">
+          <caret line="49" column="49" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#2#0" expanded="true" />
+            <element signature="e#136#162#0" expanded="true" />
+            <element signature="e#512#536#0" expanded="true" />
+            <element signature="e#538#692#0" expanded="true" />
+            <element signature="e#2165#2769#0" expanded="true" />
+            <element signature="e#2345#2481#0" expanded="true" />
+            <element signature="e#2606#2756#0" expanded="true" />
+            <element signature="e#2771#2866#0" expanded="true" />
+            <element signature="e#2868#2995#0" expanded="true" />
+            <element signature="e#2997#3186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/controller/ZHBaseViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1218" max-vertical-offset="3067">
+          <caret line="288" column="21" selection-start-line="288" selection-start-column="21" selection-end-line="288" selection-end-column="21" />
+          <folding>
+            <element signature="e#5614#5780#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/view/ZHHomeBannerView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1528">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#2#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/view/ZHHomeBannerView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4267">
+          <caret line="95" column="27" selection-start-line="95" selection-start-column="27" selection-end-line="95" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#2#0" expanded="false" />
+            <element signature="e#144#172#0" expanded="false" />
+            <element signature="e#591#844#0" expanded="false" />
+            <element signature="e#846#1355#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/view/ZHNavgationView.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2543">
+          <caret line="33" column="1" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+          <folding>
+            <element signature="e#249#597#0" expanded="true" />
+            <element signature="e#835#1260#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/view/PanDeleteButton.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="2224">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#2#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/view/ZHNavgationView.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1414">
+          <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/view/PanDeleteButton.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="574" max-vertical-offset="6574">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#2#0" expanded="true" />
+            <element signature="e#214#586#0" expanded="true" />
+            <element signature="e#1605#2972#0" expanded="true" />
+            <element signature="e#3107#3848#0" expanded="true" />
+            <element signature="e#4317#4381#0" expanded="true" />
+            <element signature="e#4444#4481#0" expanded="true" />
+            <element signature="e#4488#4748#0" expanded="true" />
+            <element signature="e#4751#4833#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/controller/ZHBaseViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="261" max-vertical-offset="2458">
+          <caret line="26" column="38" selection-start-line="26" selection-start-column="38" selection-end-line="26" selection-end-column="38" />
+          <folding>
+            <element signature="e#148#171#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3729469" vertical-offset="29" max-vertical-offset="3413">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#2#0" expanded="true" />
+            <element signature="e#97#129#0" expanded="true" />
+            <element signature="e#427#431#0" expanded="true" />
+            <element signature="e#433#1007#0" expanded="true" />
+            <element signature="e#1256#1637#0" expanded="true" />
+            <element signature="e#1639#1746#0" expanded="true" />
+            <element signature="e#1748#2125#0" expanded="true" />
+            <element signature="e#2126#2239#0" expanded="true" />
           </folding>
         </state>
       </provider>

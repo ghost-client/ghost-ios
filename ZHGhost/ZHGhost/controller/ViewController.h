@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 hangzhang. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ZHBaseViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : ZHBaseViewController
 
 
 @end

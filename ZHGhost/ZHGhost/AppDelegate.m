@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "FLEXManager.h"
+#import "ZHDefine.h"
+#import "ViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,7 +20,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
-    [[FLEXManager sharedManager] showExplorer];
+    self.window= [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+
+    ViewController *controller= [[ViewController alloc] init];
+
+    UINavigationController *navigationController= [[UINavigationController alloc] initWithRootViewController:controller];
+
+    self.window.rootViewController=navigationController;
+
+    [self.window makeKeyAndVisible];
+
 
     return YES;
 }
