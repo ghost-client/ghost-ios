@@ -13,6 +13,7 @@
 #import "ZHFounction.h"
 #import "StyleKitName.h"
 #import "ZHHomeViewcontroller.h"
+#import "ZHLoginViewController.h"
 
 #define ANMATION_TIME .3
 
@@ -60,8 +61,16 @@
 
 - (void)getUserInfo {
 
-    [[ZHGhostManger manger] uploadImage:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"homeIcon" ofType:@"png"]]];
 
+//    NSData *data=[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"banner1" ofType:@"jpg"]];
+//
+//    [[ZHGhostManger manger] uploadImage:data success:^(NSString *url) {
+//
+//        NSLog(@"%@",url);
+//
+//    } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
+//
+//    }];
 
 }
 
@@ -155,7 +164,25 @@
 
 - (void)itemButtonClick:(UIButton *)itemButtonClick {
 
-    NSLog(@"%d",itemButtonClick.tag);
+    [self showView];
+
+
+    switch (itemButtonClick.tag){
+
+        case 4:{
+
+            ZHLoginViewController *loginViewController= [[ZHLoginViewController alloc] init];
+
+            [self presentViewController:loginViewController animated:YES completion:^{
+
+            }];
+
+        }
+
+        default:break;
+    }
+
+
 
 }
 

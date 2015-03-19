@@ -280,6 +280,8 @@ client_id	ghost-admin
 - (void)showUploadSuccess:(id)responseObject {
     NSString *url = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 
+    url= [url stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+
     if (_uploadSuccess) {
         _uploadSuccess(BaseUrl(url, _myHost));
     }
