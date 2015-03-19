@@ -35,11 +35,34 @@
 
 
 
+    [[ZHGhostManger manger] congfigHost:@"http://js.uiapple.com"];
+
+    __weak typeof(self) safeSelf = self;
+
+    [[ZHGhostManger manger] loginWithUserName:@"15038777234@163.com" passWord:@"zhanghang1990823" success:^{
+
+        [safeSelf getUserInfo];
+
+    } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
+
+        NSLog(@"%@/n%@/n%d",error.userInfo,errorMessage,errorCode);
+
+    }];
+
+
+
 
 
 
 
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)getUserInfo {
+
+    [[ZHGhostManger manger] uploadImage:[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"homeIcon" ofType:@"png"]]];
+
+
 }
 
 - (void)initView {

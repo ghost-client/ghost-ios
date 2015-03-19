@@ -12,6 +12,7 @@
 #import <UIKit/UIKit.h>
 
 @class ZHGTokenResponseBaseClass;
+@class ZHGUserInfoResponseBaseClass;
 
 typedef void (^ZHFailed)(NSError *error,NSString *errorMessage,NSInteger errorCode);
 
@@ -21,5 +22,8 @@ typedef void (^ZHFailed)(NSError *error,NSString *errorMessage,NSInteger errorCo
 */
 typedef void (^ZHTokenSuccess)(ZHGTokenResponseBaseClass * response);
 
+typedef void (^ZHUserInfoSuccess)(ZHGUserInfoResponseBaseClass *response);
+
+typedef void (^ZHUploadSuccess)(NSString *url);
 
 #endif

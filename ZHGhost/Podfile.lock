@@ -20,18 +20,21 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - DTMarkdownParser (0.2.1)
   - FLEX (2.0.2)
   - JSONKit (1.5pre)
   - MBProgressHUD (0.9.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5.0)
+  - DTMarkdownParser (~> 0.2.1)
   - FLEX (~> 2.0.2)
   - JSONKit (~> 1.5pre)
   - MBProgressHUD (~> 0.9)
 
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
+  DTMarkdownParser: 94831b2d72550999d67a0c1abd5c615eb5be1963
   FLEX: ca8700d0a703cb8828d55d689e7e86841dc51e5a
   JSONKit: efef3bbd3372ff33f96b9c6f34cf4fe18e74ab69
   MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
