@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b0235d04-d307-4dc8-8d18-28ba470d372b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/cell/ZHHomeTableViewCell.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/cell/ZHHomeTableViewCell.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/login/ZHIconTextFiled.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/view/login/ZHIconTextFiled.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/cell/ZHTagTableViewCell.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/cell/ZHTagTableViewCell.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/controller/ZHTagsController.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ZHGhost/controller/ZHTagsController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/AppDelegate.m" afterPath="$PROJECT_DIR$/ZHGhost/AppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/controller/ViewController.m" afterPath="$PROJECT_DIR$/ZHGhost/controller/ViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHBlockConfig.h" afterPath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHBlockConfig.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/ZHGhost/model/response/ZHGTokenResponse/ZHGTokenResponseBaseClass.m" afterPath="$PROJECT_DIR$/ZHGhost/ZHGhost/model/response/ZHGTokenResponse/ZHGTokenResponseBaseClass.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostApiConfig.h" afterPath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostApiConfig.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.h" afterPath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.m" afterPath="$PROJECT_DIR$/ZHGhost/ZHGhost/ZHGhostManger.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.h" afterPath="$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.m" afterPath="$PROJECT_DIR$/ZHGhost/controller/ZHHomeViewcontroller.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/controller/ZHLoginViewController.h" afterPath="$PROJECT_DIR$/ZHGhost/controller/ZHLoginViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost/controller/ZHLoginViewController.m" afterPath="$PROJECT_DIR$/ZHGhost/controller/ZHLoginViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ZHGhost.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/ZHGhost.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="b0235d04-d307-4dc8-8d18-28ba470d372b" name="Default" comment="" />
     <ignored path="ZHGhost.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
