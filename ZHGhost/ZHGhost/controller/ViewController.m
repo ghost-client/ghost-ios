@@ -14,6 +14,8 @@
 #import "StyleKitName.h"
 #import "ZHHomeViewcontroller.h"
 #import "ZHLoginViewController.h"
+#import "ZHGContentItemResponseBaseClass.h"
+#import "ZHTagsController.h"
 
 #define ANMATION_TIME .3
 
@@ -27,6 +29,10 @@
 
 @implementation ViewController {
     BOOL _isDismiss;
+
+    ZHGhostManger *_ghostManger;
+
+    NSMutableArray *_contentItems;
 }
 
 - (void)viewDidLoad {
@@ -35,20 +41,7 @@
     [self initView];
 
 
-
-    [[ZHGhostManger manger] congfigHost:@"http://js.uiapple.com"];
-
-    __weak typeof(self) safeSelf = self;
-
-    [[ZHGhostManger manger] loginWithUserName:@"15038777234@163.com" passWord:@"zhanghang1990823" success:^{
-
-        [safeSelf getUserInfo];
-
-    } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
-
-        NSLog(@"%@/n%@/n%d",error.userInfo,errorMessage,errorCode);
-
-    }];
+    [self gotoLoginController];
 
 
 
@@ -59,23 +52,12 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)getUserInfo {
-
-
-//    NSData *data=[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"banner1" ofType:@"jpg"]];
-//
-//    [[ZHGhostManger manger] uploadImage:data success:^(NSString *url) {
-//
-//        NSLog(@"%@",url);
-//
-//    } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
-//
-//    }];
-
-}
 
 - (void)initView {
 
+    _ghostManger=[ZHGhostManger manger];
+
+    _contentItems=[NSMutableArray array];
 
     self.isHaveNotTap= YES;
 
@@ -171,19 +153,75 @@
 
         case 4:{
 
-            ZHLoginViewController *loginViewController= [[ZHLoginViewController alloc] init];
-
-            [self presentViewController:loginViewController animated:YES completion:^{
-
-            }];
+            [self gotoLoginController];
 
         }
+            break;
+        case 1:{
+
+            ZHTagsController *tagsController= [[ZHTagsController alloc] init];
+
+            [self.navigationController pushViewController:tagsController animated:YES];
+
+        }
+            break;
 
         default:break;
     }
 
 
 
+}
+
+- (void)gotoLoginController {
+
+    ZHLoginViewController *loginViewController= [[ZHLoginViewController alloc] init];
+
+    __weak typeof(self) safeSelf = self;
+
+    [loginViewController loginSuccess:^(ZHGTokenResponseBaseClass *response) {
+
+
+        [safeSelf contentItems];
+
+
+    }];
+
+
+    [self presentViewController:loginViewController animated:YES completion:^{
+
+    }];
+}
+
+-(void)contentItems{
+
+
+
+    __weak typeof(self) safeSelf = self;
+
+    [_ghostManger allPostContentStatus:nil staticPages:nil page:0 include:nil success:^(ZHGContentItemResponseBaseClass *response) {
+
+
+        [safeSelf reloadContent:response];
+
+
+    } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
+
+        if (errorMessage== nil){
+
+            errorMessage=error.userInfo[@"NSLocalizedDescription"];
+        }
+
+        [safeSelf showMessage:errorMessage];
+
+    }];
+
+}
+
+- (void)reloadContent:(ZHGContentItemResponseBaseClass *)response {
+    [_contentItems addObjectsFromArray:response.posts];
+
+    [self.homeViewcontroller reloadTableView:_contentItems];
 }
 
 - (void)didReceiveMemoryWarning {

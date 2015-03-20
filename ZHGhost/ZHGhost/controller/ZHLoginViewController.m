@@ -7,15 +7,23 @@
 #import "StyleKitName.h"
 #import "ZHFounction.h"
 #import "ZHDefine.h"
+#import "ZHIconTextFiled.h"
+#import "ZHGhostManger.h"
 
 @interface ZHLoginViewController()
 
+@property (nonatomic, strong)ZHLoginConfigHostView *configHostView;
+
+@property (nonatomic, strong)ZHLoginUserInfoView *userInfoView;
+
+@property (nonatomic, strong)ZHLoginPasswordView *passwordView;
 
 @end
 
 
 @implementation ZHLoginViewController {
 
+    ZHTokenSuccess _loginSuccess;
 }
 
 - (void)viewDidLoad {
@@ -33,8 +41,58 @@
 
     [self.navgationView.rightButton addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
 
+    [self.view addSubview:self.configHostView];
 
 
+    //[self.view addSubview:self.userInfoView];
+
+    [self.view addSubview:self.passwordView];
+
+    self.configHostView.hostFiled.textFiled.text=@"http://js.uiapple.com";
+
+    self.configHostView.emailFiled.textFiled.text=@"15038777234@163.com";
+
+    self.passwordView.passWordTextFiled.textFiled.text=@"zhanghang1990823";
+
+
+    [self.passwordView.loginButton addTarget:self action:@selector(gotoLogin) forControlEvents:UIControlEventTouchUpInside];
+
+
+}
+
+- (void)gotoLogin {
+
+    [[ZHGhostManger manger] congfigHost:self.configHostView.hostFiled.textFiled.text];
+
+
+    __weak typeof(self) safeSelf = self;
+
+
+    [[ZHGhostManger manger] loginWithUserName:self.configHostView.emailFiled.textFiled.text passWord:self.passwordView.passWordTextFiled.textFiled.text success:^{
+
+        [self showLoginSuccess];
+
+    } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
+
+
+        if (errorMessage== nil){
+
+            errorMessage=error.userInfo[@"NSLocalizedDescription"];
+        }
+
+        [safeSelf showMessage:errorMessage];
+
+    }];
+
+
+}
+
+- (void)showLoginSuccess {
+    if (_loginSuccess){
+            _loginSuccess(nil);
+    }
+
+    [self dismiss];
 }
 
 - (void)dismiss {
@@ -44,21 +102,54 @@
     }];
 
 }
+
+- (ZHLoginConfigHostView *)configHostView {
+
+    if (_configHostView== nil){
+        _configHostView= [[ZHLoginConfigHostView alloc] initWithFrame:CGRectMake(0, ZHFrameNextY(self.navgationView), SCREEN_WIDTH, [ZHLoginUserInfoView frameHeight])];
+    }
+
+    return _configHostView;
+}
+
+- (ZHLoginUserInfoView *)userInfoView {
+
+    if (_userInfoView== nil){
+        _userInfoView= [[ZHLoginUserInfoView alloc] initWithFrame:self.configHostView.frame];
+        _userInfoView.backgroundColor=self.view.backgroundColor;
+    }
+
+    return _userInfoView;
+}
+
+- (ZHLoginPasswordView *)passwordView {
+
+    if (_passwordView== nil){
+        _passwordView= [[ZHLoginPasswordView alloc] initWithFrame:CGRectMake(0, ZHFrameNextY(self.userInfoView), SCREEN_WIDTH, ZHFrameHeight(self.view)- ZHFrameNextY(self.userInfoView))];
+
+        _passwordView.backgroundColor=self.view.backgroundColor;
+    }
+
+    return _passwordView;
+}
+
+- (void)loginSuccess:(ZHTokenSuccess)success {
+
+    _loginSuccess=success;
+
+}
+
+
 @end
 
-@interface ZHLoginConfigHostView()
-
-@property (nonatomic, strong)UILabel *hostLabel;
-
-@property (nonatomic, strong)UITextField *hostFiled;
-
-@property (nonatomic, strong)UILabel *emailLabel;
-
-@property (nonatomic, strong)UITextField *emailFiled;
+@implementation ZHLoginConfigHostView{
 
 
-@end
-@implementation ZHLoginConfigHostView
+   CGFloat   _textFiledWidth;
+    
+    ZHIconTextFiled *_hostFiled;
+    ZHIconTextFiled *_emailFiled;
+}
 - (instancetype)initWithFrame:(CGRect)frame {
 
 
@@ -68,38 +159,31 @@
 
     if (self){
 
+
+        _textFiledWidth=250* NumberSize();
+
         self.backgroundColor=[UIColor clearColor];
 
-        [self addSubview:self.hostLabel];
 
         [self addSubview:self.hostFiled];
 
-        [self addSubview:self.emailLabel];
 
         [self addSubview:self.emailFiled];
-
-        self.hostLabel.text=@"请配备博客的URL:";
-        self.hostFiled.placeholder=@"例如:http://www.boke.com";
-        self.emailLabel.text=@"请输入登陆的邮箱地址";
-        self.emailFiled.placeholder=@"例如:same@xx.com";
 
     }
 
     return self;
 }
 
-- (UITextField *)emailFiled {
+- (ZHIconTextFiled *)emailFiled {
 
     if(_emailFiled== nil){
-        _emailFiled= [[UITextField alloc] initWithFrame:CGRectMake(ZHFrameNextX(self.emailLabel), ZHFrameY(self.emailLabel), SCREEN_WIDTH- ZHFrameNextX(self.emailLabel)-20, ZHFrameHeight(self.emailLabel))];
+        _emailFiled= [[ZHIconTextFiled alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-_textFiledWidth)/2, ZHFrameHeight(self)-60, _textFiledWidth,40)];
 
-        _emailFiled.textAlignment=NSTextAlignmentLeft;
+        _emailFiled.iconImageView.image=[StyleKitName homeIcon];
 
-        _emailFiled.textColor=[UIColor whiteColor];
+        _emailFiled.textFiled.placeholder=@"请输入用户名";
 
-         _emailFiled.layer.borderColor=[UIColor whiteColor].CGColor;
-
-        _emailFiled.layer.borderWidth=1;
 
     }
 
@@ -108,52 +192,91 @@
     return _emailFiled;
 }
 
-- (UILabel *)emailLabel {
 
-    if (_emailLabel== nil){
-        _emailLabel= [[UILabel alloc] initWithFrame:CGRectMake(20, ZHFrameHeight(self)-20-40, 100, 40)];
-        _emailLabel.textAlignment=NSTextAlignmentRight;
-        _emailLabel.textColor=[UIColor whiteColor];
-    }
 
-    return _emailLabel;
-}
+- (ZHIconTextFiled *)hostFiled {
 
-- (UITextField *)hostFiled {
+     if(_hostFiled== nil){
 
-    if(_hostFiled== nil){
-        _hostFiled= [[UITextField alloc] initWithFrame:CGRectMake(ZHFrameNextX(self.emailLabel), ZHFrameY(self.emailLabel), SCREEN_WIDTH- ZHFrameNextX(self.emailLabel)-20, ZHFrameHeight(self.emailLabel))];
 
-        _hostFiled.textAlignment=NSTextAlignmentLeft;
+        _hostFiled= [[ZHIconTextFiled alloc] initWithFrame:CGRectMake(ZHFrameX(self.emailFiled), ZHFrameY(self.emailFiled)-60, _textFiledWidth,40)];
+         _hostFiled.iconImageView.image=[StyleKitName homeIcon];
 
-        _hostFiled.textColor=[UIColor whiteColor];
+        _hostFiled.textFiled.placeholder=@"请输入博客网址";
 
-        _hostFiled.layer.borderColor=[UIColor whiteColor].CGColor;
-
-        _hostFiled.layer.borderWidth=1;
 
     }
     return _hostFiled;
 }
 
-- (UILabel *)hostLabel {
 
-    if (_hostLabel== nil){
-        _hostLabel= [[UILabel alloc] initWithFrame:CGRectMake(ZHFrameX(self.emailLabel), ZHFrameHeight(self)-20-40-20-40, 100, 40)];
-        _hostLabel.textAlignment=NSTextAlignmentRight;
-        _hostLabel.textColor=[UIColor whiteColor];
-    }
-
-
-
-    return _hostLabel;
-}
 
 
 @end
 
 
-@implementation ZHLoginUserInfoView
+@implementation ZHLoginUserInfoView{
+
+
+    UIImageView *_headImageView;
+    UILabel *_emailLabel;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+
+    self=[super initWithFrame:frame];
+
+    if (self){
+
+        [self addSubview:self.headImageView];
+
+        [self addSubview:self.emailLabel];
+
+
+    }
+
+    return self;
+}
+
+- (UIImageView *)headImageView {
+
+    if (_headImageView== nil){
+
+        _headImageView= [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-100* NumberSize())/2, 40, 100* NumberSize(), 100* NumberSize())];
+
+    }
+
+    
+    
+    return _headImageView;
+    
+}
+
+- (UILabel *)emailLabel {
+
+    if (_emailLabel== nil){
+
+        _emailLabel= [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-250* NumberSize())/2, ZHFrameNextY(self.headImageView)+10, 250* NumberSize(), 30)];
+
+        _emailLabel.textAlignment=NSTextAlignmentCenter;
+    }
+    
+    return _emailLabel;
+}
+
+
++ (CGFloat)frameHeight {
+    return 20+100* NumberSize()+10+30+20+20;
+}
+
+
+@end
+
+@implementation ZHLoginPasswordView {
+    UIButton *_replaceButton;
+    UIButton *_loginButton;
+    ZHIconTextFiled *_passWordTextFiled;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
 
@@ -162,25 +285,82 @@
     if (self){
 
 
-    }
+        [self addSubview:self.passWordTextFiled];
 
-    return self;
-}
+        [self addSubview:self.loginButton];
 
-@end
+        [self addSubview:self.replaceButton];
 
-@implementation ZHLoginPasswordView
+        [self.loginButton setTitle:@"登陆" forState:UIControlStateNormal];
 
-- (instancetype)initWithFrame:(CGRect)frame {
+        [self.replaceButton setTitle:@"更换账号" forState:UIControlStateNormal];
 
-    self=[super initWithFrame:frame];
+        self.passWordTextFiled.textFiled.placeholder=@"请输入密码";
 
-    if (self){
 
 
     }
 
     return self;
 }
+- (UIButton *)replaceButton {
+
+    if (_replaceButton== nil){
+
+        _replaceButton=[UIButton buttonWithType:UIButtonTypeCustom];
+
+        _replaceButton.frame= CGRectMake((SCREEN_WIDTH-250* NumberSize())/2, ZHFrameNextY(self.loginButton)+20,250* NumberSize(), 40);
+
+        _replaceButton.backgroundColor=[UIColor colorWithRed:0.941 green:0.941 blue:0.949 alpha:1];
+
+        _replaceButton.layer.masksToBounds= YES;
+
+        _replaceButton.layer.cornerRadius= ZHFrameHeight(_replaceButton)/2;
+
+        [_replaceButton setTitleColor:[UIColor colorWithRed:0.251 green:0.251 blue:0.251 alpha:1] forState:UIControlStateNormal];
+
+    }
+
+    return _replaceButton;
+}
+
+
+- (UIButton *)loginButton {
+    
+    if (_loginButton== nil){
+
+        _loginButton=[UIButton buttonWithType:UIButtonTypeCustom];
+
+        _loginButton.frame= CGRectMake((SCREEN_WIDTH-250* NumberSize())/2, ZHFrameNextY(self.passWordTextFiled)+20,250* NumberSize(), 40);
+
+        _loginButton.backgroundColor=[UIColor colorWithRed:0.941 green:0.941 blue:0.949 alpha:1];
+
+        _loginButton.layer.masksToBounds= YES;
+
+        _loginButton.layer.cornerRadius= ZHFrameHeight(_loginButton)/2;
+
+        [_loginButton setTitleColor:[UIColor colorWithRed:0.251 green:0.251 blue:0.251 alpha:1] forState:UIControlStateNormal];
+
+    }
+
+    return _loginButton;
+    
+    
+}
+
+- (ZHIconTextFiled *)passWordTextFiled {
+
+    if (_passWordTextFiled== nil){
+
+        _passWordTextFiled= [[ZHIconTextFiled alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-250* NumberSize())/2, 0, 250* NumberSize(), 40)];
+
+
+        _passWordTextFiled.iconImageView.image=[StyleKitName homeIcon];
+    }
+
+    
+    return _passWordTextFiled;
+}
+
 
 @end

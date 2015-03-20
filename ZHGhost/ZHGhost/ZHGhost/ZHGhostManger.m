@@ -11,6 +11,10 @@
 #import "ZHFailedBaseClass.h"
 #import "ZHFailedErrors.h"
 #import "ZHGUserInfoResponseBaseClass.h"
+#import "ZHGContentItemResponseBaseClass.h"
+#import "ZHGTagsResponseBaseClass.h"
+#import "ZHCreatTagsSubmitBaseClass.h"
+#import "ZHCreatTagsResponseBaseClass.h"
 
 #define EXPIRESIN @"expires_in"
 
@@ -35,6 +39,9 @@ static NSString *BaseUrl(NSString *url, NSString *host) {
     ZHUserInfoSuccess _userInfoSuccess;
     ZHUploadSuccess _uploadSuccess;
     NSString *_myHost;
+    ZHContentItemSuccess _contentSuccess;
+    ZHTagsSuccess _tagsSuccess;
+    ZHCreatTagsSuccess _creatTagsSuccess;
 }
 - (BOOL)isLogin {
 
@@ -52,6 +59,8 @@ static NSString *BaseUrl(NSString *url, NSString *host) {
 }
 
 - (void)congfigHost:(NSString *)host {
+
+    NSParameterAssert(host);
 
     _myHost = host;
 
@@ -199,7 +208,18 @@ client_id	ghost-admin
     [manager.operationQueue addOperation:afhttpRequestOperation];
 }
 
-- (void)allPostContent {
+- (void)allPostContentStatus:(NSString *)status
+                 staticPages:(NSString *)staticPages
+                        page:(NSInteger)page
+                     include:(NSString *)include
+                     success:(ZHContentItemSuccess)success
+                      failed:(ZHFailed)failed
+
+{
+
+    _contentSuccess=success;
+
+    _failed=failed;
 
     // 查询文章 (GET http://js.uiapple.com/ghost/api/v0.1//posts/)
 
@@ -221,16 +241,42 @@ client_id	ghost-admin
     // Add Headers
     [request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
 
+    __weak typeof(self) safeSelf = self;
+
     // Fetch Request
     AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
                                                                                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
+                                                                                          if (responseObject){
+
+                                                                                              [safeSelf showContentItemSuccess:responseObject];
+
+
+                                                                                          } else{
+
+                                                                                              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+
+                                                                                          }
+
+
                                                                                       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+
+                [safeSelf showRequestErrorMessage:safeSelf error:error];
+
             }];
 
     [manager.operationQueue addOperation:afhttpRequestOperation];
 
 
+}
+
+- (void)showContentItemSuccess:(id)responseObject {
+    ZHGContentItemResponseBaseClass *contentItemResponseBaseClass=[ZHGContentItemResponseBaseClass modelObjectWithDictionary:responseObject];
+
+    if (_contentSuccess){
+                                                                                                  _contentSuccess(contentItemResponseBaseClass);
+                                                                                              }
 }
 
 - (void)uploadImage:(NSData *)imageData
@@ -276,6 +322,226 @@ client_id	ghost-admin
     [manager.operationQueue addOperation:afhttpRequestOperation];
 
 }
+
+- (void)allTags:(NSUInteger)limit
+        success:(ZHTagsSuccess)success
+         failed:(ZHFailed)failed{
+    
+    _tagsSuccess=success;
+    
+    _failed=failed;
+
+    if (limit>100){
+
+        limit=ZHGhostTagsLimitMax;
+    }
+
+    // 查询所有的标签 (GET http://js.uiapple.com/ghost/api/v0.1/tags/)
+
+	// Create manager
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+	// Create request
+	NSDictionary* URLParams = @{
+		@"limit": [NSString stringWithFormat:@"%d",limit],
+	};
+
+    NSString *urlString= BaseUrl(ZHTAGS_URL, _ghostHost);
+
+	NSMutableURLRequest* request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:urlString parameters:URLParams error:NULL];
+
+	// Add Headers
+	[request setValue:_WDToken  forHTTPHeaderField:@"Authorization"];
+
+    __weak typeof(self) safeSelf = self;
+
+	// Fetch Request
+	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
+	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+          if (responseObject){
+
+              [safeSelf showTagsSuccess:responseObject];
+
+          } else{
+
+              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+          }
+
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+                [safeSelf showRequestErrorMessage:safeSelf error:error];
+
+            }];
+
+	[manager.operationQueue addOperation:afhttpRequestOperation];
+
+
+
+}
+
+-(void)creatTags:(NSArray *)tags
+         success:(ZHCreatTagsSuccess)success
+          failed:(ZHFailed)failed{
+
+    _creatTagsSuccess=success;
+
+    _failed=failed;
+
+    NSParameterAssert(tags.count>0);
+
+    NSMutableArray *array=[NSMutableArray array];
+
+    for(ZHCreatTagsSubmitBaseClass *submitBaseClass in tags){
+
+        NSParameterAssert(submitBaseClass.name);
+
+        [array addObject:submitBaseClass.dictionaryRepresentation];
+
+    }
+
+    	// 新建标签 (POST http://js.uiapple.com/ghost/api/v0.1/tags/)
+
+	// Create manager
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+	// JSON Body
+	NSDictionary* bodyObject = @{
+		@"tags": array
+	};
+
+
+    NSString *urlString= BaseUrl(ZHTAGS_URL, _ghostHost);
+
+	NSMutableURLRequest* request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:bodyObject error:NULL];
+
+	// Add Headers
+	[request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
+
+    __weak typeof(self) safeSelf = self;
+
+	// Fetch Request
+	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
+	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+          if (responseObject){
+
+              [self showCreatTagsSuccess:responseObject];
+
+          } else{
+
+              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+
+          }
+
+
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+                [safeSelf showRequestErrorMessage:safeSelf error:error];
+            }];
+
+	[manager.operationQueue addOperation:afhttpRequestOperation];
+
+
+}
+
+-(void)deleteTag:(NSUInteger)tagID{
+
+
+	// 删除TAG (DELETE http://js.uiapple.com/ghost/api/v0.1/tags/3/)
+
+	// Create manager
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+    NSString *urlString= BaseUrl(ZHTAGS_URL, _ghostHost);
+
+    urlString=[NSString stringWithFormat:@"%@%d/",urlString,tagID];
+
+    NSMutableURLRequest* request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"DELETE" URLString:urlString parameters:nil error:NULL];
+
+
+	// Add Headers
+	[request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
+
+	// Fetch Request
+	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
+	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+	    NSLog(@"HTTP Response Status Code: %ld", [operation.response statusCode]);
+	    NSLog(@"HTTP Response Body: %@", responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+	    NSLog(@"HTTP Request failed: %@", error);
+	}];
+
+	[manager.operationQueue addOperation:afhttpRequestOperation];
+
+
+}
+
+-(void)editTag:(NSUInteger)tagId{
+
+	// 修改TAG (PUT http://js.uiapple.com/ghost/api/v0.1/tags/29/)
+
+	// Create manager
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+	// JSON Body
+	NSDictionary* bodyObject = @{
+		@"tags": @[
+			@{
+				@"id": @"29",
+				@"description": @"请问饿我去请问饿",
+				@"meta_description": [NSNull null],
+				@"created_at": @"2015-03-20T09:38:37.338Z",
+				@"created_by": @1,
+				@"image": [NSNull null],
+				@"slug": @"ewqeqwewqw",
+				@"updated_at": @"2015-03-20T09:38:37.338Z",
+				@"hidden": @NO,
+				@"updated_by": @1,
+				@"meta_title": [NSNull null],
+				@"name": @"1"
+			}
+		]
+	};
+
+	NSMutableURLRequest* request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"PUT" URLString:@"http://js.uiapple.com/ghost/api/v0.1/tags/29/" parameters:bodyObject error:NULL];
+
+	// Add Headers
+	[request setValue:@"Bearer keHUAIupDU1bitHYPqYDHoFNngdx3ruCOQH1BI9PxITVxFwbfJZ3kYw4Gdr0l0BvGYUYYkYmSFSgN1E2bQdAhEGBcNjRAgDqrmf8ZBxhAipkHD5GfAYouT0SatHTcBDoBR2xdk2cJqro4mD11lPYeTCD4816ItRGPTNUktImmjMVnykBMEIcSbYXLUA6dw1wW34EDPSy2ETjTKDEVgazFJrQr33xaE3tq8xJ5CBTkil3mQyYWgtcmMFfFhQhUOp" forHTTPHeaderField:@"Authorization"];
+
+	// Fetch Request
+	AFHTTPRequestOperation *operation = [manager HTTPRequestOperationWithRequest:request
+	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+	    NSLog(@"HTTP Response Status Code: %ld", [operation.response statusCode]);
+	    NSLog(@"HTTP Response Body: %@", responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+	    NSLog(@"HTTP Request failed: %@", error);
+	}];
+
+	[manager.operationQueue addOperation:operation];
+
+
+
+
+}
+
+- (void)showCreatTagsSuccess:(id)responseObject {
+    ZHCreatTagsResponseBaseClass *creatTagsResponseBaseClass=[ZHCreatTagsResponseBaseClass modelObjectWithDictionary:responseObject];
+
+    if (_creatTagsSuccess){
+                  _creatTagsSuccess(creatTagsResponseBaseClass);
+              }
+}
+
+
+- (void)showTagsSuccess:(id)responseObject {
+    ZHGTagsResponseBaseClass *tagsResponseBaseClass=[ZHGTagsResponseBaseClass modelObjectWithDictionary:responseObject];
+
+    if (_tagsSuccess){
+                  _tagsSuccess(tagsResponseBaseClass);
+              }
+}
+
 
 - (void)showUploadSuccess:(id)responseObject {
     NSString *url = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];

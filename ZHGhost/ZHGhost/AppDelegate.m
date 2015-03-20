@@ -30,6 +30,8 @@
 
     [self.window makeKeyAndVisible];
 
+    [[FLEXManager sharedManager] showExplorer];
+
 
     return YES;
 }

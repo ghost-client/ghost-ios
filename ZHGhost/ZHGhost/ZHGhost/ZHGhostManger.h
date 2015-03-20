@@ -11,6 +11,12 @@ typedef NS_ENUM(NSInteger , ZHGhostErrorCode){
    ZHGhostErrorCodeVailedJsonFormatter=99999
 
 };
+typedef NS_ENUM(NSInteger , ZHGhostTagsLimit){
+
+    ZHGhostTagsLimitDefault=15,
+    ZHGhostTagsLimitMax=100
+
+};
 #define VAILED_JSON_MESSAGE  @"JSON解析失败"
 @interface ZHGhostManger : NSObject{
 
@@ -51,11 +57,27 @@ typedef NS_ENUM(NSInteger , ZHGhostErrorCode){
 -(void)allNotication;
 
 //获取所有的文章列表
--(void)allPostContent;
+- (void)allPostContentStatus:(NSString *)status
+                 staticPages:(NSString *)staticPages
+                        page:(NSInteger)page
+                     include:(NSString *)include
+                     success:(ZHContentItemSuccess)success
+                      failed:(ZHFailed)failed;
 
 //上传图片
 -(void)uploadImage:(NSData*)imageData
            success:(ZHUploadSuccess)success
             failed:(ZHFailed)failed;
 
+/**
+* 获取所有的的TAG
+* @param limit 查询限制 默认和0都为限制15条 最大限制为100条
+*/
+- (void)allTags:(NSUInteger)limit success:(ZHTagsSuccess)success failed:(ZHFailed)failed;
+
+/**
+* 创建一个新的TAG
+* @param tags 包含ZHCreatTagsSubmitBaseClass类的元素
+*/
+- (void)creatTags:(NSArray *)tags success:(ZHCreatTagsSuccess)success failed:(ZHFailed)failed;
 @end

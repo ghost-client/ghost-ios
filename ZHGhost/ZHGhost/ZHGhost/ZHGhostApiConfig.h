@@ -17,6 +17,8 @@
 
 #define ZHPOST_CONTENT_URL @"posts/"
 
-#define ZHUPLOAD_URL @"uploads/"
+#define ZHUPLOAD_URL @"uploads/"//上传图片
+
+#define ZHTAGS_URL @"tags/"//获取TAG
 
 #endif

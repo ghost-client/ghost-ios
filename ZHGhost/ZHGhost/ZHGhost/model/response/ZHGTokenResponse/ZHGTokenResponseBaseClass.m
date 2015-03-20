@@ -7,6 +7,9 @@
 
 #import "ZHGTokenResponseBaseClass.h"
 #import "ZHGUserInfoResponseBaseClass.h"
+#import "ZHGContentItemResponseBaseClass.h"
+#import "ZHGTagsResponseBaseClass.h"
+#import "ZHCreatTagsResponseBaseClass.h"
 
 
 NSString *const kZHGTokenResponseBaseClassRefreshToken = @"refresh_token";

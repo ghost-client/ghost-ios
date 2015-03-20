@@ -8,6 +8,8 @@
 #import "ZHHomeBannerView.h"
 #import "ZHFounction.h"
 #import "ZHDefine.h"
+#import "ZHGContentItemResponsePosts.h"
+#import "ZHHomeTableViewCell.h"
 
 
 @interface ZHHomeViewcontroller()
@@ -20,6 +22,7 @@
 
 @implementation ZHHomeViewcontroller {
 
+    NSArray *_contentItem;
 }
 
 - (void)viewDidLoad {
@@ -62,23 +65,42 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return _contentItem.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     static NSString *string=@"cell";
 
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:string];
+    ZHHomeTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:string];
     if (cell== nil){
-        cell= [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:string];
+        cell= [[ZHHomeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:string];
 
     }
+
+    ZHGContentItemResponsePosts *posts=_contentItem[indexPath.row];
+
+    cell.titleLabel.text=posts.title;
+
+    cell.iconImageView.image=[StyleKitName homeIcon];
 
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    return ZHHOME_TABLEVIEWCELL_HEIGHT;
 }
+
+
+
+
+- (void)reloadTableView:(NSArray *)array {
+
+    _contentItem=array;
+
+    [self.homeTableView reloadData];
+
+
+}
+
 
 @end

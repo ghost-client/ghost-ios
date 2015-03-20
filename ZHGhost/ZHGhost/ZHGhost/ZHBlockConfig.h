@@ -13,6 +13,9 @@
 
 @class ZHGTokenResponseBaseClass;
 @class ZHGUserInfoResponseBaseClass;
+@class ZHGContentItemResponseBaseClass;
+@class ZHGTagsResponseBaseClass;
+@class ZHCreatTagsResponseBaseClass;
 
 typedef void (^ZHFailed)(NSError *error,NSString *errorMessage,NSInteger errorCode);
 
@@ -25,5 +28,21 @@ typedef void (^ZHTokenSuccess)(ZHGTokenResponseBaseClass * response);
 typedef void (^ZHUserInfoSuccess)(ZHGUserInfoResponseBaseClass *response);
 
 typedef void (^ZHUploadSuccess)(NSString *url);
+
+/**
+* 获取文章列表的返回
+*/
+typedef void (^ZHContentItemSuccess)(ZHGContentItemResponseBaseClass *response);
+
+/**
+* 获取TAG的返回
+*/
+typedef void (^ZHTagsSuccess)(ZHGTagsResponseBaseClass *response);
+
+/**
+* 创建TAG的返回
+*/
+typedef void (^ZHCreatTagsSuccess)(ZHCreatTagsResponseBaseClass *response);
+
 
 #endif

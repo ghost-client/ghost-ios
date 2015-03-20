@@ -7,4 +7,7 @@
 
 
 @interface ZHHomeViewcontroller : ZHBaseViewController <UITableViewDataSource, UITableViewDelegate>
+
+-(void)reloadTableView:(NSArray *)array;
+
 @end

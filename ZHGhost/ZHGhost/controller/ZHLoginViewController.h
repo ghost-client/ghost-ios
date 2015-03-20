@@ -4,10 +4,15 @@
 //
 
 #import "ZHBaseViewController.h"
+#import "ZHBlockConfig.h"
+
+@class ZHIconTextFiled;
 
 
 @interface ZHLoginViewController : ZHBaseViewController
 
+
+-(void)loginSuccess:(ZHTokenSuccess)success;
 
 
 @end
@@ -22,6 +27,10 @@
 @interface ZHLoginConfigHostView:UIView
 
 
+@property (nonatomic, strong, readonly)ZHIconTextFiled *hostFiled;
+
+@property (nonatomic, strong, readonly)ZHIconTextFiled *emailFiled;
+
 -(instancetype)initWithFrame:(CGRect)frame;
 
 
@@ -33,6 +42,15 @@
 @interface ZHLoginUserInfoView:UIView
 
 - (instancetype)initWithFrame:(CGRect)frame;
+
+
+@property (nonatomic, strong, readonly)UIImageView *headImageView;
+
+@property (nonatomic, strong, readonly)UILabel *emailLabel;
+
+
++(CGFloat)frameHeight;
+
 @end
 
 /**
@@ -41,6 +59,13 @@
 @interface ZHLoginPasswordView:UIView
 
 - (instancetype)initWithFrame:(CGRect)frame;
+
+@property (nonatomic, strong, readonly)UIButton *replaceButton;
+
+@property (nonatomic, strong, readonly)UIButton *loginButton;
+
+@property (nonatomic, strong, readonly)ZHIconTextFiled *passWordTextFiled;
+
 
 
 @end
