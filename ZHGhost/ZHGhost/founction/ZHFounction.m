@@ -296,3 +296,10 @@ FOUNDATION_EXPORT NSString *smallImageFromBigString(NSString *bigString){
 
 }
 
+void ZHAlertView(NSString *title, id target) {
+
+    UIAlertView *alertView= [[UIAlertView alloc] initWithTitle:@"提示" message:title delegate:target cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+
+    [alertView show];
+
+}

@@ -6,8 +6,7 @@
 #import "PanDeleteButton.h"
 #import "ZHFounction.h"
 
-@interface PanDeleteButton ()
-@end
+
 
 @implementation PanDeleteButton {
 
@@ -20,11 +19,11 @@
     UIPanGestureRecognizer *_panGesture;
     UIScrollView *_mainScrollView;
 
-    UISwipeGestureRecognizer *_upSwipeGestureRecognizer;
-    UISwipeGestureRecognizer *_downSwipeGestureRecognizer;
+
 
     BOOL _isScrollView;
-    UIView *_deleteButton;
+    UIButton *_deleteButton;
+    PanDeleteButtonDeleteComplete _deleteComplete;
 }
 
 
@@ -47,6 +46,7 @@
 
     
 }
+
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
 
     if ([gestureRecognizer.view isKindOfClass:[self class]]){
@@ -165,7 +165,7 @@
 
     if (isEnd) {
 
-        if (YES) {
+        if (abs((int) _currentMoveWidth)< ZHFrameWidth(self.deleteButton)) {
 
             [self willCannelDeleteCell];
         } else {
@@ -201,6 +201,7 @@
 ///@name 即将要取消删除
 ///------------------------------------------------------
 - (void)willCannelDeleteCell {
+
     __weak typeof(self) safeSelf = self;
     
 
@@ -219,30 +220,67 @@
 
 }
 
-- (void)setDeleteButtonClickShowMessage:(NSString *)message {
-
-}
-
 - (void)setCannelEdit {
     [self willCannelDeleteCell];
 
 }
 
-- (void)setIsCanEdit:(BOOL)isEdit {
+- (void)setIsCanEdit:(BOOL)isEdit
+{
+}
+
+- (void)setDeleteButtonWidth:(float)width {
+
+    self.deleteButton.frame= CGRectMake(ZHFrameWidth(self)-width, ZHFrameY(self.deleteButton), width, ZHFrameHeight(self.deleteButton));
+
+}
+
+- (void)setPanDeleteComplete:(PanDeleteButtonDeleteComplete)complete {
+
+    _deleteComplete=complete;
+
+
 }
 
 
-
-
-
-
-- (UIView *)deleteButton {
+- (UIButton *)deleteButton {
     if (_deleteButton == nil) {
-        _deleteButton = [[UIView alloc] initWithFrame:CGRectMake(ZHFrameNextX(self) - ZHFrameHeight(self), ZHFrameY(self), ZHFrameHeight(self), ZHFrameHeight(self))];
+        _deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
 
+        _deleteButton.frame= CGRectMake(ZHFrameWidth(self)- ZHFrameHeight(self), 0, ZHFrameHeight(self), ZHFrameHeight(self));
+
+
+        [_deleteButton setBackgroundColor:[UIColor redColor]];
+
+        [_deleteButton setTitle:@"删除" forState:UIControlStateNormal];
+        [_deleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_deleteButton addTarget:self action:@selector(deleteButtonClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _deleteButton;
 }
+
+- (void)deleteButtonClick {
+
+    ZHAlertView(@"确定要删除吗", self);
+
+}
+
+#pragma mark UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+
+    [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+
+    if (buttonIndex==1){
+
+
+        if (_deleteComplete){
+            _deleteComplete(_deleteIndexPath);
+        }
+
+    }
+
+}
+
 
 
 - (void)setIndexPath:(NSIndexPath *)indexPath {

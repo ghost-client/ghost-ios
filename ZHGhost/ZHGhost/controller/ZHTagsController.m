@@ -11,6 +11,8 @@
 #import "StyleKitName.h"
 #import "ZHGhostManger.h"
 #import "ZHGTagsResponseBaseClass.h"
+#import "ZHAddOrEditTagViewController.h"
+#import "PanDeleteButton.h"
 
 
 @interface ZHTagsController ()
@@ -24,6 +26,9 @@
     ZHGhostManger *_ghostManger;
 }
 - (void)viewDidLoad {
+
+    self.isHaveNotTap= YES;
+
     [super viewDidLoad];
 
     self.isShowNavgationView= YES;
@@ -41,13 +46,26 @@
 
 
     [self.navgationView.rightButton setTitle:@"新增" forState:UIControlStateNormal];
+    [self.navgationView.rightButton addTarget:self action:@selector(addTagButtonClick) forControlEvents:UIControlEventTouchUpInside];
+
 
 }
+- (void)addTagButtonClick {
+
+    ZHAddOrEditTagViewController *addOrEditTagViewController= [[ZHAddOrEditTagViewController alloc] init];
+
+
+
+    [self.navigationController pushViewController:addOrEditTagViewController animated:YES];
+
+}
+
+
 -(void)tagsRequest{
 
     __weak typeof(self) safeSelf = self;
 
-    [_ghostManger allTags:ZHGhostTagsLimitMax success:^(ZHGTagsResponseBaseClass *response) {
+    [_ghostManger allTags:ZHGhostTagsLimitAll success:^(ZHGTagsResponseBaseClass *response) {
 
         [safeSelf reloadTagsTableView:response];
 
@@ -101,9 +119,61 @@
 
     cell.numberImageView.image=[StyleKitName homeIcon];
 
+    [cell.panDeleteButton addPanDelete:indexPath];
+
+    __weak typeof(self) safeSelf = self;
+
+
+    [cell.panDeleteButton setPanDeleteComplete:^(NSIndexPath *deleteIndexPath) {
+
+        [safeSelf willDeleteTag:deleteIndexPath];
+
+
+    }];
+
 
     return cell;
 }
 
+- (void)willDeleteTag:(NSIndexPath *)deleteIndexPath {
+    ZHGTagsResponseTags *tags= _tagsArray[(NSUInteger) deleteIndexPath.row];
+__weak typeof(self) safeSelf = self;
+
+    [[ZHGhostManger manger] deleteTag:(NSUInteger) tags.tagsIdentifier success:^(ZHGTagsResponseBaseClass *response) {
+
+
+        [safeSelf deleteTagsSuccess:tags];
+
+    }                          failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
+
+         if (errorMessage== nil){
+
+            errorMessage=error.userInfo[@"NSLocalizedDescription"];
+        }
+
+        [self showMessage:errorMessage];
+
+    }];
+}
+
+- (void)deleteTagsSuccess:(ZHGTagsResponseTags *)tags {
+    [_tagsArray removeObject:tags];
+
+    [self.tagsTableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+      ZHGTagsResponseTags *tags=_tagsArray[indexPath.row];
+
+     ZHAddOrEditTagViewController *addOrEditTagViewController= [[ZHAddOrEditTagViewController alloc] init];
+
+    [addOrEditTagViewController setEditTagInfo:tags];
+
+
+    [self.navigationController pushViewController:addOrEditTagViewController animated:YES];
+
+
+
+}
 
 @end

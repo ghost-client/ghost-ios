@@ -34,6 +34,9 @@
 
     if (_titleLabel== nil){
         _titleLabel= [[UILabel alloc] initWithFrame:CGRectMake(ZHFrameNextX(self.iconImageView)+10, 10, SCREEN_WIDTH- ZHFrameNextX(self.iconImageView)-20, 30)];
+
+        _titleLabel.userInteractionEnabled= YES;
+
     }
 
 
@@ -45,6 +48,7 @@
 
     if (_iconImageView== nil){
         _iconImageView= [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 80, 80)];
+        _iconImageView.userInteractionEnabled= YES;
     }
 
 

@@ -10,4 +10,6 @@
 
 -(void)reloadTableView:(NSArray *)array;
 
+-(void)setHomeNavgationController:(UINavigationController *)navigationController;
+
 @end

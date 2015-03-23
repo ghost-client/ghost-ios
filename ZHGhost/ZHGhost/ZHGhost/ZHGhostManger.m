@@ -15,6 +15,7 @@
 #import "ZHGTagsResponseBaseClass.h"
 #import "ZHCreatTagsSubmitBaseClass.h"
 #import "ZHCreatTagsResponseBaseClass.h"
+#import "ZHGTagsResponseTags.h"
 
 #define EXPIRESIN @"expires_in"
 
@@ -42,6 +43,8 @@ static NSString *BaseUrl(NSString *url, NSString *host) {
     ZHContentItemSuccess _contentSuccess;
     ZHTagsSuccess _tagsSuccess;
     ZHCreatTagsSuccess _creatTagsSuccess;
+    ZHTagsSuccess _deleteSuccess;
+    ZHEditTagsSuccess _editSuccess;
 }
 - (BOOL)isLogin {
 
@@ -331,10 +334,21 @@ client_id	ghost-admin
     
     _failed=failed;
 
-    if (limit>100){
+    if (limit>ZHGhostTagsLimitMax && limit!=ZHGhostTagsLimitAll){
 
         limit=ZHGhostTagsLimitMax;
     }
+
+    NSString *limitString=[NSString stringWithFormat:@"%d",limit];
+
+    if (limit==ZHGhostTagsLimitAll){
+        limitString=@"all";
+    }
+
+
+
+
+
 
     // 查询所有的标签 (GET http://js.uiapple.com/ghost/api/v0.1/tags/)
 
@@ -343,7 +357,7 @@ client_id	ghost-admin
 
 	// Create request
 	NSDictionary* URLParams = @{
-		@"limit": [NSString stringWithFormat:@"%d",limit],
+		@"limit": limitString,
 	};
 
     NSString *urlString= BaseUrl(ZHTAGS_URL, _ghostHost);
@@ -445,8 +459,14 @@ client_id	ghost-admin
 
 }
 
--(void)deleteTag:(NSUInteger)tagID{
+-(void)deleteTag:(NSUInteger)tagID
+         success:(ZHTagsSuccess)success
+          failed:(ZHFailed)failed
+{
 
+    _deleteSuccess=success;
+    
+    _failed=failed;
 
 	// 删除TAG (DELETE http://js.uiapple.com/ghost/api/v0.1/tags/3/)
 
@@ -459,6 +479,8 @@ client_id	ghost-admin
 
     NSMutableURLRequest* request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"DELETE" URLString:urlString parameters:nil error:NULL];
 
+    __weak typeof(self) safeSelf = self;
+
 
 	// Add Headers
 	[request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
@@ -466,18 +488,45 @@ client_id	ghost-admin
 	// Fetch Request
 	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
 	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-	    NSLog(@"HTTP Response Status Code: %ld", [operation.response statusCode]);
-	    NSLog(@"HTTP Response Body: %@", responseObject);
+
+          if (responseObject){
+
+              [self showDeleteTagsSuccess:responseObject];
+
+
+          } else{
+              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+          }
+
+
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-	    NSLog(@"HTTP Request failed: %@", error);
-	}];
+
+                [safeSelf showRequestErrorMessage:safeSelf error:error];
+            }];
 
 	[manager.operationQueue addOperation:afhttpRequestOperation];
 
 
 }
 
--(void)editTag:(NSUInteger)tagId{
+- (void)showDeleteTagsSuccess:(id)responseObject {
+    ZHGTagsResponseBaseClass *responseBaseClass=[ZHGTagsResponseBaseClass modelObjectWithDictionary:responseObject];
+    if (_deleteSuccess){
+                  _deleteSuccess(responseBaseClass);
+              }
+}
+
+-(void)editTag:(ZHGTagsResponseTags *)tags
+       success:(ZHEditTagsSuccess)success
+        failed:(ZHFailed)failed{
+    
+    _editSuccess=success;
+    
+    _failed=failed;
+
+    NSParameterAssert(tags);
+    NSParameterAssert(tags.tagsIdentifier);
+    NSParameterAssert(tags.name);
 
 	// 修改TAG (PUT http://js.uiapple.com/ghost/api/v0.1/tags/29/)
 
@@ -487,42 +536,45 @@ client_id	ghost-admin
 	// JSON Body
 	NSDictionary* bodyObject = @{
 		@"tags": @[
-			@{
-				@"id": @"29",
-				@"description": @"请问饿我去请问饿",
-				@"meta_description": [NSNull null],
-				@"created_at": @"2015-03-20T09:38:37.338Z",
-				@"created_by": @1,
-				@"image": [NSNull null],
-				@"slug": @"ewqeqwewqw",
-				@"updated_at": @"2015-03-20T09:38:37.338Z",
-				@"hidden": @NO,
-				@"updated_by": @1,
-				@"meta_title": [NSNull null],
-				@"name": @"1"
-			}
+			tags.dictionaryRepresentation
 		]
 	};
 
-	NSMutableURLRequest* request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"PUT" URLString:@"http://js.uiapple.com/ghost/api/v0.1/tags/29/" parameters:bodyObject error:NULL];
+    NSString *urlString= BaseUrl([NSString stringWithFormat:@"%@%f/", ZHTAGS_URL,tags.tagsIdentifier], _ghostHost);
+
+	NSMutableURLRequest* request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"PUT" URLString:urlString parameters:bodyObject error:NULL];
 
 	// Add Headers
-	[request setValue:@"Bearer keHUAIupDU1bitHYPqYDHoFNngdx3ruCOQH1BI9PxITVxFwbfJZ3kYw4Gdr0l0BvGYUYYkYmSFSgN1E2bQdAhEGBcNjRAgDqrmf8ZBxhAipkHD5GfAYouT0SatHTcBDoBR2xdk2cJqro4mD11lPYeTCD4816ItRGPTNUktImmjMVnykBMEIcSbYXLUA6dw1wW34EDPSy2ETjTKDEVgazFJrQr33xaE3tq8xJ5CBTkil3mQyYWgtcmMFfFhQhUOp" forHTTPHeaderField:@"Authorization"];
+	[request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
+
+    __weak typeof(self) safeSelf = self;
 
 	// Fetch Request
-	AFHTTPRequestOperation *operation = [manager HTTPRequestOperationWithRequest:request
+	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
 	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-	    NSLog(@"HTTP Response Status Code: %ld", [operation.response statusCode]);
-	    NSLog(@"HTTP Response Body: %@", responseObject);
+	    if (responseObject){
+
+            [safeSelf showEditTagSuccess:responseObject];
+
+        } else{
+            [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+        }
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-	    NSLog(@"HTTP Request failed: %@", error);
-	}];
+                [safeSelf showRequestErrorMessage:safeSelf error:error];
+            }];
 
-	[manager.operationQueue addOperation:operation];
-
-
+	[manager.operationQueue addOperation:afhttpRequestOperation];
 
 
+
+
+}
+
+- (void)showEditTagSuccess:(id)responseObject {
+    ZHGTagsResponseTags *tagsResponseTags=[ZHGTagsResponseTags modelObjectWithDictionary:responseObject];
+    if (_editSuccess){
+                _editSuccess(tagsResponseTags);
+            }
 }
 
 - (void)showCreatTagsSuccess:(id)responseObject {

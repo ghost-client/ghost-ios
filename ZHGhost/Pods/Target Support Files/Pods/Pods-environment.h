@@ -48,12 +48,6 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
-// DTMarkdownParser
-#define COCOAPODS_POD_AVAILABLE_DTMarkdownParser
-#define COCOAPODS_VERSION_MAJOR_DTMarkdownParser 0
-#define COCOAPODS_VERSION_MINOR_DTMarkdownParser 2
-#define COCOAPODS_VERSION_PATCH_DTMarkdownParser 1
-
 // FLEX
 #define COCOAPODS_POD_AVAILABLE_FLEX
 #define COCOAPODS_VERSION_MAJOR_FLEX 2
@@ -72,4 +66,16 @@
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 1
+
+// RFKeyboardToolbar
+#define COCOAPODS_POD_AVAILABLE_RFKeyboardToolbar
+#define COCOAPODS_VERSION_MAJOR_RFKeyboardToolbar 1
+#define COCOAPODS_VERSION_MINOR_RFKeyboardToolbar 3
+#define COCOAPODS_VERSION_PATCH_RFKeyboardToolbar 0
+
+// RFMarkdownTextView
+#define COCOAPODS_POD_AVAILABLE_RFMarkdownTextView
+#define COCOAPODS_VERSION_MAJOR_RFMarkdownTextView 1
+#define COCOAPODS_VERSION_MINOR_RFMarkdownTextView 4
+#define COCOAPODS_VERSION_PATCH_RFMarkdownTextView 0
 

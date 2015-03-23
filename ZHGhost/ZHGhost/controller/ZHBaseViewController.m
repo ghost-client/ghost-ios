@@ -28,7 +28,7 @@
 
     //设置默认的颜色
 
-    self.view.backgroundColor = [UIColor colorWithRed:0.969f green:0.969f blue:0.969f alpha:1.00f];
+    self.view.backgroundColor = [UIColor colorWithRed:0.251 green:0.251 blue:0.251 alpha:1];
     
     /**控制简单的变化*/
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UIKeyboardWillChangeFrame:) name:UIKeyboardWillShowNotification object:nil];
@@ -39,11 +39,13 @@
     if (!self.isHaveNotTap){
          UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissCurreentKeyBoard)];
 
-        tapGestureRecognizer.delegate=self;
+          tapGestureRecognizer.delegate=self;
 
         [self.view addGestureRecognizer:tapGestureRecognizer];
 
     }
+
+    [self.navgationView.leftButton setTitle:@"返回" forState:UIControlStateNormal];
 
     
 }

@@ -93,3 +93,6 @@ FOUNDATION_EXPORT NSString *StringFromArrayItem(NSArray *array);
 FOUNDATION_EXPORT NSString *smallImageFromBigString(NSString *bigString);
 
 
+FOUNDATION_EXPORT  void  ZHAlertView(NSString *title,id target);
+
+

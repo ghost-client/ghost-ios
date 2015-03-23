@@ -10,6 +10,7 @@
 #import "ZHDefine.h"
 #import "ZHGContentItemResponsePosts.h"
 #import "ZHHomeTableViewCell.h"
+#import "ZHGhostContentViewController.h"
 
 
 @interface ZHHomeViewcontroller()
@@ -23,9 +24,12 @@
 @implementation ZHHomeViewcontroller {
 
     NSArray *_contentItem;
+    UINavigationController *_homeNavgationController;
 }
 
 - (void)viewDidLoad {
+
+    self.isHaveNotTap= YES;
 
     [super viewDidLoad];
 
@@ -90,7 +94,18 @@
     return ZHHOME_TABLEVIEWCELL_HEIGHT;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+     ZHGContentItemResponsePosts *posts=_contentItem[indexPath.row];
+
+    ZHGhostContentViewController *controller= [[ZHGhostContentViewController alloc] init];
+
+    [controller setGhostContent:posts];
+
+    [_homeNavgationController pushViewController:controller animated:YES];
+
+
+}
 
 
 - (void)reloadTableView:(NSArray *)array {
@@ -100,6 +115,12 @@
     [self.homeTableView reloadData];
 
 
+}
+
+- (void)setHomeNavgationController:(UINavigationController *)navigationController {
+    
+    _homeNavgationController=navigationController;
+    
 }
 
 

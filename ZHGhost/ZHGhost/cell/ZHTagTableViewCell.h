@@ -5,6 +5,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class PanDeleteButton;
+
 #define ZHTAG_CELL_HEIGHT 45
 @interface ZHTagTableViewCell : UITableViewCell
 
@@ -14,5 +16,6 @@
 
 @property (nonatomic, strong, readonly)UIImageView * numberImageView;
 
+@property (nonatomic, strong, readonly)PanDeleteButton *panDeleteButton;
 
 @end

@@ -16,6 +16,7 @@
 @class ZHGContentItemResponseBaseClass;
 @class ZHGTagsResponseBaseClass;
 @class ZHCreatTagsResponseBaseClass;
+@class ZHGTagsResponseTags;
 
 typedef void (^ZHFailed)(NSError *error,NSString *errorMessage,NSInteger errorCode);
 
@@ -43,6 +44,21 @@ typedef void (^ZHTagsSuccess)(ZHGTagsResponseBaseClass *response);
 * 创建TAG的返回
 */
 typedef void (^ZHCreatTagsSuccess)(ZHCreatTagsResponseBaseClass *response);
+
+/**
+* 删除TAG的返回
+*
+*/
+
+typedef void (^ZHDeleteTagsSuccess)(ZHGTagsResponseTags *tags);
+
+
+
+/**
+* 编辑TAG的返回
+*/
+
+typedef void (^ZHEditTagsSuccess)(ZHGTagsResponseTags *tags);
 
 
 #endif

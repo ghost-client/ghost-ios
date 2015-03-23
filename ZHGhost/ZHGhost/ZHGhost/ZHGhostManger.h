@@ -6,15 +6,18 @@
 #import <UIKit/UIKit.h>
 #import "ZHBlockConfig.h"
 
+@class ZHGTagsResponseTags;
+
 typedef NS_ENUM(NSInteger , ZHGhostErrorCode){
 
    ZHGhostErrorCodeVailedJsonFormatter=99999
 
 };
-typedef NS_ENUM(NSInteger , ZHGhostTagsLimit){
+typedef NS_ENUM(NSUInteger , ZHGhostTagsLimit){
 
     ZHGhostTagsLimitDefault=15,
-    ZHGhostTagsLimitMax=100
+    ZHGhostTagsLimitMax=100,
+    ZHGhostTagsLimitAll= UINT_MAX
 
 };
 #define VAILED_JSON_MESSAGE  @"JSON解析失败"
@@ -80,4 +83,17 @@ typedef NS_ENUM(NSInteger , ZHGhostTagsLimit){
 * @param tags 包含ZHCreatTagsSubmitBaseClass类的元素
 */
 - (void)creatTags:(NSArray *)tags success:(ZHCreatTagsSuccess)success failed:(ZHFailed)failed;
+
+/**
+* 删除一个TAG
+* @param tagID 要删除TAG的ID
+*/
+- (void)deleteTag:(NSUInteger)tagID success:(ZHTagsSuccess)success failed:(ZHFailed)failed;
+
+/**
+* 编辑一个TAG
+* @param tags要编辑的tag的对象
+*/
+
+- (void)editTag:(ZHGTagsResponseTags *)tags success:(ZHEditTagsSuccess)success failed:(ZHFailed)failed;
 @end

@@ -16,6 +16,7 @@
 #import "ZHLoginViewController.h"
 #import "ZHGContentItemResponseBaseClass.h"
 #import "ZHTagsController.h"
+#import "ZHAddOrEditTagViewController.h"
 
 #define ANMATION_TIME .3
 
@@ -36,6 +37,8 @@
 }
 
 - (void)viewDidLoad {
+
+    self.isHaveNotTap= YES;
     [super viewDidLoad];
 
     [self initView];
@@ -44,6 +47,8 @@
     [self gotoLoginController];
 
 
+    [self.homeViewcontroller setHomeNavgationController:self.navigationController];
+
 
 
 
@@ -51,6 +56,8 @@
 
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+
 
 
 - (void)initView {

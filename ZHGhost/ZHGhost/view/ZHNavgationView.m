@@ -36,7 +36,8 @@
     if (_leftButton== nil){
         _leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
         _leftButton.frame= CGRectMake(0, ZHIOS7(), 44, 44);
-       
+
+        [_leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 
         
     }
@@ -65,7 +66,7 @@
     if (_rightButton== nil){
         _rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
         _rightButton.frame= CGRectMake(SCREEN_WIDTH-44, ZHIOS7(), 44, 44);
-        
+        [_rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     
     return _rightButton;
