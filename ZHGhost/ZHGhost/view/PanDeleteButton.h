@@ -39,5 +39,7 @@ typedef void (^PanDeleteButtonDeleteComplete)(NSIndexPath *deleteIndexPath);
 
 -(void)setPanDeleteComplete:(PanDeleteButtonDeleteComplete)complete;
 
+-(void)setPanClickComplete:(PanDeleteButtonDeleteComplete)complete;
+
 
 @end

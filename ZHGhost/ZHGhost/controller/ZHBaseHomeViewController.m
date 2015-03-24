@@ -1,12 +1,12 @@
 //
-//  ViewController.m
+//  ZHBaseHomeViewController.m
 //  ZHGhost
 //
 //  Created by hangzhang on 15/3/18.
 //  Copyright (c) 2015年 hangzhang. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ZHBaseHomeViewController.h"
 #import "ZHGhostManger.h"
 #import "ZHDefine.h"
 #import "HomeItemView.h"
@@ -17,23 +17,26 @@
 #import "ZHGContentItemResponseBaseClass.h"
 #import "ZHTagsController.h"
 #import "ZHAddOrEditTagViewController.h"
+#import "ZHGUserInfoResponseUsers.h"
+#import "ZHGUserInfoResponseBaseClass.h"
 
 #define ANMATION_TIME .3
 
 #define ANMATION_LENGHT 150
 
-@interface ViewController ()
+@interface ZHBaseHomeViewController ()
 
 @property (nonatomic, strong)ZHHomeViewcontroller *homeViewcontroller;
 
 @end
 
-@implementation ViewController {
+@implementation ZHBaseHomeViewController {
     BOOL _isDismiss;
 
     ZHGhostManger *_ghostManger;
 
     NSMutableArray *_contentItems;
+    NSMutableArray * _itemViewArray;
 }
 
 - (void)viewDidLoad {
@@ -42,9 +45,6 @@
     [super viewDidLoad];
 
     [self initView];
-
-
-    [self gotoLoginController];
 
 
     [self.homeViewcontroller setHomeNavgationController:self.navigationController];
@@ -65,12 +65,13 @@
     _ghostManger=[ZHGhostManger manger];
 
     _contentItems=[NSMutableArray array];
+    UIImage *icon=[StyleKitName homeIcon];
+    _itemViewArray =[NSMutableArray array];
 
     self.isHaveNotTap= YES;
 
     self.view.backgroundColor=SCREEN_DEFINE_COLOR;
 
-    UIImage *icon=[StyleKitName homeIcon];
 
     NSArray *topTitles=@[@"首页",@"标签",@"作者"];
 
@@ -88,11 +89,19 @@
 
         [itemView setItemIcon:icon];
 
+        if (i==1){
+            [itemView setItemIcon:[StyleKitName imageOfHomeIconTagsButtonWithFrame:itemView.bounds]];
+        } else if (i==2){
+            [itemView setItemIcon:[StyleKitName imageOfHomeAutherIconButtonWithFrame:itemView.bounds]];
+        }
+
         itemView.tag=index;
 
         [itemView addTarget:self action:@selector(itemButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 
         index++;
+
+        [_itemViewArray addObject:itemView];
 
     }
 
@@ -105,9 +114,17 @@
         [itemView setItemIcon:icon];
         itemView.tag=index;
 
+        if (j==0){
+            [itemView setItemIcon:[StyleKitName homeIconSetting]];
+        } else{
+            [itemView setItemIcon:[StyleKitName hommIconUser]];
+        }
         [itemView addTarget:self action:@selector(itemButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 
         index++;
+
+        [_itemViewArray addObject:itemView];
+
 
 
     }
@@ -120,7 +137,7 @@
 
 - (void)showView {
 
-    _isDismiss= !_isDismiss;
+
 
     if (_isDismiss){
 
@@ -148,7 +165,7 @@
 
 
     }
-
+    _isDismiss= !_isDismiss;
 }
 
 - (void)itemButtonClick:(UIButton *)itemButtonClick {
@@ -203,10 +220,13 @@
 -(void)contentItems{
 
 
+    [self HUDShow:@"正在更新博客列表"];
 
     __weak typeof(self) safeSelf = self;
 
     [_ghostManger allPostContentStatus:nil staticPages:nil page:0 include:nil success:^(ZHGContentItemResponseBaseClass *response) {
+
+        [safeSelf reuqestAutherInfo];
 
 
         [safeSelf reloadContent:response];
@@ -219,13 +239,64 @@
             errorMessage=error.userInfo[@"NSLocalizedDescription"];
         }
 
-        [safeSelf showMessage:errorMessage];
+        [safeSelf HUDHide:errorMessage afterDealy:2];
 
     }];
 
 }
+-(void)reuqestAutherInfo{
+
+    __weak typeof(self) safeSelf = self;
+
+
+    [_ghostManger userInfoSuccess:^(ZHGUserInfoResponseBaseClass *response) {
+
+        [safeSelf didRequestUserInfo:response];
+
+        [safeSelf HUDHide:@"获取成功" afterDealy:.3];
+
+
+    } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
+
+        if (errorMessage== nil){
+
+            errorMessage=error.userInfo[@"NSLocalizedDescription"];
+        }
+
+        [safeSelf HUDHide:errorMessage afterDealy:2];
+
+
+    }];
+
+
+}
+
+- (void)didRequestUserInfo:(ZHGUserInfoResponseBaseClass *)response {
+    for(ZHGUserInfoResponseUsers *users in response.users ){
+
+            if ([users.email isEqualToString:_ghostManger.currentLoginUserName]){
+                _ghostManger.currentUser=users;
+
+                NSParameterAssert(_itemViewArray.count>4);
+
+                HomeItemView *itemView=_itemViewArray[4];
+
+                [itemView setTitle:users.name];
+            }
+        }
+}
+
+- (void)setHomeNavgationController:(UINavigationController *)navigationController {
+
+    [self.homeViewcontroller setHomeNavgationController:navigationController];
+
+}
+
 
 - (void)reloadContent:(ZHGContentItemResponseBaseClass *)response {
+
+    [_contentItems removeAllObjects];
+
     [_contentItems addObjectsFromArray:response.posts];
 
     [self.homeViewcontroller reloadTableView:_contentItems];

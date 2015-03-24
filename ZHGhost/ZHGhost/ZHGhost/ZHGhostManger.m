@@ -16,10 +16,17 @@
 #import "ZHCreatTagsSubmitBaseClass.h"
 #import "ZHCreatTagsResponseBaseClass.h"
 #import "ZHGTagsResponseTags.h"
+#import "ZHUserInfoModelBaseClass.h"
+#import "ZHGUserInfoResponseUsers.h"
 
 #define EXPIRESIN @"expires_in"
 
 #define WDTOKEN @"wd_token"
+
+#define ERROR_NO_LOGIN @"账号未登录或登录已过期"
+
+
+#define ISLOGIN if (![self isLogin:_loginUserName]){[self showError:nil errorMessage:ERROR_NO_LOGIN errorCode:0];return;}
 
 static NSString *BaseUrl(NSString *url, NSString *host) {
 
@@ -46,9 +53,17 @@ static NSString *BaseUrl(NSString *url, NSString *host) {
     ZHTagsSuccess _deleteSuccess;
     ZHEditTagsSuccess _editSuccess;
 }
-- (BOOL)isLogin {
+- (NSString *)currentLoginUserName {
+    return _loginUserName;
+}
 
-    return [self setTokenStart:_loginPassword];
+- (BOOL)isLogin:(NSString *)loginUserName {
+
+    NSParameterAssert(loginUserName);
+
+    _loginUserName=loginUserName;
+
+    return [self setTokenStart:loginUserName];
 }
 
 + (instancetype)manger {
@@ -143,18 +158,22 @@ client_id	ghost-admin
 
                                                                                               _WDToken = [NSString stringWithFormat:@"%@ %@", tokenResponseBaseClass.tokenType, tokenResponseBaseClass.accessToken];
 
-                                                                                              NSDictionary *dictionary = @{
+                                                                                              ZHUserInfoModelBaseClass *userInfoModelBaseClass = [[ZHUserInfoModelBaseClass alloc] init];
 
-                                                                                                      WDTOKEN : _WDToken,
+                                                                                              userInfoModelBaseClass.userName = userName;
+                                                                                              userInfoModelBaseClass.passWord = passWord;
+                                                                                              userInfoModelBaseClass.token = _WDToken;
+                                                                                              userInfoModelBaseClass.expresionIN = [self stringWithDate:[[NSDate date] dateByAddingTimeInterval:tokenResponseBaseClass.expiresIn - 300]];
+                                                                                              userInfoModelBaseClass.host = _myHost;
 
-                                                                                                      EXPIRESIN : [self stringWithDate:[[NSDate date] dateByAddingTimeInterval:tokenResponseBaseClass.expiresIn - 60]]
 
+                                                                                              NSMutableDictionary *mutableDictionary = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO_KEY]];
 
-                                                                                              };
+                                                                                              [mutableDictionary setValue:userInfoModelBaseClass.dictionaryRepresentation forKey:userName];
 
-                                                                                              [[NSUserDefaults standardUserDefaults] setObject:dictionary forKey:userName];
-
+                                                                                              [[NSUserDefaults standardUserDefaults] setObject:mutableDictionary forKey:USER_INFO_KEY];
                                                                                               [[NSUserDefaults standardUserDefaults] synchronize];
+
 
                                                                                               if (_tokenSuccess) {
                                                                                                   _tokenSuccess();
@@ -179,16 +198,21 @@ client_id	ghost-admin
     _userInfoSuccess = success;
     
     _failed = failed;
-    if ([self setTokenStart:_loginUserName]) {
 
-        [self getUserInfo];
+    if (![self isLogin:_loginUserName]) {
+        [self showError:nil errorMessage:ERROR_NO_LOGIN errorCode:0];
+        return;
     }
+    [self getUserInfo];
 
 
 }
 
 - (void)allNotication {
     // 查询通知 (GET http://js.uiapple.com/ghost/api/v0.1/notifications/)
+
+
+    ISLOGIN
 
     // Create manager
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -216,13 +240,13 @@ client_id	ghost-admin
                         page:(NSInteger)page
                      include:(NSString *)include
                      success:(ZHContentItemSuccess)success
-                      failed:(ZHFailed)failed
+                      failed:(ZHFailed)failed {
 
-{
+    _contentSuccess = success;
 
-    _contentSuccess=success;
+    _failed = failed;
 
-    _failed=failed;
+    ISLOGIN
 
     // 查询文章 (GET http://js.uiapple.com/ghost/api/v0.1//posts/)
 
@@ -250,12 +274,12 @@ client_id	ghost-admin
     AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
                                                                                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-                                                                                          if (responseObject){
+                                                                                          if (responseObject) {
 
                                                                                               [safeSelf showContentItemSuccess:responseObject];
 
 
-                                                                                          } else{
+                                                                                          } else {
 
                                                                                               [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
 
@@ -275,11 +299,11 @@ client_id	ghost-admin
 }
 
 - (void)showContentItemSuccess:(id)responseObject {
-    ZHGContentItemResponseBaseClass *contentItemResponseBaseClass=[ZHGContentItemResponseBaseClass modelObjectWithDictionary:responseObject];
+    ZHGContentItemResponseBaseClass *contentItemResponseBaseClass = [ZHGContentItemResponseBaseClass modelObjectWithDictionary:responseObject];
 
-    if (_contentSuccess){
-                                                                                                  _contentSuccess(contentItemResponseBaseClass);
-                                                                                              }
+    if (_contentSuccess) {
+        _contentSuccess(contentItemResponseBaseClass);
+    }
 }
 
 - (void)uploadImage:(NSData *)imageData
@@ -289,7 +313,7 @@ client_id	ghost-admin
     _uploadSuccess = success;
     
     _failed = failed;
-
+    ISLOGIN
     // 上传图片 (POST http://js.uiapple.com/ghost/api/v0.1/uploads/)
 
     // Create manager
@@ -328,21 +352,21 @@ client_id	ghost-admin
 
 - (void)allTags:(NSUInteger)limit
         success:(ZHTagsSuccess)success
-         failed:(ZHFailed)failed{
+         failed:(ZHFailed)failed {
     
-    _tagsSuccess=success;
+    _tagsSuccess = success;
     
-    _failed=failed;
+    _failed = failed;
+    ISLOGIN
+    if (limit > ZHGhostTagsLimitMax && limit != ZHGhostTagsLimitAll) {
 
-    if (limit>ZHGhostTagsLimitMax && limit!=ZHGhostTagsLimitAll){
-
-        limit=ZHGhostTagsLimitMax;
+        limit = ZHGhostTagsLimitMax;
     }
 
-    NSString *limitString=[NSString stringWithFormat:@"%d",limit];
+    NSString *limitString = [NSString stringWithFormat:@"%d", limit];
 
-    if (limit==ZHGhostTagsLimitAll){
-        limitString=@"all";
+    if (limit == ZHGhostTagsLimitAll) {
+        limitString = @"all";
     }
 
 
@@ -352,61 +376,61 @@ client_id	ghost-admin
 
     // 查询所有的标签 (GET http://js.uiapple.com/ghost/api/v0.1/tags/)
 
-	// Create manager
-	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    // Create manager
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
-	// Create request
-	NSDictionary* URLParams = @{
-		@"limit": limitString,
-	};
+    // Create request
+    NSDictionary *URLParams = @{
+            @"limit" : limitString,
+            @"include" : @"post_count"
+    };
 
-    NSString *urlString= BaseUrl(ZHTAGS_URL, _ghostHost);
+    NSString *urlString = BaseUrl(ZHTAGS_URL, _ghostHost);
 
-	NSMutableURLRequest* request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:urlString parameters:URLParams error:NULL];
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:urlString parameters:URLParams error:NULL];
 
-	// Add Headers
-	[request setValue:_WDToken  forHTTPHeaderField:@"Authorization"];
+    // Add Headers
+    [request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
 
     __weak typeof(self) safeSelf = self;
 
-	// Fetch Request
-	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
-	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    // Fetch Request
+    AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
+                                                                                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-          if (responseObject){
+                                                                                          if (responseObject) {
 
-              [safeSelf showTagsSuccess:responseObject];
+                                                                                              [safeSelf showTagsSuccess:responseObject];
 
-          } else{
+                                                                                          } else {
 
-              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
-          }
+                                                                                              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+                                                                                          }
 
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                                                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
                 [safeSelf showRequestErrorMessage:safeSelf error:error];
 
             }];
 
-	[manager.operationQueue addOperation:afhttpRequestOperation];
-
+    [manager.operationQueue addOperation:afhttpRequestOperation];
 
 
 }
 
--(void)creatTags:(NSArray *)tags
-         success:(ZHCreatTagsSuccess)success
-          failed:(ZHFailed)failed{
+- (void)creatTags:(NSArray *)tags
+          success:(ZHCreatTagsSuccess)success
+           failed:(ZHFailed)failed {
 
-    _creatTagsSuccess=success;
+    _creatTagsSuccess = success;
 
-    _failed=failed;
+    _failed = failed;
+    ISLOGIN
+    NSParameterAssert(tags.count > 0);
 
-    NSParameterAssert(tags.count>0);
+    NSMutableArray *array = [NSMutableArray array];
 
-    NSMutableArray *array=[NSMutableArray array];
-
-    for(ZHCreatTagsSubmitBaseClass *submitBaseClass in tags){
+    for (ZHCreatTagsSubmitBaseClass *submitBaseClass in tags) {
 
         NSParameterAssert(submitBaseClass.name);
 
@@ -414,191 +438,188 @@ client_id	ghost-admin
 
     }
 
-    	// 新建标签 (POST http://js.uiapple.com/ghost/api/v0.1/tags/)
+    // 新建标签 (POST http://js.uiapple.com/ghost/api/v0.1/tags/)
 
-	// Create manager
-	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    // Create manager
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
-	// JSON Body
-	NSDictionary* bodyObject = @{
-		@"tags": array
-	};
+    // JSON Body
+    NSDictionary *bodyObject = @{
+            @"tags" : array
+    };
 
 
-    NSString *urlString= BaseUrl(ZHTAGS_URL, _ghostHost);
+    NSString *urlString = BaseUrl(ZHTAGS_URL, _ghostHost);
 
-	NSMutableURLRequest* request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:bodyObject error:NULL];
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlString parameters:bodyObject error:NULL];
 
-	// Add Headers
-	[request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
+    // Add Headers
+    [request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
 
     __weak typeof(self) safeSelf = self;
 
-	// Fetch Request
-	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
-	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    // Fetch Request
+    AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
+                                                                                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-          if (responseObject){
+                                                                                          if (responseObject) {
 
-              [self showCreatTagsSuccess:responseObject];
+                                                                                              [self showCreatTagsSuccess:responseObject];
 
-          } else{
+                                                                                          } else {
 
-              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+                                                                                              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
 
-          }
+                                                                                          }
 
 
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                                                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
                 [safeSelf showRequestErrorMessage:safeSelf error:error];
             }];
 
-	[manager.operationQueue addOperation:afhttpRequestOperation];
+    [manager.operationQueue addOperation:afhttpRequestOperation];
 
 
 }
 
--(void)deleteTag:(NSUInteger)tagID
-         success:(ZHTagsSuccess)success
-          failed:(ZHFailed)failed
-{
+- (void)deleteTag:(NSUInteger)tagID
+          success:(ZHTagsSuccess)success
+           failed:(ZHFailed)failed {
 
-    _deleteSuccess=success;
+    _deleteSuccess = success;
     
-    _failed=failed;
+    _failed = failed;
+    ISLOGIN
+    // 删除TAG (DELETE http://js.uiapple.com/ghost/api/v0.1/tags/3/)
 
-	// 删除TAG (DELETE http://js.uiapple.com/ghost/api/v0.1/tags/3/)
+    // Create manager
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
-	// Create manager
-	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSString *urlString = BaseUrl(ZHTAGS_URL, _ghostHost);
 
-    NSString *urlString= BaseUrl(ZHTAGS_URL, _ghostHost);
+    urlString = [NSString stringWithFormat:@"%@%d/", urlString, tagID];
 
-    urlString=[NSString stringWithFormat:@"%@%d/",urlString,tagID];
-
-    NSMutableURLRequest* request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"DELETE" URLString:urlString parameters:nil error:NULL];
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"DELETE" URLString:urlString parameters:nil error:NULL];
 
     __weak typeof(self) safeSelf = self;
 
 
-	// Add Headers
-	[request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
+    // Add Headers
+    [request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
 
-	// Fetch Request
-	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
-	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    // Fetch Request
+    AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
+                                                                                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
 
-          if (responseObject){
+                                                                                          if (responseObject) {
 
-              [self showDeleteTagsSuccess:responseObject];
-
-
-          } else{
-              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
-          }
+                                                                                              [self showDeleteTagsSuccess:responseObject];
 
 
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                                                          } else {
+                                                                                              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+                                                                                          }
+
+
+                                                                                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
                 [safeSelf showRequestErrorMessage:safeSelf error:error];
             }];
 
-	[manager.operationQueue addOperation:afhttpRequestOperation];
+    [manager.operationQueue addOperation:afhttpRequestOperation];
 
 
 }
 
 - (void)showDeleteTagsSuccess:(id)responseObject {
-    ZHGTagsResponseBaseClass *responseBaseClass=[ZHGTagsResponseBaseClass modelObjectWithDictionary:responseObject];
-    if (_deleteSuccess){
-                  _deleteSuccess(responseBaseClass);
-              }
+    ZHGTagsResponseBaseClass *responseBaseClass = [ZHGTagsResponseBaseClass modelObjectWithDictionary:responseObject];
+    if (_deleteSuccess) {
+        _deleteSuccess(responseBaseClass);
+    }
 }
 
--(void)editTag:(ZHGTagsResponseTags *)tags
-       success:(ZHEditTagsSuccess)success
-        failed:(ZHFailed)failed{
+- (void)editTag:(ZHGTagsResponseTags *)tags
+        success:(ZHEditTagsSuccess)success
+         failed:(ZHFailed)failed {
     
-    _editSuccess=success;
+    _editSuccess = success;
     
-    _failed=failed;
-
+    _failed = failed;
+    ISLOGIN
     NSParameterAssert(tags);
     NSParameterAssert(tags.tagsIdentifier);
     NSParameterAssert(tags.name);
 
-	// 修改TAG (PUT http://js.uiapple.com/ghost/api/v0.1/tags/29/)
+    // 修改TAG (PUT http://js.uiapple.com/ghost/api/v0.1/tags/29/)
 
-	// Create manager
-	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    // Create manager
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
-	// JSON Body
-	NSDictionary* bodyObject = @{
-		@"tags": @[
-			tags.dictionaryRepresentation
-		]
-	};
+    // JSON Body
+    NSDictionary *bodyObject = @{
+            @"tags" : @[
+                    tags.dictionaryRepresentation
+            ]
+    };
 
-    NSString *urlString= BaseUrl([NSString stringWithFormat:@"%@%f/", ZHTAGS_URL,tags.tagsIdentifier], _ghostHost);
+    NSString *urlString = BaseUrl([NSString stringWithFormat:@"%@%f/", ZHTAGS_URL, tags.tagsIdentifier], _ghostHost);
 
-	NSMutableURLRequest* request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"PUT" URLString:urlString parameters:bodyObject error:NULL];
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"PUT" URLString:urlString parameters:bodyObject error:NULL];
 
-	// Add Headers
-	[request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
+    // Add Headers
+    [request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
 
     __weak typeof(self) safeSelf = self;
 
-	// Fetch Request
-	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
-	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-	    if (responseObject){
+    // Fetch Request
+    AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
+                                                                                      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                                                                          if (responseObject) {
 
-            [safeSelf showEditTagSuccess:responseObject];
+                                                                                              [safeSelf showEditTagSuccess:responseObject];
 
-        } else{
-            [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
-        }
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                                                          } else {
+                                                                                              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+                                                                                          }
+                                                                                      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 [safeSelf showRequestErrorMessage:safeSelf error:error];
             }];
 
-	[manager.operationQueue addOperation:afhttpRequestOperation];
-
-
+    [manager.operationQueue addOperation:afhttpRequestOperation];
 
 
 }
 
 - (void)showEditTagSuccess:(id)responseObject {
-    ZHGTagsResponseTags *tagsResponseTags=[ZHGTagsResponseTags modelObjectWithDictionary:responseObject];
-    if (_editSuccess){
-                _editSuccess(tagsResponseTags);
-            }
+    ZHGTagsResponseTags *tagsResponseTags = [ZHGTagsResponseTags modelObjectWithDictionary:responseObject];
+    if (_editSuccess) {
+        _editSuccess(tagsResponseTags);
+    }
 }
 
 - (void)showCreatTagsSuccess:(id)responseObject {
-    ZHCreatTagsResponseBaseClass *creatTagsResponseBaseClass=[ZHCreatTagsResponseBaseClass modelObjectWithDictionary:responseObject];
+    ZHCreatTagsResponseBaseClass *creatTagsResponseBaseClass = [ZHCreatTagsResponseBaseClass modelObjectWithDictionary:responseObject];
 
-    if (_creatTagsSuccess){
-                  _creatTagsSuccess(creatTagsResponseBaseClass);
-              }
+    if (_creatTagsSuccess) {
+        _creatTagsSuccess(creatTagsResponseBaseClass);
+    }
 }
 
 
 - (void)showTagsSuccess:(id)responseObject {
-    ZHGTagsResponseBaseClass *tagsResponseBaseClass=[ZHGTagsResponseBaseClass modelObjectWithDictionary:responseObject];
+    ZHGTagsResponseBaseClass *tagsResponseBaseClass = [ZHGTagsResponseBaseClass modelObjectWithDictionary:responseObject];
 
-    if (_tagsSuccess){
-                  _tagsSuccess(tagsResponseBaseClass);
-              }
+    if (_tagsSuccess) {
+        _tagsSuccess(tagsResponseBaseClass);
+    }
 }
 
 
 - (void)showUploadSuccess:(id)responseObject {
     NSString *url = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
 
-    url= [url stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+    url = [url stringByReplacingOccurrencesOfString:@"\"" withString:@""];
 
     if (_uploadSuccess) {
         _uploadSuccess(BaseUrl(url, _myHost));
@@ -715,11 +736,15 @@ client_id	ghost-admin
 
     NSParameterAssert(userName);
 
-    NSDictionary *dictionary = [[NSUserDefaults standardUserDefaults] objectForKey:userName];
+    NSDictionary *userDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO_KEY];
 
-    _WDToken = dictionary[WDTOKEN];
+    NSDictionary *dictionary = userDictionary[userName];
 
-    _WDExpiresIn = dictionary[EXPIRESIN];
+    ZHUserInfoModelBaseClass *userInfoModelBaseClass = [ZHUserInfoModelBaseClass modelObjectWithDictionary:dictionary];
+
+    _WDToken = userInfoModelBaseClass.token;
+
+    _WDExpiresIn = userInfoModelBaseClass.expresionIN;
 
     if (_WDToken == nil) {
         return NO;

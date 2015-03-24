@@ -1,7 +1,7 @@
 //
 //  ZHGTagsResponseTags.m
 //
-//  Created by  自己联通 on 15/3/20
+//  Created by  自己联通 on 15/3/24
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -22,6 +22,7 @@ NSString *const kZHGTagsResponseTagsHidden = @"hidden";
 NSString *const kZHGTagsResponseTagsUpdatedBy = @"updated_by";
 NSString *const kZHGTagsResponseTagsMetaTitle = @"meta_title";
 NSString *const kZHGTagsResponseTagsName = @"name";
+NSString *const kZHGTagsResponseTagsPostCount = @"post_count";
 
 
 @interface ZHGTagsResponseTags ()
@@ -46,6 +47,7 @@ NSString *const kZHGTagsResponseTagsName = @"name";
 @synthesize updatedBy = _updatedBy;
 @synthesize metaTitle = _metaTitle;
 @synthesize name = _name;
+@synthesize postCount = _postCount;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict
@@ -74,6 +76,7 @@ NSString *const kZHGTagsResponseTagsName = @"name";
             self.updatedBy = [[self objectOrNilForKey:kZHGTagsResponseTagsUpdatedBy fromDictionary:dict] doubleValue];
             self.metaTitle = [self objectOrNilForKey:kZHGTagsResponseTagsMetaTitle fromDictionary:dict];
             self.name = [self objectOrNilForKey:kZHGTagsResponseTagsName fromDictionary:dict];
+            self.postCount = [[self objectOrNilForKey:kZHGTagsResponseTagsPostCount fromDictionary:dict] doubleValue];
 
     }
     
@@ -98,6 +101,7 @@ NSString *const kZHGTagsResponseTagsName = @"name";
     [mutableDict setValue:[NSNumber numberWithDouble:self.updatedBy] forKey:kZHGTagsResponseTagsUpdatedBy];
     [mutableDict setValue:self.metaTitle forKey:kZHGTagsResponseTagsMetaTitle];
     [mutableDict setValue:self.name forKey:kZHGTagsResponseTagsName];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.postCount] forKey:kZHGTagsResponseTagsPostCount];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
@@ -135,6 +139,7 @@ NSString *const kZHGTagsResponseTagsName = @"name";
     self.updatedBy = [aDecoder decodeDoubleForKey:kZHGTagsResponseTagsUpdatedBy];
     self.metaTitle = [aDecoder decodeObjectForKey:kZHGTagsResponseTagsMetaTitle];
     self.name = [aDecoder decodeObjectForKey:kZHGTagsResponseTagsName];
+    self.postCount = [aDecoder decodeDoubleForKey:kZHGTagsResponseTagsPostCount];
     return self;
 }
 
@@ -155,6 +160,7 @@ NSString *const kZHGTagsResponseTagsName = @"name";
     [aCoder encodeDouble:_updatedBy forKey:kZHGTagsResponseTagsUpdatedBy];
     [aCoder encodeObject:_metaTitle forKey:kZHGTagsResponseTagsMetaTitle];
     [aCoder encodeObject:_name forKey:kZHGTagsResponseTagsName];
+    [aCoder encodeDouble:_postCount forKey:kZHGTagsResponseTagsPostCount];
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -177,6 +183,7 @@ NSString *const kZHGTagsResponseTagsName = @"name";
         copy.updatedBy = self.updatedBy;
         copy.metaTitle = [self.metaTitle copyWithZone:zone];
         copy.name = [self.name copyWithZone:zone];
+        copy.postCount = self.postCount;
     }
     
     return copy;

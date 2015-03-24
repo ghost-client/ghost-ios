@@ -41,7 +41,7 @@
 
           tapGestureRecognizer.delegate=self;
 
-        [self.view addGestureRecognizer:tapGestureRecognizer];
+          [self.view addGestureRecognizer:tapGestureRecognizer];
 
     }
 

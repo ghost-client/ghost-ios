@@ -63,9 +63,12 @@
 
 -(void)tagsRequest{
 
+    [self HUDShow:@"正在获取所有的TAG列表"];
     __weak typeof(self) safeSelf = self;
 
     [_ghostManger allTags:ZHGhostTagsLimitAll success:^(ZHGTagsResponseBaseClass *response) {
+
+        [safeSelf HUDHide:@"获取成功" afterDealy:.3];
 
         [safeSelf reloadTagsTableView:response];
 
@@ -77,7 +80,7 @@
             errorMessage=error.userInfo[@"NSLocalizedDescription"];
         }
 
-        [safeSelf showMessage:errorMessage];
+        [safeSelf HUDHide:errorMessage afterDealy:2];
 
     }];
 
@@ -113,11 +116,11 @@
 
     ZHGTagsResponseTags *tags=_tagsArray[indexPath.row];
 
-    cell.iconImageView.image=[StyleKitName homeIcon];
+    cell.iconImageView.image=[StyleKitName imageOfTagIconButtonWithFrame:cell.iconImageView.bounds];
 
     cell.tagTitleLabel.text=tags.name;
 
-    cell.numberImageView.image=[StyleKitName homeIcon];
+    cell.numberImageView.image=[StyleKitName imageOfTagNumberButtonWithTagNumber:[NSString stringWithFormat:@"%d", (int) tags.postCount]];
 
     [cell.panDeleteButton addPanDelete:indexPath];
 
@@ -131,13 +134,33 @@
 
     }];
 
+    [cell.panDeleteButton setPanClickComplete:^(NSIndexPath *deleteIndexPath) {
+
+        [safeSelf showPanClickComplete:indexPath];
+
+
+    }];
+
 
     return cell;
 }
 
+- (void)showPanClickComplete:(NSIndexPath *)indexPath {
+
+
+    ZHGTagsResponseTags *tags= _tagsArray[indexPath.row];
+
+    ZHAddOrEditTagViewController *addOrEditTagViewController= [[ZHAddOrEditTagViewController alloc] init];
+
+    [addOrEditTagViewController setEditTagInfo:tags];
+
+
+    [self.navigationController pushViewController:addOrEditTagViewController animated:YES];
+}
+
 - (void)willDeleteTag:(NSIndexPath *)deleteIndexPath {
     ZHGTagsResponseTags *tags= _tagsArray[(NSUInteger) deleteIndexPath.row];
-__weak typeof(self) safeSelf = self;
+   __weak typeof(self) safeSelf = self;
 
     [[ZHGhostManger manger] deleteTag:(NSUInteger) tags.tagsIdentifier success:^(ZHGTagsResponseBaseClass *response) {
 
@@ -162,18 +185,6 @@ __weak typeof(self) safeSelf = self;
     [self.tagsTableView reloadData];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-      ZHGTagsResponseTags *tags=_tagsArray[indexPath.row];
 
-     ZHAddOrEditTagViewController *addOrEditTagViewController= [[ZHAddOrEditTagViewController alloc] init];
-
-    [addOrEditTagViewController setEditTagInfo:tags];
-
-
-    [self.navigationController pushViewController:addOrEditTagViewController animated:YES];
-
-
-
-}
 
 @end

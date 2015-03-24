@@ -23,6 +23,7 @@ PODS:
   - FLEX (2.0.2)
   - JSONKit (1.5pre)
   - MBProgressHUD (0.9.1)
+  - MMMarkdown (0.4.1)
   - RFKeyboardToolbar (1.3)
   - RFMarkdownTextView (1.4):
     - RFKeyboardToolbar (~> 1.3)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - FLEX (~> 2.0.2)
   - JSONKit (~> 1.5pre)
   - MBProgressHUD (~> 0.9)
+  - MMMarkdown (~> 0.4.1)
   - RFMarkdownTextView (~> 1.4)
 
 SPEC CHECKSUMS:
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   FLEX: ca8700d0a703cb8828d55d689e7e86841dc51e5a
   JSONKit: efef3bbd3372ff33f96b9c6f34cf4fe18e74ab69
   MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
+  MMMarkdown: c82c9024dd80f088312909023dd6d6d013bd668f
   RFKeyboardToolbar: f816e75a78ad3c3bda565be5678288003be4c8d8
   RFMarkdownTextView: ae949421b2b70ab16c150acd456a9a5d6001e69f
 

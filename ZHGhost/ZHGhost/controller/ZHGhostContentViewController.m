@@ -7,11 +7,12 @@
 #import "ZHFounction.h"
 #import "ZHDefine.h"
 #import "ZHGContentItemResponsePosts.h"
+#import "MMMarkdown.h"
 
 
 @implementation ZHGhostContentViewController {
 
-    RFMarkdownTextView *_markdownTextView;
+    UIWebView *_markdownTextView;
     ZHGContentItemResponsePosts *_markdownContent;
 }
 
@@ -26,22 +27,21 @@
 
     [self.view addSubview:self.markdownTextView];
 
-    self.markdownTextView.text=_markdownContent.markdown;
+    NSString *html=[MMMarkdown HTMLStringWithMarkdown:_markdownContent.markdown error:NULL];
 
-    [self.markdownTextView reloadInputViews];
+    [self.markdownTextView loadHTMLString:_markdownContent.html baseURL:[NSURL URLWithString:@"http://js.uiapple.com"]];
 
 
 }
 
 
 
-- (RFMarkdownTextView *)markdownTextView {
+- (UIWebView *)markdownTextView {
 
     if (_markdownTextView== nil){
 
-        _markdownTextView= [[RFMarkdownTextView alloc] initWithFrame:CGRectMake(0, ZHFrameNextY(self.navgationView), SCREEN_WIDTH, ZHFrameHeight(self.view)- ZHFrameNextY(self.navgationView))];
+        _markdownTextView= [[UIWebView alloc] initWithFrame:CGRectMake(0, ZHFrameNextY(self.navgationView), SCREEN_WIDTH, ZHFrameHeight(self.view)- ZHFrameNextY(self.navgationView))];
 
-        _markdownTextView.textColor=[UIColor blackColor];
     }
     
     return _markdownTextView;

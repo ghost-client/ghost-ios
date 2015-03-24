@@ -9,6 +9,7 @@
 #import "ZHDefine.h"
 #import "ZHIconTextFiled.h"
 #import "ZHGhostManger.h"
+#import "ZHBaseHomeViewController.h"
 
 @interface ZHLoginViewController()
 
@@ -65,10 +66,15 @@
     [[ZHGhostManger manger] congfigHost:self.configHostView.hostFiled.textFiled.text];
 
 
+
+
     __weak typeof(self) safeSelf = self;
 
+    [self HUDShow:@"正在登陆"];
 
     [[ZHGhostManger manger] loginWithUserName:self.configHostView.emailFiled.textFiled.text passWord:self.passwordView.passWordTextFiled.textFiled.text success:^{
+
+        [safeSelf HUDHide:@"登陆成功" afterDealy:.3];
 
         [self showLoginSuccess];
 
@@ -80,7 +86,7 @@
             errorMessage=error.userInfo[@"NSLocalizedDescription"];
         }
 
-        [safeSelf showMessage:errorMessage];
+        [safeSelf HUDHide:errorMessage afterDealy:2];
 
     }];
 
@@ -89,13 +95,26 @@
 
 - (void)showLoginSuccess {
     if (_loginSuccess){
-            _loginSuccess(nil);
+        _loginSuccess(nil);
     }
 
     [self dismiss];
 }
 
 - (void)dismiss {
+
+    if (self.navigationController){
+
+        ZHBaseHomeViewController *controller= [[ZHBaseHomeViewController alloc] init];
+
+        [controller contentItems];
+
+        [controller setHomeNavgationController:self.navigationController];
+
+        [self.navigationController pushViewController:controller animated:YES];
+
+        return;
+    }
 
     [self dismissViewControllerAnimated:YES completion:^{
 

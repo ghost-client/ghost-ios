@@ -67,6 +67,12 @@
 #define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
 #define COCOAPODS_VERSION_PATCH_MBProgressHUD 1
 
+// MMMarkdown
+#define COCOAPODS_POD_AVAILABLE_MMMarkdown
+#define COCOAPODS_VERSION_MAJOR_MMMarkdown 0
+#define COCOAPODS_VERSION_MINOR_MMMarkdown 4
+#define COCOAPODS_VERSION_PATCH_MMMarkdown 1
+
 // RFKeyboardToolbar
 #define COCOAPODS_POD_AVAILABLE_RFKeyboardToolbar
 #define COCOAPODS_VERSION_MAJOR_RFKeyboardToolbar 1

@@ -1,7 +1,7 @@
 //
 //  ZHGTagsResponsePagination.m
 //
-//  Created by  自己联通 on 15/3/20
+//  Created by  自己联通 on 15/3/24
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -46,8 +46,8 @@ NSString *const kZHGTagsResponsePaginationPage = @"page";
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
             self.prev = [self objectOrNilForKey:kZHGTagsResponsePaginationPrev fromDictionary:dict];
             self.pages = [[self objectOrNilForKey:kZHGTagsResponsePaginationPages fromDictionary:dict] doubleValue];
-            self.limit = [[self objectOrNilForKey:kZHGTagsResponsePaginationLimit fromDictionary:dict] doubleValue];
-            self.next = [[self objectOrNilForKey:kZHGTagsResponsePaginationNext fromDictionary:dict] doubleValue];
+            self.limit = [self objectOrNilForKey:kZHGTagsResponsePaginationLimit fromDictionary:dict];
+            self.next = [self objectOrNilForKey:kZHGTagsResponsePaginationNext fromDictionary:dict];
             self.total = [[self objectOrNilForKey:kZHGTagsResponsePaginationTotal fromDictionary:dict] doubleValue];
             self.page = [[self objectOrNilForKey:kZHGTagsResponsePaginationPage fromDictionary:dict] doubleValue];
 
@@ -62,8 +62,8 @@ NSString *const kZHGTagsResponsePaginationPage = @"page";
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
     [mutableDict setValue:self.prev forKey:kZHGTagsResponsePaginationPrev];
     [mutableDict setValue:[NSNumber numberWithDouble:self.pages] forKey:kZHGTagsResponsePaginationPages];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.limit] forKey:kZHGTagsResponsePaginationLimit];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.next] forKey:kZHGTagsResponsePaginationNext];
+    [mutableDict setValue:self.limit forKey:kZHGTagsResponsePaginationLimit];
+    [mutableDict setValue:self.next forKey:kZHGTagsResponsePaginationNext];
     [mutableDict setValue:[NSNumber numberWithDouble:self.total] forKey:kZHGTagsResponsePaginationTotal];
     [mutableDict setValue:[NSNumber numberWithDouble:self.page] forKey:kZHGTagsResponsePaginationPage];
 
@@ -91,8 +91,8 @@ NSString *const kZHGTagsResponsePaginationPage = @"page";
 
     self.prev = [aDecoder decodeObjectForKey:kZHGTagsResponsePaginationPrev];
     self.pages = [aDecoder decodeDoubleForKey:kZHGTagsResponsePaginationPages];
-    self.limit = [aDecoder decodeDoubleForKey:kZHGTagsResponsePaginationLimit];
-    self.next = [aDecoder decodeDoubleForKey:kZHGTagsResponsePaginationNext];
+    self.limit = [aDecoder decodeObjectForKey:kZHGTagsResponsePaginationLimit];
+    self.next = [aDecoder decodeObjectForKey:kZHGTagsResponsePaginationNext];
     self.total = [aDecoder decodeDoubleForKey:kZHGTagsResponsePaginationTotal];
     self.page = [aDecoder decodeDoubleForKey:kZHGTagsResponsePaginationPage];
     return self;
@@ -103,8 +103,8 @@ NSString *const kZHGTagsResponsePaginationPage = @"page";
 
     [aCoder encodeObject:_prev forKey:kZHGTagsResponsePaginationPrev];
     [aCoder encodeDouble:_pages forKey:kZHGTagsResponsePaginationPages];
-    [aCoder encodeDouble:_limit forKey:kZHGTagsResponsePaginationLimit];
-    [aCoder encodeDouble:_next forKey:kZHGTagsResponsePaginationNext];
+    [aCoder encodeObject:_limit forKey:kZHGTagsResponsePaginationLimit];
+    [aCoder encodeObject:_next forKey:kZHGTagsResponsePaginationNext];
     [aCoder encodeDouble:_total forKey:kZHGTagsResponsePaginationTotal];
     [aCoder encodeDouble:_page forKey:kZHGTagsResponsePaginationPage];
 }
@@ -117,8 +117,8 @@ NSString *const kZHGTagsResponsePaginationPage = @"page";
 
         copy.prev = [self.prev copyWithZone:zone];
         copy.pages = self.pages;
-        copy.limit = self.limit;
-        copy.next = self.next;
+        copy.limit = [self.limit copyWithZone:zone];
+        copy.next = [self.next copyWithZone:zone];
         copy.total = self.total;
         copy.page = self.page;
     }

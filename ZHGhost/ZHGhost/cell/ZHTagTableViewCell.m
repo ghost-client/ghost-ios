@@ -40,6 +40,8 @@
 
     if (_tagTitleLabel== nil){
         _tagTitleLabel= [[UILabel alloc] initWithFrame:CGRectMake(ZHFrameNextX(self.iconImageView)+10, 0, ZHFrameX(self.numberImageView)- ZHFrameNextX(self.iconImageView)-10, 44)];
+
+        _tagTitleLabel.userInteractionEnabled= YES;
     }
 
 
@@ -50,6 +52,7 @@
 
      if (_numberImageView== nil){
         _numberImageView= [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-10-80, 0, 80, 44)];
+         _numberImageView.userInteractionEnabled= YES;
     }
 
     return _numberImageView;
@@ -62,6 +65,7 @@
         _panDeleteButton.frame= CGRectMake(0, 0, SCREEN_WIDTH, 44);
         _panDeleteButton.backgroundColor=[UIColor whiteColor];
         [_panDeleteButton setDeleteButtonWidth:80];
+
     }
     
     return _panDeleteButton;
@@ -72,6 +76,7 @@
 
     if (_iconImageView== nil){
         _iconImageView= [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 44, 44)];
+        _iconImageView.userInteractionEnabled= YES;
     }
     
     

@@ -406,7 +406,7 @@
     </object>
     <object type="LMREQUEST" id="z134">
         <attribute name="uuid" type="string">2CBC6F72-FB13-4130-99B9-06AD5EBB6FCB</attribute>
-        <attribute name="url" type="string">http://js.uiapple.com/ghost/api/v0.1/users/me/?include=roles\u2600id=2</attribute>
+        <attribute name="url" type="string">http://js.uiapple.com/ghost/api/v0.1/users/me/?include=roles\u2600status=all</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -538,7 +538,7 @@
     </object>
     <object type="LMREQUEST" id="z149">
         <attribute name="uuid" type="string">74EB2407-6BA3-4210-B100-7F4D48CF2297</attribute>
-        <attribute name="url" type="string">[{"data":{"environmentVariable":"E7C0F1EA-EFFE-4E02-8F03-99CC1781F537"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"tags\\/?limit=all"]</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"E7C0F1EA-EFFE-4E02-8F03-99CC1781F537"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"tags\\/?limit=all\u2600include=post_count"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>

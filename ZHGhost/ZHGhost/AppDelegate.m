@@ -9,7 +9,12 @@
 #import "AppDelegate.h"
 #import "FLEXManager.h"
 #import "ZHDefine.h"
-#import "ViewController.h"
+#import "ZHBaseHomeViewController.h"
+#import "ZHGhostManger.h"
+#import "ZHLoginViewController.h"
+#import "ZHUserInfoModelBaseClass.h"
+#import "ZHHomeViewcontroller.h"
+
 @interface AppDelegate ()
 
 @end
@@ -22,9 +27,46 @@
 
     self.window= [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
 
-    ViewController *controller= [[ViewController alloc] init];
+    //**获取用户的信息
+    UINavigationController *navigationController= nil;
 
-    UINavigationController *navigationController= [[UINavigationController alloc] initWithRootViewController:controller];
+    NSString *userName= nil;
+    NSDictionary *dictionary=[[NSUserDefaults standardUserDefaults] objectForKey:USER_INFO_KEY];
+    if (dictionary.allKeys.count>0){
+
+        userName=dictionary.allKeys[0];
+
+        ZHUserInfoModelBaseClass *userInfoModelBaseClass=[ZHUserInfoModelBaseClass modelObjectWithDictionary:dictionary[userName]];
+
+        [[ZHGhostManger manger] congfigHost:userInfoModelBaseClass.host];
+
+    }
+
+   if ( userName && [[ZHGhostManger manger] isLogin:userName]){
+
+       ZHBaseHomeViewController *controller= [[ZHBaseHomeViewController alloc] init];
+
+       [controller contentItems];
+
+       navigationController= [[UINavigationController alloc] initWithRootViewController:controller];
+
+       [controller setHomeNavgationController:navigationController];
+
+
+   } else{
+
+       ZHLoginViewController *controller= [[ZHLoginViewController alloc] init];
+
+       navigationController= [[UINavigationController alloc] initWithRootViewController:controller];
+
+
+   }
+
+
+     navigationController.delegate=self;
+
+
+
 
     self.window.rootViewController=navigationController;
 
@@ -35,7 +77,17 @@
 
     return YES;
 }
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
 
+    if ([viewController isKindOfClass:[ZHHomeViewcontroller class]]){
+        ZHHomeViewcontroller *homeViewcontroller= [[ZHHomeViewcontroller alloc] init];
+
+        [homeViewcontroller setHomeNavgationController:navigationController];
+    }
+
+
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

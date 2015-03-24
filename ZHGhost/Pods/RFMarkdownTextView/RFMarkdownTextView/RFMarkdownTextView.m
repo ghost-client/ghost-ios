@@ -97,6 +97,7 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
+
     [_syntaxStorage update];
 }
 

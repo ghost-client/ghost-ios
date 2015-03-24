@@ -5,12 +5,13 @@
 
 #import "ZHBaseViewController.h"
 #import "RFMarkdownTextView.h"
+#import "RFKeyboardToolbar.h"
 @class ZHGContentItemResponsePosts;
 
 #pragma mark 博客显示的正文
 @interface ZHGhostContentViewController : ZHBaseViewController
 
-@property (nonatomic, strong, readonly)RFMarkdownTextView *markdownTextView;
+@property (nonatomic, strong, readonly)UIWebView *markdownTextView;
 
 -(void)setGhostContent:(ZHGContentItemResponsePosts *)content;
 

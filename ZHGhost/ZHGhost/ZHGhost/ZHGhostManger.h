@@ -7,6 +7,9 @@
 #import "ZHBlockConfig.h"
 
 @class ZHGTagsResponseTags;
+@class ZHGUserInfoResponseUsers;
+
+#define USER_INFO_KEY @"users_info_key"
 
 typedef NS_ENUM(NSInteger , ZHGhostErrorCode){
 
@@ -28,12 +31,16 @@ typedef NS_ENUM(NSUInteger , ZHGhostTagsLimit){
 
 }
 
+@property (nonatomic, strong)ZHGUserInfoResponseUsers *currentUser;//当前登录用户的信息 如果设置就存在 否则为NIL
+
+@property (nonatomic, strong, readonly)NSString *currentLoginUserName;
+
+- (BOOL)isLogin:(NSString *)loginUserName;
+
 /**
 * 初始化
 */
 +(instancetype)manger;
-
-@property (nonatomic, assign, readonly)BOOL isLogin;//登录之后的请求 如果此值为NO 必须重新的登录
 
 /**
 * 配置ghost域名地址比如 http://www.baidu.com

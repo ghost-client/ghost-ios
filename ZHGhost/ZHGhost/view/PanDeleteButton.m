@@ -24,6 +24,7 @@
     BOOL _isScrollView;
     UIButton *_deleteButton;
     PanDeleteButtonDeleteComplete _deleteComplete;
+    PanDeleteButtonDeleteComplete _panClickComplete;
 }
 
 
@@ -240,6 +241,21 @@
     _deleteComplete=complete;
 
 
+}
+
+- (void)setPanClickComplete:(PanDeleteButtonDeleteComplete)complete {
+    
+    _panClickComplete=complete;
+
+    [self addTarget:self action:@selector(panButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
+}
+
+- (void)panButtonClick:(id)panButtonClick {
+
+    if (_panClickComplete){
+        _panClickComplete(_deleteIndexPath);
+    }
 }
 
 

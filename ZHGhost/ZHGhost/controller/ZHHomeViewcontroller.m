@@ -35,9 +35,12 @@
 
     self.isShowNavgationView= YES;
 
+
     self.view.backgroundColor=[UIColor whiteColor];
 
-    [self.navgationView.leftButton setBackgroundImage:[StyleKitName homeIcon] forState:UIControlStateNormal];
+    [self.navgationView.leftButton setBackgroundImage:[StyleKitName menu_list] forState:UIControlStateNormal];
+
+    [self.navgationView.leftButton setTitle:nil forState:UIControlStateNormal];
 
     self.navgationView.titleLabel.text=@"君赏博客";
 
@@ -64,6 +67,8 @@
         _homeTableView= [[UITableView alloc] initWithFrame:CGRectMake(0, ZHFrameNextY(self.bannerView), SCREEN_WIDTH, ZHFrameHeight(self.view)- ZHFrameNextY(self.bannerView)) style:UITableViewStylePlain];
         _homeTableView.dataSource=self;
         _homeTableView.delegate=self;
+        _homeTableView.backgroundColor=[UIColor clearColor];
+        _homeTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     }
     return _homeTableView;
 }
