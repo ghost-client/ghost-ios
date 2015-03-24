@@ -1,0 +1,6 @@
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/FLEX" "${PODS_ROOT}/Headers/Public/JSONKit" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/MMMarkdown" "${PODS_ROOT}/Headers/Public/RFKeyboardToolbar" "${PODS_ROOT}/Headers/Public/RFMarkdownTextView"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/FLEX" -isystem "${PODS_ROOT}/Headers/Public/JSONKit" -isystem "${PODS_ROOT}/Headers/Public/MBProgressHUD" -isystem "${PODS_ROOT}/Headers/Public/MMMarkdown" -isystem "${PODS_ROOT}/Headers/Public/RFKeyboardToolbar" -isystem "${PODS_ROOT}/Headers/Public/RFMarkdownTextView"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-AFNetworking" -l"Pods-FLEX" -l"Pods-JSONKit" -l"Pods-MBProgressHUD" -l"Pods-MMMarkdown" -l"Pods-RFKeyboardToolbar" -l"Pods-RFMarkdownTextView" -l"z" -framework "CoreGraphics" -framework "MobileCoreServices" -framework "Security" -framework "SystemConfiguration"
+OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
+PODS_ROOT = ${SRCROOT}/Pods
