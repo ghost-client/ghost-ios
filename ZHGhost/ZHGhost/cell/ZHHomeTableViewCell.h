@@ -5,14 +5,16 @@
 
 #import <UIKit/UIKit.h>
 
-#define ZHHOME_TABLEVIEWCELL_HEIGHT 100
+#define ZHHOME_TABLEVIEWCELL_HEIGHT 80
 
 @interface ZHHomeTableViewCell : UITableViewCell
 
 
 @property (nonatomic, strong, readonly)UIImageView *iconImageView;
 
-@property (nonatomic, strong, readonly)UILabel *titleLabel;
+@property (nonatomic, strong, readonly)UILabel *zhtitleLabel;
+
+@property (nonatomic, strong, readonly)UILabel *zhStatueLabel;
 
 
 @end

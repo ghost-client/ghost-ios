@@ -5,7 +5,7 @@
 
 #import <UIKit/UIKit.h>
 
-
+#define ZH_TITLE_INPUT_CELL_HEIGHT 80
 @interface ZHTitleInputCell : UITableViewCell
 
 @property (nonatomic, strong, readonly)UILabel *zhTitleLabel;

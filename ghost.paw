@@ -5,7 +5,7 @@
     <databaseInfo>
         <version>134481920</version>
         <UUID>203FE7A5-83EA-4517-8EB2-43723EE31F2A</UUID>
-        <nextObjectID>152</nextObjectID>
+        <nextObjectID>155</nextObjectID>
         <metadata>
             <plist version="1.0">
                 <dict>
@@ -69,7 +69,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">DELETE</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="order" type="int64">5</attribute>
+        <attribute name="order" type="int64">6</attribute>
         <attribute name="name" type="string">删除TAG</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -159,7 +159,7 @@
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
         <attribute name="body" type="string">[{"data":{"json":"{\\"tags\\":[{\\"name\\":\\"5645465564564\\",\\"slug\\":\\"\\",\\"description\\":\\"\\",\\"meta_title\\":\\"\\",\\"meta_description\\":\\"\\",\\"image\\":null,\\"hidden\\":false}]}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
-        <attribute name="order" type="int64">6</attribute>
+        <attribute name="order" type="int64">7</attribute>
         <attribute name="name" type="string">新建标签</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -205,7 +205,7 @@
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
         <attribute name="body" type="string">[{"data":{"keyValues":[["username","15038777234@163.com",true],["grant_type","password",true],["password","zhanghang1990823",true],["client_id","ghost-admin",true]]},"identifier":"com.luckymarmot.BodyFormKeyValueDynamicValue"}]</attribute>
-        <attribute name="order" type="int64">10</attribute>
+        <attribute name="order" type="int64">11</attribute>
         <attribute name="name" type="string">ghost登录</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -262,7 +262,7 @@
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
         <attribute name="body" type="string">[{"data":{"keyValues":[["deviceType","1",true],["reqTime","1122",true],["reqNo","1",true],["appVersion","1",true],["userName","13631514194",true],["passWord","1990823",true]]},"identifier":"com.luckymarmot.BodyMultipartFormDataDynamicValue"}]</attribute>
-        <attribute name="order" type="int64">9</attribute>
+        <attribute name="order" type="int64">10</attribute>
         <attribute name="name" type="string">快递用户登录</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -277,11 +277,11 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">GET</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="order" type="int64">2</attribute>
+        <attribute name="order" type="int64">3</attribute>
         <attribute name="name" type="string">查询通知</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z110 z128"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z128 z110"></relationship>
     </object>
     <object type="LMKEYVALUE" id="z123">
         <attribute name="value" type="string"></attribute>
@@ -303,7 +303,7 @@
         <attribute name="method" type="string">PUT</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
         <attribute name="body" type="string">[{"data":{"json":"{\\"tags\\":[{\\"id\\":\\"29\\",\\"name\\":\\"1\\",\\"slug\\":\\"ewqeqwewqw\\",\\"description\\":\\"\\\\u8bf7\\\\u95ee\\\\u997f\\\\u6211\\\\u53bb\\\\u8bf7\\\\u95ee\\\\u997f\\",\\"meta_title\\":null,\\"meta_description\\":null,\\"image\\":null,\\"hidden\\":false,\\"created_at\\":\\"2015-03-20T09:38:37.338Z\\",\\"updated_at\\":\\"2015-03-20T09:38:37.338Z\\",\\"created_by\\":1,\\"updated_by\\":1}]}"},"identifier":"com.luckymarmot.JSONDynamicValue"}]</attribute>
-        <attribute name="order" type="int64">4</attribute>
+        <attribute name="order" type="int64">5</attribute>
         <attribute name="name" type="string">修改TAG</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -319,7 +319,7 @@
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
         <attribute name="body" type="string">[{"data":{"keyValues":[["","[{\\"data\\":{\\"bookmarkData\\":\\"Ym9va\\\\\\/QCAAAAAAQQMAAAADgJ1N+gkbs1+6dlW1yrXye9sWqPB0w18ZNT+r6AqbtF8AEAAAQAAAADAwAAABgAKAUAAAABAQAAVXNlcnMAAAAJAAAAAQEAAGhhbmd6aGFuZwAAAAkAAAABAQAAMzYw5LqR55uYAAAACAAAAAEBAABxceaIquWbvhYAAAABAQAATG9naW5CYWNrZ3JvdW5kQDJ4LnBuZwAAFAAAAAEGAAAQAAAAIAAAADQAAABIAAAAWAAAAAgAAAAEAwAAuwIFAAAAAAAIAAAABAMAACDGCAAAAAAACAAAAAQDAAAzthYAAAAAAAgAAAAEAwAAyuwWAAAAAAAIAAAABAMAAK6wTgEAAAAAFAAAAAEGAACUAAAApAAAALQAAADEAAAA1AAAAAgAAAAABAAAQbpjtfMAAAAYAAAAAQIAAAEAAAAAAAAADwAAAAAAAAAAAAAAAAAAAAgAAAAEAwAAAwAAAAAAAAAEAAAAAwMAAPUBAAAIAAAAAQkAAGZpbGU6Ly8vDAAAAAEBAABNYWNpbnRvc2ggSEQIAAAABAMAAACAnK3oAAAACAAAAAAEAABBuVPRkgAAACQAAAABAQAAMDg5NDkzODAtRDFCQS0zRTkwLTg2RDktMDE1N0UzRDI1RkZGGAAAAAECAACBAAAAAQAIAO8XAAABAAgAAAAAAAAAAAABAAAAAQEAAC8AAAAAAAAAAQUAAMwAAAD+\\\\\\/\\\\\\/\\\\\\/\\\\\\/AQAAAAAAAAAQAAAABBAAAHgAAAAAAAAABRAAAOQAAAAAAAAAEBAAABABAAAAAAAAQBAAAAABAAAAAAAAAiAAANwBAAAAAAAABSAAAEwBAAAAAAAAECAAAFwBAAAAAAAAESAAAJABAAAAAAAAEiAAAHABAAAAAAAAEyAAAIABAAAAAAAAICAAALwBAAAAAAAAMCAAAOgBAAAAAAAAAcAAADABAAAAAAAAEcAAACAAAAAAAAAAEsAAAEABAAAAAAAAENAAAAQAAAAAAAAA\\"},\\"identifier\\":\\"com.luckymarmot.FileContentDynamicValue\\"}]",true]]},"identifier":"com.luckymarmot.BodyMultipartFormDataDynamicValue"}]</attribute>
-        <attribute name="order" type="int64">8</attribute>
+        <attribute name="order" type="int64">9</attribute>
         <attribute name="name" type="string">上传图片</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -374,11 +374,11 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">GET</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="order" type="int64">3</attribute>
+        <attribute name="order" type="int64">4</attribute>
         <attribute name="name" type="string">查询文章</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z117 z139"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z139 z117"></relationship>
     </object>
     <object type="LMENVIRONMENTVARIABLE" id="z131">
         <attribute name="uuid" type="string">F96E26E5-CEA8-4C0F-8771-C865D4B2CFDA</attribute>
@@ -392,7 +392,7 @@
         <attribute name="order" type="int64">4</attribute>
         <attribute name="name" type="string">查询所有的标签, 快递用户登录, ghost登录...</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM"></relationship>
-        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z149 z102 z124 z130 z134 z115 z122 z121 z152 z111 z145 z125"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM" idrefs="z145 z134 z153 z115 z124 z122 z102 z121 z130 z149 z152 z125 z111"></relationship>
         <relationship name="bodyparameters" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="headers" type="0/0" destination="LMKEYVALUE"></relationship>
         <relationship name="urlparameters" type="0/0" destination="LMKEYVALUE"></relationship>
@@ -413,7 +413,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">GET</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="order" type="int64">11</attribute>
+        <attribute name="order" type="int64">12</attribute>
         <attribute name="name" type="string">查询个人信息</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -505,7 +505,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">GET</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="order" type="int64">7</attribute>
+        <attribute name="order" type="int64">8</attribute>
         <attribute name="name" type="string">获取设置</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -545,7 +545,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">GET</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="order" type="int64">1</attribute>
+        <attribute name="order" type="int64">2</attribute>
         <attribute name="name" type="string">查询所有的标签</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
@@ -573,17 +573,53 @@
     </object>
     <object type="LMREQUEST" id="z152">
         <attribute name="uuid" type="string">A35BB603-D66F-46B5-B3E7-308BA6A69B3D</attribute>
-        <attribute name="url" type="string">[{"data":{"environmentVariable":"E7C0F1EA-EFFE-4E02-8F03-99CC1781F537"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"users\\/?page=1\u2600limit=100\u2600status=active\u2600include=roles"]</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"E7C0F1EA-EFFE-4E02-8F03-99CC1781F537"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"users\\/?page=1\u2600limit=1"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">GET</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="order" type="int64">0</attribute>
+        <attribute name="order" type="int64">1</attribute>
         <attribute name="name" type="string">获取所有的用户</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
         <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
         <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z150 z151"></relationship>
+    </object>
+    <object type="LMREQUEST" id="z153">
+        <attribute name="body" type="string">[{"data":{"keyValues":[["[\\"password[0][user_id]\\"]","1",true],["[\\"password[0][oldPassword]\\"]","zhanghang1990823",true],["[\\"password[0][newPassword]\\"]","zhanghang1990823",true],["[\\"password[0][ne2Password]\\"]","zhanghang1990823",true]]},"identifier":"com.luckymarmot.BodyFormKeyValueDynamicValue"}]</attribute>
+        <attribute name="uuid" type="string">E9E111E1-5DCE-44A3-AC1F-E2D0B271E580</attribute>
+        <attribute name="url" type="string">[{"data":{"environmentVariable":"E7C0F1EA-EFFE-4E02-8F03-99CC1781F537"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"users\\/password\\/"]</attribute>
+        <attribute name="storecookies" type="bool">1</attribute>
+        <attribute name="sendcookies" type="bool">1</attribute>
+        <attribute name="redirectmethod" type="bool">0</attribute>
+        <attribute name="redirectauthorization" type="bool">0</attribute>
+        <attribute name="method" type="string">PUT</attribute>
+        <attribute name="followredirects" type="bool">0</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">修改密码</attribute>
+        <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z132"></relationship>
+        <relationship name="children" type="0/0" destination="LMREQUESTTREEITEM"></relationship>
+        <relationship name="headers" type="0/0" destination="LMKEYVALUE" idrefs="z155 z154"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z154">
+        <attribute name="value" type="string">[{"data":{"environmentVariable":"95544EA0-7E3A-4420-91DB-A991FA249EBB"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
+        <attribute name="order" type="int64">0</attribute>
+        <attribute name="name" type="string">[{"data":{"environmentVariable":"EA5D0A97-3843-40B9-9C58-90ACEFEE3E82"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"}]</attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z153"></relationship>
+    </object>
+    <object type="LMKEYVALUE" id="z155">
+        <attribute name="value" type="string"></attribute>
+        <attribute name="order" type="int64">1</attribute>
+        <attribute name="name" type="string"></attribute>
+        <attribute name="enabled" type="bool">1</attribute>
+        <relationship name="groupforbodyparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforheaders" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="groupforurlparameters" type="0/1" destination="LMREQUESTGROUP"></relationship>
+        <relationship name="request" type="0/1" destination="LMREQUEST" idrefs="z153"></relationship>
     </object>
 </database>

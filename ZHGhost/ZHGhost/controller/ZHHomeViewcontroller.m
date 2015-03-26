@@ -89,7 +89,7 @@
 
     ZHGContentItemResponsePosts *posts=_contentItem[indexPath.row];
 
-    cell.titleLabel.text=posts.title;
+    cell.zhtitleLabel.text=posts.title;
 
     cell.iconImageView.image=[StyleKitName homeIcon];
 

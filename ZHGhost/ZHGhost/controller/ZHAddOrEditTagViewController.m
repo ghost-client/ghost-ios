@@ -12,13 +12,14 @@
 #import "ZHGTagsResponseTags.h"
 #import "ZHGhostManger.h"
 #import "ZHCreatTagsSubmitBaseClass.h"
+#import "ZHTitleImageView.h"
 
 
 @implementation ZHAddOrEditTagViewController {
 
     UITableView *_tagInfoTableView;//展示TAG详情
 
-    NSArray *sectionRows;
+    NSArray *rowHeightArray;
     
     
     BOOL _isEdit;
@@ -38,7 +39,7 @@
     [self.navgationView.rightButton addTarget:self action:@selector(doneButtonClick) forControlEvents:UIControlEventTouchUpInside];
 
 
-    sectionRows=@[@3,@2,@1];
+    rowHeightArray=@[@(ZHTITLE_IMAGE_VIEW_HEIGHT),@(ZH_TITLE_INPUT_CELL_HEIGHT),@(ZH_TITLE_INPUT_CELL_HEIGHT),@(ZHTITLE_TEXTVIEW_CELL_HEIGHT),@(ZH_TITLE_INPUT_CELL_HEIGHT),@(ZHTITLE_TEXTVIEW_CELL_HEIGHT)];
 
     [self.view addSubview:self.tagInfoTableView];
 
@@ -91,7 +92,7 @@
         ZHCreatTagsSubmitBaseClass *submitBaseClass= [[ZHCreatTagsSubmitBaseClass alloc] init];
 
         submitBaseClass.name=_tagsInfo.name;
-        submitBaseClass.internalBaseClassDescription=_tagsInfo.tagsDescription;
+        submitBaseClass.internalBaseClassDescription=_tagsInfo.internalBaseClassDescription;
         submitBaseClass.slug=_tagsInfo.slug;
         submitBaseClass.metaTitle=_tagsInfo.metaTitle;
         submitBaseClass.metaDescription=_tagsInfo.metaDescription;
@@ -123,12 +124,12 @@
 - (UITableView *)tagInfoTableView {
 
     if (_tagInfoTableView== nil){
-        _tagInfoTableView= [[UITableView alloc] initWithFrame:CGRectMake(0, ZHFrameNextY(self.navgationView), SCREEN_WIDTH, ZHFrameHeight(self.view)- ZHFrameNextY(self.navgationView)) style:UITableViewStyleGrouped];
+        _tagInfoTableView= [[UITableView alloc] initWithFrame:CGRectMake(0, ZHFrameNextY(self.navgationView), SCREEN_WIDTH, ZHFrameHeight(self.view)- ZHFrameNextY(self.navgationView)) style:UITableViewStylePlain];
         _tagInfoTableView.delegate=self;
         _tagInfoTableView.dataSource=self;
 
-        _tagInfoTableView.backgroundColor=[UIColor clearColor];
-
+        _tagInfoTableView.backgroundColor=[UIColor colorWithRed:0.988 green:0.988 blue:0.988 alpha:1];
+        _tagInfoTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     }
 
 
@@ -149,105 +150,83 @@
 #pragma mark UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    NSParameterAssert(sectionRows.count>section);
 
-    return [sectionRows[(NSUInteger) section] integerValue];
+    return rowHeightArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    NSUInteger cellIndex= ZHRowIndex(indexPath);
+   if (indexPath.row==0){
 
-    NSArray *titleCellIndex=@[@(0),@(1),@(10)];
+       ZHTitleImageView *cell= [[ZHTitleImageView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 
-    if ([titleCellIndex containsObject:@(cellIndex)]){
+       cell.zhTitlelabel.text=@"标签的背景图片";
 
+       return cell;
 
-        ZHTitleInputCell *cell= [[ZHTitleInputCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+   } else if (indexPath.row==1 || indexPath.row==2 || indexPath.row==4){
+       ZHTitleInputCell *cell= [[ZHTitleInputCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 
-        switch (cellIndex){
-            case 0:{
-                cell.zhTitleLabel.text=@"Tag标题:";
+       switch (indexPath.row){
 
-                cell.zhInputFiled.text=_tagsInfo.name;
+           case 1:{
+               cell.zhTitleLabel.text=@"标签名";
+               [self setZHTextFiledText:_tagsInfo.name textFiled:cell.zhInputFiled];
+               break;
+           }
+           case 2:{
+               cell.zhTitleLabel.text=@"URL";
+               [self setZHTextFiledText:_tagsInfo.slug textFiled:cell.zhInputFiled];
 
+               break;
+           }
+           case 4:{
+               cell.zhTitleLabel.text=@"SEO标题";
+               [self setZHTextFiledText:_tagsInfo.metaTitle textFiled:cell.zhInputFiled];
 
+               break;
+           }
 
-                break;
-            }
-            case 1:{
-                cell.zhTitleLabel.text=@"URL:";
+           default:break;
+       }
 
-                cell.zhInputFiled.text=_tagsInfo.slug;
-                break;
-            }
-            case 10:{
-                cell.zhTitleLabel.text=@"SEO标题:";
+       return cell;
+   } else if (indexPath.row==3 || indexPath.row==5){
+       ZHTitleTextViewCell *cell= [[ZHTitleTextViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+       switch (indexPath.row){
 
-                cell.zhInputFiled.text=_tagsInfo.metaTitle;
-                break;
+           case 3:{
+               cell.zhTitleLable.text=@"描述";
 
-            }
+               [self setZHTextViewText:_tagsInfo.internalBaseClassDescription TextView:cell.zhTextView];
 
-            default:break;
-        }
+               break;
 
-        cell.zhInputFiled.delegate=self;
+           }
+           case 5:{
+               cell.zhTitleLable.text=@"SEO描述";
+               [self setZHTextViewText:_tagsInfo.metaDescription TextView:cell.zhTextView];
 
-        cell.zhInputFiled.tag=cellIndex;
-        return cell;
+           }
+           default:break;
+       }
 
-
-
-    }
-
-    NSArray *textViewArray=@[@(2),@(11)];
-
-    if ([textViewArray containsObject:@(cellIndex)]){
-
-        ZHTitleTextViewCell *cell= [[ZHTitleTextViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-
-        switch (cellIndex){
-
-            case 2:{
-                cell.zhTitleLable.text=@"描述信息:";
-                cell.zhTextView.text=_tagsInfo.tagsDescription;
-                break;
-            }
-            case 11:{
-                cell.zhTitleLable.text=@"SEO描述:";
-                cell.zhTextView.text=_tagsInfo.metaDescription;
-                break;
-            }
-
-            default:break;
-        }
-        cell.zhTextView.delegate=self;
-
-        cell.zhTextView.tag=cellIndex;
-
-        return cell;
-    }
-
-    if (cellIndex==20){
-
-        ZHTitleSwithCell *cell= [[ZHTitleSwithCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-
-        cell.zhTitleLabel.text=@"是否隐藏:";
-        cell.zhSwith.on=_tagsInfo.hidden;
-        [cell.zhSwith addTarget:self action:@selector(switchOnClick:) forControlEvents:UIControlEventValueChanged];
-
-        return cell;
-    }
-
-
-
+       return cell;
+   }
 
     return nil;
-
-
 }
+-(void)setZHTextFiledText:(NSString *)name textFiled:(UITextField *)textFiled{
+    if (name.length>0){
 
+        textFiled.text=name;
+    }
+}
+-(void)setZHTextViewText:(NSString *)name TextView:(UITextView *)textView{
+    if (name.length>0){
+        textView.text=name;
+    }
+}
 - (void)switchOnClick:(UISwitch *)switchOnClick {
 
     [self dismissCurreentKeyBoard];
@@ -258,23 +237,12 @@
 #pragma UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    NSUInteger cellIndex= ZHRowIndex(indexPath);
+    NSParameterAssert(rowHeightArray.count>indexPath.row);
 
-    NSArray *textViewArray=@[@(2),@(11)];
-
-    if ([textViewArray containsObject:@(cellIndex)]){
-
-        return ZHTITLE_TEXTVIEW_CELL_HEIGHT;
-    }
-
-    return 44.f;
+    return [rowHeightArray[indexPath.row] floatValue];
 
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
-    return sectionRows.count;
-}
 
 #pragma mark UITextFiledDelegate
 
@@ -307,7 +275,7 @@
     switch (textView.tag){
 
         case 2:{
-            _tagsInfo.tagsDescription=textView.text;
+            _tagsInfo.internalBaseClassDescription=textView.text;
             break;
         }
         case 11:{

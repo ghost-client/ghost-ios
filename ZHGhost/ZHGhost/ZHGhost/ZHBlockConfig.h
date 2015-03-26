@@ -17,6 +17,7 @@
 @class ZHGTagsResponseBaseClass;
 @class ZHCreatTagsResponseBaseClass;
 @class ZHGTagsResponseTags;
+@class ZHAllUserResponseBaseClass;
 
 typedef void (^ZHFailed)(NSError *error,NSString *errorMessage,NSInteger errorCode);
 
@@ -59,6 +60,16 @@ typedef void (^ZHDeleteTagsSuccess)(ZHGTagsResponseTags *tags);
 */
 
 typedef void (^ZHEditTagsSuccess)(ZHGTagsResponseTags *tags);
+
+/**
+* 修改密码成功
+*/
+typedef void (^ZHGResetPasswordSuccess)(void);
+
+/**
+* 获取所有用户成功的返回
+*/
+typedef void (^ZHGAllUserSuccess)(ZHAllUserResponseBaseClass *response);
 
 
 #endif

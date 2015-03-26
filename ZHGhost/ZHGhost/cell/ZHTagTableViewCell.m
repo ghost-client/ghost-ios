@@ -11,10 +11,10 @@
 
 @implementation ZHTagTableViewCell {
     
-    UIImageView *_iconImageView;
     UIImageView *_numberImageView;
     UILabel *_tagTitleLabel;
     PanDeleteButton *_panDeleteButton;
+    UILabel *_tagURLTitleLabel;
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -25,11 +25,12 @@
         [self.panDeleteButton addDeleteButtonInSuperView:self];
         [self addSubview:self.panDeleteButton];
 
-        [self.panDeleteButton addSubview:self.iconImageView];
-
         [self.panDeleteButton addSubview:self.tagTitleLabel];
-
         [self.panDeleteButton addSubview:self.numberImageView];
+
+        //[self.panDeleteButton addSubview:self.tagURLTitleLabel];
+
+        ZHAddLineView(CGRectMake(0, 49, SCREEN_WIDTH, 1), [UIColor colorWithRed:0.929 green:0.925 blue:0.894 alpha:1], self);
 
     }
 
@@ -39,20 +40,30 @@
 - (UILabel *)tagTitleLabel {
 
     if (_tagTitleLabel== nil){
-        _tagTitleLabel= [[UILabel alloc] initWithFrame:CGRectMake(ZHFrameNextX(self.iconImageView)+10, 0, ZHFrameX(self.numberImageView)- ZHFrameNextX(self.iconImageView)-10, 44)];
+        _tagTitleLabel= [[UILabel alloc] initWithFrame:CGRectMake(10,5, SCREEN_WIDTH-20-80,30)];
 
-        _tagTitleLabel.userInteractionEnabled= YES;
+        _tagTitleLabel.font=[UIFont boldSystemFontOfSize:17];
     }
 
 
     return _tagTitleLabel;
 }
 
+- (UILabel *)tagURLTitleLabel {
+    if (_tagURLTitleLabel== nil){
+        _tagURLTitleLabel= [[UILabel alloc] initWithFrame:CGRectMake(ZHFrameX(self.tagTitleLabel), 55, SCREEN_WIDTH-20, 20)];
+
+        _tagURLTitleLabel.backgroundColor=[UIColor colorWithRed:0.631 green:0.678 blue:0.702 alpha:1];
+        _tagURLTitleLabel.textColor=[UIColor whiteColor];
+    }
+    return _tagURLTitleLabel;
+}
+
+
 - (UIImageView *)numberImageView {
 
      if (_numberImageView== nil){
-        _numberImageView= [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-10-80, 0, 80, 44)];
-         _numberImageView.userInteractionEnabled= YES;
+        _numberImageView= [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-10-80, 5, 80, 44)];
     }
 
     return _numberImageView;
@@ -72,16 +83,6 @@
 }
 
 
-- (UIImageView *)iconImageView {
-
-    if (_iconImageView== nil){
-        _iconImageView= [[UIImageView alloc] initWithFrame:CGRectMake(10, 0, 44, 44)];
-        _iconImageView.userInteractionEnabled= YES;
-    }
-    
-    
-    return _iconImageView;
-}
 
 
 @end

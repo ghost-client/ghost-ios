@@ -5,7 +5,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define ZHTITLE_TEXTVIEW_CELL_HEIGHT 100
+#define ZHTITLE_TEXTVIEW_CELL_HEIGHT 150
 @interface ZHTitleTextViewCell : UITableViewCell
 
 @property (nonatomic, strong, readonly)UILabel *zhTitleLable;

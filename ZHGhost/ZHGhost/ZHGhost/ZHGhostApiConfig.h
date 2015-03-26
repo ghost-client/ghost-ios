@@ -21,4 +21,8 @@
 
 #define ZHTAGS_URL @"tags/"//获取TAG
 
+#define ZHRESET_PASSWORD @"users/password/"//修改密码
+
+#define ZHALL_USERS @"users/"
+
 #endif

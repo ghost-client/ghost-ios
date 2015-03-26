@@ -18,6 +18,7 @@
 #import "ZHGTagsResponseTags.h"
 #import "ZHUserInfoModelBaseClass.h"
 #import "ZHGUserInfoResponseUsers.h"
+#import "ZHAllUserResponseBaseClass.h"
 
 #define EXPIRESIN @"expires_in"
 
@@ -52,6 +53,8 @@ static NSString *BaseUrl(NSString *url, NSString *host) {
     ZHCreatTagsSuccess _creatTagsSuccess;
     ZHTagsSuccess _deleteSuccess;
     ZHEditTagsSuccess _editSuccess;
+    ZHGResetPasswordSuccess _resetPasswordSuccess;
+    ZHGAllUserSuccess _allUserSuccess;
 }
 - (NSString *)currentLoginUserName {
     return _loginUserName;
@@ -548,7 +551,7 @@ client_id	ghost-admin
     _failed = failed;
     ISLOGIN
     NSParameterAssert(tags);
-    NSParameterAssert(tags.tagsIdentifier);
+    NSParameterAssert(tags.internalBaseClassIdentifier);
     NSParameterAssert(tags.name);
 
     // 修改TAG (PUT http://js.uiapple.com/ghost/api/v0.1/tags/29/)
@@ -563,7 +566,7 @@ client_id	ghost-admin
             ]
     };
 
-    NSString *urlString = BaseUrl([NSString stringWithFormat:@"%@%f/", ZHTAGS_URL, tags.tagsIdentifier], _ghostHost);
+    NSString *urlString = BaseUrl([NSString stringWithFormat:@"%@%f/", ZHTAGS_URL, tags.internalBaseClassIdentifier], _ghostHost);
 
     NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"PUT" URLString:urlString parameters:bodyObject error:NULL];
 
@@ -590,6 +593,123 @@ client_id	ghost-admin
 
 
 }
+
+- (void)resetPassword:(NSString *)oldPassword
+          newPassword:(NSString *)newPassword
+         ne2Password:(NSString *)ne2Password
+               userId:(NSString *)userId
+              success:(ZHGResetPasswordSuccess)success
+               failed:(ZHFailed)failed
+{
+
+    _resetPasswordSuccess=success;
+    _failed=failed;
+
+    NSParameterAssert(oldPassword.length>8);
+    NSParameterAssert(newPassword.length>8);
+    NSParameterAssert(ne2Password.length>8);
+    NSParameterAssert(userId);
+
+	// 修改密码 (PUT http://js.uiapple.com/ghost/api/v0.1/users/password/)
+
+	// Create manager
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+	// Form URL-Encoded Body
+	NSDictionary* bodyParameters = @{
+		@"password[0][user_id]": userId,
+		@"password[0][newPassword]": oldPassword,
+		@"password[0][ne2Password]": newPassword,
+		@"password[0][oldPassword]": ne2Password,
+	};
+
+    NSString *urlString= BaseUrl(ZHRESET_PASSWORD, _ghostHost);
+
+	NSMutableURLRequest* request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"PUT" URLString:urlString parameters:bodyParameters error:NULL];
+
+	// Add Headers
+	[request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
+
+    __weak typeof(self) safeSelf = self;
+
+	// Fetch Request
+	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
+	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+          [safeSelf showResetPasswordSuccess];
+
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+                [safeSelf showRequestErrorMessage:safeSelf error:error];
+            }];
+
+	[manager.operationQueue addOperation:afhttpRequestOperation];
+}
+- (void)allUserPage:(NSUInteger)page
+              limit:(NSUInteger)limit
+            success:(ZHGAllUserSuccess)success
+             failed:(ZHFailed)failed
+{
+
+    _allUserSuccess=success;
+    _failed=failed;
+
+    NSParameterAssert(page>0);
+    NSParameterAssert(limit>0);
+    if(limit>ZHGhostTagsLimitMax){
+        limit=ZHGhostTagsLimitMax;
+    }
+	// 获取所有的用户 (GET http://js.uiapple.com/ghost/api/v0.1/users/)
+
+	// Create manager
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+	// Create request
+	NSDictionary* URLParams = @{
+		@"page": [NSString stringWithFormat:@"%d",page],
+		@"limit": [NSString stringWithFormat:@"%d",limit],
+	};
+
+    NSString *urlString= BaseUrl(ZHALL_USERS, _ghostHost);
+
+	NSMutableURLRequest* request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:urlString parameters:URLParams error:NULL];
+
+	// Add Headers
+	[request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
+
+    __weak typeof(self) safeSelf = self;
+
+	// Fetch Request
+	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
+	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+	   if (responseObject){
+
+           [safeSelf showAllUserSuccess:responseObject];
+
+       } else{
+           [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+       }
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+
+                [safeSelf showRequestErrorMessage:safeSelf error:error];
+            }];
+
+    [manager.operationQueue addOperation:afhttpRequestOperation];
+}
+
+- (void)showAllUserSuccess:(id)responseObject {
+    ZHAllUserResponseBaseClass *allUserResponseBaseClass=[ZHAllUserResponseBaseClass modelObjectWithDictionary:responseObject];
+    if (_allUserSuccess){
+               _allUserSuccess(allUserResponseBaseClass);
+           }
+}
+
+- (void)showResetPasswordSuccess {
+    if (_resetPasswordSuccess){
+              _resetPasswordSuccess();
+    }
+}
+
 
 - (void)showEditTagSuccess:(id)responseObject {
     ZHGTagsResponseTags *tagsResponseTags = [ZHGTagsResponseTags modelObjectWithDictionary:responseObject];

@@ -103,4 +103,22 @@ typedef NS_ENUM(NSUInteger , ZHGhostTagsLimit){
 */
 
 - (void)editTag:(ZHGTagsResponseTags *)tags success:(ZHEditTagsSuccess)success failed:(ZHFailed)failed;
+
+/**
+* 修改密码
+* oldpassword 旧密码
+* newPassword 新密码
+* ne2Password 新密码
+* userId 用户的ID
+*/
+- (void)resetPassword:(NSString *)oldPassword newPassword:(NSString *)newPassword ne2Password:(NSString *)ne2Password userId:(NSString *)userId success:(ZHGResetPasswordSuccess)success failed:(ZHFailed)failed;
+
+/**
+* 获取所有的用户的数据
+* @param page 当前请求的页数
+* @param limit 限制请求的大小 最大100条
+*
+*/
+
+- (void)allUserPage:(NSUInteger)page limit:(NSUInteger)limit success:(ZHGAllUserSuccess)success failed:(ZHFailed)failed;
 @end

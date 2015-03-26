@@ -49,6 +49,7 @@
     [self.navgationView.rightButton addTarget:self action:@selector(addTagButtonClick) forControlEvents:UIControlEventTouchUpInside];
 
 
+
 }
 - (void)addTagButtonClick {
 
@@ -116,11 +117,11 @@
 
     ZHGTagsResponseTags *tags=_tagsArray[indexPath.row];
 
-    cell.iconImageView.image=[StyleKitName imageOfTagIconButtonWithFrame:cell.iconImageView.bounds];
-
     cell.tagTitleLabel.text=tags.name;
 
     cell.numberImageView.image=[StyleKitName imageOfTagNumberButtonWithTagNumber:[NSString stringWithFormat:@"%d", (int) tags.postCount]];
+
+    cell.tagURLTitleLabel.text=[NSString stringWithFormat:@"%@/",tags.slug];
 
     [cell.panDeleteButton addPanDelete:indexPath];
 
@@ -145,6 +146,9 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.f;
+}
 - (void)showPanClickComplete:(NSIndexPath *)indexPath {
 
 
@@ -162,7 +166,7 @@
     ZHGTagsResponseTags *tags= _tagsArray[(NSUInteger) deleteIndexPath.row];
    __weak typeof(self) safeSelf = self;
 
-    [[ZHGhostManger manger] deleteTag:(NSUInteger) tags.tagsIdentifier success:^(ZHGTagsResponseBaseClass *response) {
+    [[ZHGhostManger manger] deleteTag:(NSUInteger) tags.internalBaseClassIdentifier success:^(ZHGTagsResponseBaseClass *response) {
 
 
         [safeSelf deleteTagsSuccess:tags];

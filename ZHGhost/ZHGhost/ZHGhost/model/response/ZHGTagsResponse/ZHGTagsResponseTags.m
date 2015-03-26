@@ -1,7 +1,7 @@
 //
 //  ZHGTagsResponseTags.m
 //
-//  Created by  自己联通 on 15/3/24
+//  Created by  自己联通 on 15/3/26
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -33,10 +33,10 @@ NSString *const kZHGTagsResponseTagsPostCount = @"post_count";
 
 @implementation ZHGTagsResponseTags
 
-@synthesize tagsIdentifier = _tagsIdentifier;
+@synthesize internalBaseClassIdentifier = _internalBaseClassIdentifier;
 @synthesize metaDescription = _metaDescription;
 @synthesize uuid = _uuid;
-@synthesize tagsDescription = _tagsDescription;
+@synthesize internalBaseClassDescription = _internalBaseClassDescription;
 @synthesize createdAt = _createdAt;
 @synthesize parent = _parent;
 @synthesize createdBy = _createdBy;
@@ -62,10 +62,10 @@ NSString *const kZHGTagsResponseTagsPostCount = @"post_count";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.tagsIdentifier = [[self objectOrNilForKey:kZHGTagsResponseTagsId fromDictionary:dict] doubleValue];
+            self.internalBaseClassIdentifier = [[self objectOrNilForKey:kZHGTagsResponseTagsId fromDictionary:dict] doubleValue];
             self.metaDescription = [self objectOrNilForKey:kZHGTagsResponseTagsMetaDescription fromDictionary:dict];
             self.uuid = [self objectOrNilForKey:kZHGTagsResponseTagsUuid fromDictionary:dict];
-            self.tagsDescription = [self objectOrNilForKey:kZHGTagsResponseTagsDescription fromDictionary:dict];
+            self.internalBaseClassDescription = [self objectOrNilForKey:kZHGTagsResponseTagsDescription fromDictionary:dict];
             self.createdAt = [self objectOrNilForKey:kZHGTagsResponseTagsCreatedAt fromDictionary:dict];
             self.parent = [self objectOrNilForKey:kZHGTagsResponseTagsParent fromDictionary:dict];
             self.createdBy = [[self objectOrNilForKey:kZHGTagsResponseTagsCreatedBy fromDictionary:dict] doubleValue];
@@ -87,10 +87,10 @@ NSString *const kZHGTagsResponseTagsPostCount = @"post_count";
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *mutableDict = [NSMutableDictionary dictionary];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.tagsIdentifier] forKey:kZHGTagsResponseTagsId];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.internalBaseClassIdentifier] forKey:kZHGTagsResponseTagsId];
     [mutableDict setValue:self.metaDescription forKey:kZHGTagsResponseTagsMetaDescription];
     [mutableDict setValue:self.uuid forKey:kZHGTagsResponseTagsUuid];
-    [mutableDict setValue:self.tagsDescription forKey:kZHGTagsResponseTagsDescription];
+    [mutableDict setValue:self.internalBaseClassDescription forKey:kZHGTagsResponseTagsDescription];
     [mutableDict setValue:self.createdAt forKey:kZHGTagsResponseTagsCreatedAt];
     [mutableDict setValue:self.parent forKey:kZHGTagsResponseTagsParent];
     [mutableDict setValue:[NSNumber numberWithDouble:self.createdBy] forKey:kZHGTagsResponseTagsCreatedBy];
@@ -125,10 +125,10 @@ NSString *const kZHGTagsResponseTagsPostCount = @"post_count";
 {
     self = [super init];
 
-    self.tagsIdentifier = [aDecoder decodeDoubleForKey:kZHGTagsResponseTagsId];
+    self.internalBaseClassIdentifier = [aDecoder decodeDoubleForKey:kZHGTagsResponseTagsId];
     self.metaDescription = [aDecoder decodeObjectForKey:kZHGTagsResponseTagsMetaDescription];
     self.uuid = [aDecoder decodeObjectForKey:kZHGTagsResponseTagsUuid];
-    self.tagsDescription = [aDecoder decodeObjectForKey:kZHGTagsResponseTagsDescription];
+    self.internalBaseClassDescription = [aDecoder decodeObjectForKey:kZHGTagsResponseTagsDescription];
     self.createdAt = [aDecoder decodeObjectForKey:kZHGTagsResponseTagsCreatedAt];
     self.parent = [aDecoder decodeObjectForKey:kZHGTagsResponseTagsParent];
     self.createdBy = [aDecoder decodeDoubleForKey:kZHGTagsResponseTagsCreatedBy];
@@ -146,10 +146,10 @@ NSString *const kZHGTagsResponseTagsPostCount = @"post_count";
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
 
-    [aCoder encodeDouble:_tagsIdentifier forKey:kZHGTagsResponseTagsId];
+    [aCoder encodeDouble:_internalBaseClassIdentifier forKey:kZHGTagsResponseTagsId];
     [aCoder encodeObject:_metaDescription forKey:kZHGTagsResponseTagsMetaDescription];
     [aCoder encodeObject:_uuid forKey:kZHGTagsResponseTagsUuid];
-    [aCoder encodeObject:_tagsDescription forKey:kZHGTagsResponseTagsDescription];
+    [aCoder encodeObject:_internalBaseClassDescription forKey:kZHGTagsResponseTagsDescription];
     [aCoder encodeObject:_createdAt forKey:kZHGTagsResponseTagsCreatedAt];
     [aCoder encodeObject:_parent forKey:kZHGTagsResponseTagsParent];
     [aCoder encodeDouble:_createdBy forKey:kZHGTagsResponseTagsCreatedBy];
@@ -169,10 +169,10 @@ NSString *const kZHGTagsResponseTagsPostCount = @"post_count";
     
     if (copy) {
 
-        copy.tagsIdentifier = self.tagsIdentifier;
+        copy.internalBaseClassIdentifier = self.internalBaseClassIdentifier;
         copy.metaDescription = [self.metaDescription copyWithZone:zone];
         copy.uuid = [self.uuid copyWithZone:zone];
-        copy.tagsDescription = [self.tagsDescription copyWithZone:zone];
+        copy.internalBaseClassDescription = [self.internalBaseClassDescription copyWithZone:zone];
         copy.createdAt = [self.createdAt copyWithZone:zone];
         copy.parent = [self.parent copyWithZone:zone];
         copy.createdBy = self.createdBy;

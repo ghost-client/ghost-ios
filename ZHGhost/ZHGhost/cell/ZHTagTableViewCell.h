@@ -10,9 +10,9 @@
 #define ZHTAG_CELL_HEIGHT 45
 @interface ZHTagTableViewCell : UITableViewCell
 
-@property (nonatomic, strong, readonly)UIImageView *iconImageView;
-
 @property (nonatomic, strong, readonly)UILabel *tagTitleLabel;
+
+@property (nonatomic, strong, readonly)UILabel *tagURLTitleLabel;
 
 @property (nonatomic, strong, readonly)UIImageView * numberImageView;
 
