@@ -6,7 +6,7 @@
 #import "ZHBaseViewController.h"
 
 
-@interface ZHAllUserViewController : ZHBaseViewController
+@interface ZHAllUserViewController : ZHBaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong, readonly)UITableView *userTableView;
 

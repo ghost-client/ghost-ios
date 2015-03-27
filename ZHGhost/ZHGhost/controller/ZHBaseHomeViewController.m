@@ -19,6 +19,7 @@
 #import "ZHAddOrEditTagViewController.h"
 #import "ZHGUserInfoResponseUsers.h"
 #import "ZHGUserInfoResponseBaseClass.h"
+#import "ZHAllUserViewController.h"
 
 #define ANMATION_TIME .3
 
@@ -189,6 +190,12 @@
 
         }
             break;
+        case 2:{
+            ZHAllUserViewController *userViewController= [[ZHAllUserViewController alloc] init];
+            [self.navigationController pushViewController:userViewController animated:YES];
+
+            break;
+        }
 
         default:break;
     }

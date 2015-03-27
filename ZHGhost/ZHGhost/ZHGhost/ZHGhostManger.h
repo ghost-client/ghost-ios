@@ -117,8 +117,6 @@ typedef NS_ENUM(NSUInteger , ZHGhostTagsLimit){
 * 获取所有的用户的数据
 * @param page 当前请求的页数
 * @param limit 限制请求的大小 最大100条
-*
 */
-
 - (void)allUserPage:(NSUInteger)page limit:(NSUInteger)limit success:(ZHGAllUserSuccess)success failed:(ZHFailed)failed;
 @end
