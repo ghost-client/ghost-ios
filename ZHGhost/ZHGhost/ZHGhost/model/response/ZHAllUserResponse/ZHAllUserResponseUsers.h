@@ -1,7 +1,7 @@
 //
 //  ZHAllUserResponseUsers.h
 //
-//  Created by  自己联通 on 15/3/26
+//  Created by  自己联通 on 15/3/27
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *cover;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) double usersIdentifier;
+@property (nonatomic, strong) NSArray *roles;
 @property (nonatomic, strong) NSString *accessibility;
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *website;

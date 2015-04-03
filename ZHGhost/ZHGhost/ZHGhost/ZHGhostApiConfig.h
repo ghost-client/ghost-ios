@@ -25,4 +25,6 @@
 
 #define ZHALL_USERS @"users/"
 
+#define ZHSETTING_URL @"settings/"//获取设置
+
 #endif

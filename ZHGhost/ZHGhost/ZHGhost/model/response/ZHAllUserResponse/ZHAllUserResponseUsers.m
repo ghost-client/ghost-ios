@@ -1,11 +1,12 @@
 //
 //  ZHAllUserResponseUsers.m
 //
-//  Created by  自己联通 on 15/3/26
+//  Created by  自己联通 on 15/3/27
 //  Copyright (c) 2015 __MyCompanyName__. All rights reserved.
 //
 
 #import "ZHAllUserResponseUsers.h"
+#import "ZHAllUserResponseRoles.h"
 
 
 NSString *const kZHAllUserResponseUsersLocation = @"location";
@@ -22,6 +23,7 @@ NSString *const kZHAllUserResponseUsersLastLogin = @"last_login";
 NSString *const kZHAllUserResponseUsersCover = @"cover";
 NSString *const kZHAllUserResponseUsersName = @"name";
 NSString *const kZHAllUserResponseUsersId = @"id";
+NSString *const kZHAllUserResponseUsersRoles = @"roles";
 NSString *const kZHAllUserResponseUsersAccessibility = @"accessibility";
 NSString *const kZHAllUserResponseUsersEmail = @"email";
 NSString *const kZHAllUserResponseUsersWebsite = @"website";
@@ -52,6 +54,7 @@ NSString *const kZHAllUserResponseUsersCreatedBy = @"created_by";
 @synthesize cover = _cover;
 @synthesize name = _name;
 @synthesize usersIdentifier = _usersIdentifier;
+@synthesize roles = _roles;
 @synthesize accessibility = _accessibility;
 @synthesize email = _email;
 @synthesize website = _website;
@@ -86,6 +89,19 @@ NSString *const kZHAllUserResponseUsersCreatedBy = @"created_by";
             self.cover = [self objectOrNilForKey:kZHAllUserResponseUsersCover fromDictionary:dict];
             self.name = [self objectOrNilForKey:kZHAllUserResponseUsersName fromDictionary:dict];
             self.usersIdentifier = [[self objectOrNilForKey:kZHAllUserResponseUsersId fromDictionary:dict] doubleValue];
+    NSObject *receivedZHAllUserResponseRoles = [dict objectForKey:kZHAllUserResponseUsersRoles];
+    NSMutableArray *parsedZHAllUserResponseRoles = [NSMutableArray array];
+    if ([receivedZHAllUserResponseRoles isKindOfClass:[NSArray class]]) {
+        for (NSDictionary *item in (NSArray *)receivedZHAllUserResponseRoles) {
+            if ([item isKindOfClass:[NSDictionary class]]) {
+                [parsedZHAllUserResponseRoles addObject:[ZHAllUserResponseRoles modelObjectWithDictionary:item]];
+            }
+       }
+    } else if ([receivedZHAllUserResponseRoles isKindOfClass:[NSDictionary class]]) {
+       [parsedZHAllUserResponseRoles addObject:[ZHAllUserResponseRoles modelObjectWithDictionary:(NSDictionary *)receivedZHAllUserResponseRoles]];
+    }
+
+    self.roles = [NSArray arrayWithArray:parsedZHAllUserResponseRoles];
             self.accessibility = [self objectOrNilForKey:kZHAllUserResponseUsersAccessibility fromDictionary:dict];
             self.email = [self objectOrNilForKey:kZHAllUserResponseUsersEmail fromDictionary:dict];
             self.website = [self objectOrNilForKey:kZHAllUserResponseUsersWebsite fromDictionary:dict];
@@ -116,6 +132,17 @@ NSString *const kZHAllUserResponseUsersCreatedBy = @"created_by";
     [mutableDict setValue:self.cover forKey:kZHAllUserResponseUsersCover];
     [mutableDict setValue:self.name forKey:kZHAllUserResponseUsersName];
     [mutableDict setValue:[NSNumber numberWithDouble:self.usersIdentifier] forKey:kZHAllUserResponseUsersId];
+    NSMutableArray *tempArrayForRoles = [NSMutableArray array];
+    for (NSObject *subArrayObject in self.roles) {
+        if([subArrayObject respondsToSelector:@selector(dictionaryRepresentation)]) {
+            // This class is a model object
+            [tempArrayForRoles addObject:[subArrayObject performSelector:@selector(dictionaryRepresentation)]];
+        } else {
+            // Generic object
+            [tempArrayForRoles addObject:subArrayObject];
+        }
+    }
+    [mutableDict setValue:[NSArray arrayWithArray:tempArrayForRoles] forKey:kZHAllUserResponseUsersRoles];
     [mutableDict setValue:self.accessibility forKey:kZHAllUserResponseUsersAccessibility];
     [mutableDict setValue:self.email forKey:kZHAllUserResponseUsersEmail];
     [mutableDict setValue:self.website forKey:kZHAllUserResponseUsersWebsite];
@@ -159,6 +186,7 @@ NSString *const kZHAllUserResponseUsersCreatedBy = @"created_by";
     self.cover = [aDecoder decodeObjectForKey:kZHAllUserResponseUsersCover];
     self.name = [aDecoder decodeObjectForKey:kZHAllUserResponseUsersName];
     self.usersIdentifier = [aDecoder decodeDoubleForKey:kZHAllUserResponseUsersId];
+    self.roles = [aDecoder decodeObjectForKey:kZHAllUserResponseUsersRoles];
     self.accessibility = [aDecoder decodeObjectForKey:kZHAllUserResponseUsersAccessibility];
     self.email = [aDecoder decodeObjectForKey:kZHAllUserResponseUsersEmail];
     self.website = [aDecoder decodeObjectForKey:kZHAllUserResponseUsersWebsite];
@@ -185,6 +213,7 @@ NSString *const kZHAllUserResponseUsersCreatedBy = @"created_by";
     [aCoder encodeObject:_cover forKey:kZHAllUserResponseUsersCover];
     [aCoder encodeObject:_name forKey:kZHAllUserResponseUsersName];
     [aCoder encodeDouble:_usersIdentifier forKey:kZHAllUserResponseUsersId];
+    [aCoder encodeObject:_roles forKey:kZHAllUserResponseUsersRoles];
     [aCoder encodeObject:_accessibility forKey:kZHAllUserResponseUsersAccessibility];
     [aCoder encodeObject:_email forKey:kZHAllUserResponseUsersEmail];
     [aCoder encodeObject:_website forKey:kZHAllUserResponseUsersWebsite];
@@ -213,6 +242,7 @@ NSString *const kZHAllUserResponseUsersCreatedBy = @"created_by";
         copy.cover = [self.cover copyWithZone:zone];
         copy.name = [self.name copyWithZone:zone];
         copy.usersIdentifier = self.usersIdentifier;
+        copy.roles = [self.roles copyWithZone:zone];
         copy.accessibility = [self.accessibility copyWithZone:zone];
         copy.email = [self.email copyWithZone:zone];
         copy.website = [self.website copyWithZone:zone];

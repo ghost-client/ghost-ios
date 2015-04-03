@@ -35,6 +35,8 @@ typedef NS_ENUM(NSUInteger , ZHGhostTagsLimit){
 
 @property (nonatomic, strong, readonly)NSString *currentLoginUserName;
 
+@property (nonatomic, strong, readonly)NSString *currentLoginHost;
+
 - (BOOL)isLogin:(NSString *)loginUserName;
 
 /**
@@ -119,4 +121,9 @@ typedef NS_ENUM(NSUInteger , ZHGhostTagsLimit){
 * @param limit 限制请求的大小 最大100条
 */
 - (void)allUserPage:(NSUInteger)page limit:(NSUInteger)limit success:(ZHGAllUserSuccess)success failed:(ZHFailed)failed;
+
+/**
+* 获取系统设置
+*/
+- (void)requestSettingSuccess:(ZHGSettingSuccess)success failed:(ZHFailed)failed;
 @end

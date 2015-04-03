@@ -4,10 +4,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DTMarkdownParser.h"
+typedef void (^ZHMarkDownParseComplete)(NSArray *markDownItemArray);
+@interface ZHMarkDownManger : NSObject <DTMarkdownParserDelegate>
 
+-(instancetype)initParseMarkDown:(NSString *)markDown;
 
-@interface ZHMarkDownManger : NSObject
-
-
-
+- (void)parse:(ZHMarkDownParseComplete)complete;
 @end
+

@@ -11,6 +11,7 @@
 #import "ZHGContentItemResponsePosts.h"
 #import "ZHHomeTableViewCell.h"
 #import "ZHGhostContentViewController.h"
+#import "ZHMarkDownEditController.h"
 
 
 @interface ZHHomeViewcontroller()
@@ -36,11 +37,10 @@
     self.isShowNavgationView= YES;
 
 
-    self.view.backgroundColor=[UIColor whiteColor];
 
-    [self.navgationView.leftButton setBackgroundImage:[StyleKitName menu_list] forState:UIControlStateNormal];
+    [self.navgationView.leftButton setBackgroundImage:[StyleKitName homeLeftButton] forState:UIControlStateNormal];
 
-    [self.navgationView.leftButton setTitle:nil forState:UIControlStateNormal];
+
 
     self.navgationView.titleLabel.text=@"君赏博客";
 
@@ -48,9 +48,11 @@
 
     [self.view addSubview:self.homeTableView];
 
-    self.bannerView.bannerImages=@[[UIImage imageNamed:@"banner1.jpg"],[UIImage imageNamed:@"banner2.jpg"],[UIImage imageNamed:@"banner3.jpg"],[UIImage imageNamed:@"banner4.jpg"]];
+     self.bannerView.bannerImages=@[[UIImage imageNamed:@"banner1.jpg"],[UIImage imageNamed:@"banner2.jpg"],[UIImage imageNamed:@"banner3.jpg"],[UIImage imageNamed:@"banner4.jpg"]];
 
 }
+
+
 
 - (ZHHomeBannerView *)bannerView {
 
@@ -91,7 +93,7 @@
 
     cell.zhtitleLabel.text=posts.title;
 
-    cell.iconImageView.image=[StyleKitName homeIcon];
+   // cell.iconImageView.image=[StyleKitName homeIcon];
 
     return cell;
 }

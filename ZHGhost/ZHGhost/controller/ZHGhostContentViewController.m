@@ -8,12 +8,17 @@
 #import "ZHDefine.h"
 #import "ZHGContentItemResponsePosts.h"
 #import "MMMarkdown.h"
+#import "ZHMarkDownManger.h"
+#import "ZHMarkDownTextView.h"
+#import "ZHMarkDownEditController.h"
+#import "ZHGhostManger.h"
 
 
-@implementation ZHGhostContentViewController {
+@implementation ZHGhostContentViewController
+{
 
-    UIWebView *_markdownTextView;
     ZHGContentItemResponsePosts *_markdownContent;
+    UIWebView *_markdownWebView;
 }
 
 - (void)viewDidLoad {
@@ -24,27 +29,42 @@
 
     self.navgationView.titleLabel.text=@"君赏博客";
 
+    [self.view addSubview:self.markdownWebView];
 
-    [self.view addSubview:self.markdownTextView];
 
     NSString *html=[MMMarkdown HTMLStringWithMarkdown:_markdownContent.markdown error:NULL];
 
-    [self.markdownTextView loadHTMLString:_markdownContent.html baseURL:[NSURL URLWithString:@"http://js.uiapple.com"]];
+
+    [self.markdownWebView loadHTMLString:_markdownContent.html baseURL:[NSURL URLWithString:[ZHGhostManger manger].currentLoginHost]];
+
+    [self.navgationView.rightButton setTitle:@"编辑" forState:UIControlStateNormal];
+
+    [self.navgationView.rightButton addTarget:self action:@selector(gotoEditController) forControlEvents:UIControlEventTouchUpInside];
+
+
 
 
 }
 
+- (void)gotoEditController {
+
+     ZHMarkDownEditController *editController= [[ZHMarkDownEditController alloc] init];
+
+    editController.markDown=_markdownContent.markdown;
+
+    [self.navigationController pushViewController:editController animated:YES];
+
+}
 
 
-- (UIWebView *)markdownTextView {
-
-    if (_markdownTextView== nil){
-
-        _markdownTextView= [[UIWebView alloc] initWithFrame:CGRectMake(0, ZHFrameNextY(self.navgationView), SCREEN_WIDTH, ZHFrameHeight(self.view)- ZHFrameNextY(self.navgationView))];
+- (UIWebView *)markdownWebView {
+    
+    if(_markdownWebView==nil){
+        _markdownWebView= [[UIWebView alloc] initWithFrame:CGRectMake(0, ZHFrameNextY(self.navgationView), SCREEN_WIDTH, ZHFrameHeight(self.view)- ZHFrameNextY(self.navgationView))];
 
     }
     
-    return _markdownTextView;
+    return _markdownWebView;
 }
 
 - (void)setGhostContent:(ZHGContentItemResponsePosts *)content {

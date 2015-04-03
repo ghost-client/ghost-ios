@@ -19,6 +19,7 @@
 #import "ZHUserInfoModelBaseClass.h"
 #import "ZHGUserInfoResponseUsers.h"
 #import "ZHAllUserResponseBaseClass.h"
+#import "ZHGSettingResponseBaseClass.h"
 
 #define EXPIRESIN @"expires_in"
 
@@ -55,9 +56,14 @@ static NSString *BaseUrl(NSString *url, NSString *host) {
     ZHEditTagsSuccess _editSuccess;
     ZHGResetPasswordSuccess _resetPasswordSuccess;
     ZHGAllUserSuccess _allUserSuccess;
+    ZHGSettingSuccess _settingSuccess;
 }
 - (NSString *)currentLoginUserName {
     return _loginUserName;
+}
+
+- (NSString *)currentLoginHost {
+    return _myHost;
 }
 
 - (BOOL)isLogin:(NSString *)loginUserName {
@@ -609,7 +615,7 @@ client_id	ghost-admin
     NSParameterAssert(newPassword.length>8);
     NSParameterAssert(ne2Password.length>8);
     NSParameterAssert(userId);
-
+ISLOGIN
 	// 修改密码 (PUT http://js.uiapple.com/ghost/api/v0.1/users/password/)
 
 	// Create manager
@@ -656,6 +662,7 @@ client_id	ghost-admin
 
     NSParameterAssert(page>0);
     NSParameterAssert(limit>0);
+    ISLOGIN
     if(limit>ZHGhostTagsLimitMax){
         limit=ZHGhostTagsLimitMax;
     }
@@ -668,6 +675,7 @@ client_id	ghost-admin
 	NSDictionary* URLParams = @{
 		@"page": [NSString stringWithFormat:@"%d",page],
 		@"limit": [NSString stringWithFormat:@"%d",limit],
+            @"include":@"roles"
 	};
 
     NSString *urlString= BaseUrl(ZHALL_USERS, _ghostHost);
@@ -695,6 +703,60 @@ client_id	ghost-admin
             }];
 
     [manager.operationQueue addOperation:afhttpRequestOperation];
+}
+- (void)requestSettingSuccess:(ZHGSettingSuccess)success
+                       failed:(ZHFailed)failed
+{
+    
+    _settingSuccess=success;
+    
+    _failed=failed;
+
+    ISLOGIN
+    
+	// 获取设置 (GET http://js.uiapple.com/ghost/api/v0.1/settings/)
+
+	// Create manager
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+	// Create request
+	NSDictionary* URLParams = @{
+		@"type": @"blog,theme",
+	};
+
+	NSMutableURLRequest* request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:BaseUrl(ZHSETTING_URL, _ghostHost) parameters:URLParams error:NULL];
+
+	// Add Headers
+	[request setValue:_WDToken forHTTPHeaderField:@"Authorization"];
+
+    __weak typeof(self) safeSelf = self;
+
+	// Fetch Request
+	AFHTTPRequestOperation *afhttpRequestOperation = [manager HTTPRequestOperationWithRequest:request
+	  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+          if (responseObject){
+
+              ZHGSettingResponseBaseClass *settingResponseBaseClass= [ZHGSettingResponseBaseClass modelObjectWithDictionary:responseObject];
+
+              [safeSelf showRequestSettingSuccess:settingResponseBaseClass];
+
+          } else{
+
+              [safeSelf showError:nil errorMessage:VAILED_JSON_MESSAGE errorCode:ZHGhostErrorCodeVailedJsonFormatter];
+          }
+
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                [safeSelf showRequestErrorMessage:safeSelf error:error];
+            }];
+
+	[manager.operationQueue addOperation:afhttpRequestOperation];
+}
+
+- (void)showRequestSettingSuccess:(ZHGSettingResponseBaseClass *)settingResponseBaseClass {
+    if (_settingSuccess){
+                  _settingSuccess(settingResponseBaseClass);
+              }
 }
 
 - (void)showAllUserSuccess:(id)responseObject {

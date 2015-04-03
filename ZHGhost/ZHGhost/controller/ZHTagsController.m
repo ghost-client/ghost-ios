@@ -45,7 +45,7 @@
     [self tagsRequest];
 
 
-    [self.navgationView.rightButton setTitle:@"新增" forState:UIControlStateNormal];
+    [self.navgationView.rightButton setBackgroundImage:[StyleKitName tagsRightButton] forState:UIControlStateNormal];
     [self.navgationView.rightButton addTarget:self action:@selector(addTagButtonClick) forControlEvents:UIControlEventTouchUpInside];
 
 
@@ -119,9 +119,8 @@
 
     cell.tagTitleLabel.text=tags.name;
 
-    cell.numberImageView.image=[StyleKitName imageOfTagNumberButtonWithTagNumber:[NSString stringWithFormat:@"%d", (int) tags.postCount]];
-
-    cell.tagURLTitleLabel.text=[NSString stringWithFormat:@"%@/",tags.slug];
+    [cell.numberImageView setBackgroundImage:[StyleKitName imageOfTagNumberButtonWithTagNumber:[NSString stringWithFormat:@"%d", (int) tags.postCount]]forState:UIControlStateNormal];
+   // cell.tagURLTitleLabel.text=[NSString stringWithFormat:@"%@/",tags.slug];
 
     [cell.panDeleteButton addPanDelete:indexPath];
 
@@ -147,7 +146,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50.f;
+    return ZHTAG_CELL_HEIGHT;
 }
 - (void)showPanClickComplete:(NSIndexPath *)indexPath {
 

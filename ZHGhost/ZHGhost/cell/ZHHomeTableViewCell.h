@@ -5,7 +5,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define ZHHOME_TABLEVIEWCELL_HEIGHT 80
+#define ZHHOME_TABLEVIEWCELL_HEIGHT 65
 
 @interface ZHHomeTableViewCell : UITableViewCell
 

@@ -6,6 +6,7 @@
 #import "ZHHomeTableViewCell.h"
 #import "ZHFounction.h"
 #import "ZHDefine.h"
+#import "StyleKitName.h"
 
 
 @implementation ZHHomeTableViewCell {
@@ -20,16 +21,19 @@
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self){
 
-        self.backgroundColor=[UIColor colorWithRed:0.969 green:0.969 blue:0.953 alpha:1];
 
+        self.backgroundColor=[UIColor clearColor];
         [self addSubview:self.iconImageView];
 
         [self addSubview:self.zhtitleLabel];
 
-        ZHAddLineView(CGRectMake(0, 79, SCREEN_WIDTH, 1), [UIColor whiteColor], self);
+        [self addSubview:self.zhStatueLabel];
+
+        ZHAddLineView(CGRectMake(0, ZHHOME_TABLEVIEWCELL_HEIGHT-1, SCREEN_WIDTH, 1), NAV_COLOR, self);
 
         self.selectionStyle=UITableViewCellSelectionStyleNone;
 
+        self.iconImageView.image=[StyleKitName homeCellIcon];
     }
 
     return self;
@@ -39,7 +43,13 @@
 - (UILabel *)zhtitleLabel {
 
     if (_zhtitleLabel == nil){
-        _zhtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(ZHFrameNextX(self.iconImageView)+10, 10, SCREEN_WIDTH- ZHFrameNextX(self.iconImageView)-20, 30)];
+        _zhtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(ZHFrameNextX(self.iconImageView)+10, 5, SCREEN_WIDTH- ZHFrameNextX(self.iconImageView)-20, 30)];
+
+                 _zhtitleLabel.textColor= NAV_COLOR;
+        _zhtitleLabel.numberOfLines=2;
+
+        _zhtitleLabel.lineBreakMode=NSLineBreakByTruncatingTail;
+
 
     }
 
@@ -49,8 +59,10 @@
 
 - (UILabel *)zhStatueLabel {
 
-     if (_zhtitleLabel == nil){
-        _zhtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(ZHFrameNextX(self.iconImageView)+10, 80-30, SCREEN_WIDTH- ZHFrameNextX(self.iconImageView)-20, 20)];
+     if (_zhStatueLabel == nil){
+        _zhStatueLabel = [[UILabel alloc] initWithFrame:CGRectMake(ZHFrameX(self.zhtitleLabel), ZHFrameNextY(self.zhtitleLabel)+5, ZHFrameWidth(self.zhtitleLabel), 20)];
+
+         _zhStatueLabel.textColor= NAV_COLOR;
 
     }
 
@@ -62,7 +74,7 @@
 
 
     if (_iconImageView== nil){
-        _iconImageView= [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)];
+        _iconImageView= [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 50, 50)];
     }
 
 

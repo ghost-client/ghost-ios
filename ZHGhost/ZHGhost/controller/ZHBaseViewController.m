@@ -12,6 +12,7 @@
 #import "ZHFounction.h"
 #import "ZHDefine.h"
 #import "ShowMessageView.h"
+#import "StyleKitName.h"
 
 
 @implementation ZHBaseViewController {
@@ -28,7 +29,9 @@
 
     //设置默认的颜色
 
-    self.view.backgroundColor = [UIColor colorWithRed:0.251 green:0.251 blue:0.251 alpha:1];
+    self.view.backgroundColor = HOME_BG_COLOR;
+
+    self.navgationView.backgroundColor= NAV_COLOR;
     
     /**控制简单的变化*/
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UIKeyboardWillChangeFrame:) name:UIKeyboardWillShowNotification object:nil];
@@ -45,7 +48,7 @@
 
     }
 
-    [self.navgationView.leftButton setTitle:@"返回" forState:UIControlStateNormal];
+    [self.navgationView.leftButton setBackgroundImage:[StyleKitName backButton] forState:UIControlStateNormal];
 
     
 }

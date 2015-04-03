@@ -13,6 +13,9 @@
 #import "ZHGhostManger.h"
 #import "ZHCreatTagsSubmitBaseClass.h"
 #import "ZHTitleImageView.h"
+#import "UIButton+AFNetworking.h"
+#import "ZHCreatTagsResponseBaseClass.h"
+#import "StyleKitName.h"
 
 
 @implementation ZHAddOrEditTagViewController {
@@ -24,6 +27,10 @@
     
     BOOL _isEdit;
     ZHGTagsResponseTags *_tagsInfo;
+
+
+    UIImage *_tagBackgroundImage;//如果存在就代表更换了图片
+
 }
 
 - (void)viewDidLoad {
@@ -34,12 +41,12 @@
 
     self.isShowNavgationView= YES;
 
-    [self.navgationView.rightButton setTitle:@"完成" forState:UIControlStateNormal];
+    [self.navgationView.rightButton setBackgroundImage:[StyleKitName addTagRightButton] forState:UIControlStateNormal];
 
     [self.navgationView.rightButton addTarget:self action:@selector(doneButtonClick) forControlEvents:UIControlEventTouchUpInside];
 
 
-    rowHeightArray=@[@(ZHTITLE_IMAGE_VIEW_HEIGHT),@(ZH_TITLE_INPUT_CELL_HEIGHT),@(ZH_TITLE_INPUT_CELL_HEIGHT),@(ZHTITLE_TEXTVIEW_CELL_HEIGHT),@(ZH_TITLE_INPUT_CELL_HEIGHT),@(ZHTITLE_TEXTVIEW_CELL_HEIGHT)];
+    rowHeightArray=@[@(ZHTITLE_IMAGE_VIEW_HEIGHT),@(ZH_TITLE_INPUT_CELL_HEIGHT),@(ZH_TITLE_INPUT_CELL_HEIGHT),@(ZHTITLE_TEXTVIEW_CELL_HEIGHT),@(ZH_TITLE_INPUT_CELL_HEIGHT),@(ZHTITLE_TEXTVIEW_CELL_HEIGHT+10)];
 
     [self.view addSubview:self.tagInfoTableView];
 
@@ -71,23 +78,33 @@
     if(_isEdit){
 
 
-        [[ZHGhostManger manger] editTag:_tagsInfo success:^(ZHGTagsResponseTags *tags) {
+        [self HUDShow:@"正在更新信息"];
 
-            [self.navigationController popViewControllerAnimated:YES];
+        if (_tagBackgroundImage){
+
+            [[ZHGhostManger manger] uploadImage:UIImagePNGRepresentation(_tagBackgroundImage) success:^(NSString *url) {
+
+                [safeSelf uploadImageSuccess:url];
+
+            } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
 
 
-        } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
+                [safeSelf HUDHide:ZHErrorMessage(error, errorMessage) afterDealy:2];
 
-            if (errorMessage== nil){
+            }];
 
-            errorMessage=error.userInfo[@"NSLocalizedDescription"];
+
+        } else{
+
+            [self subEditTag];
+
         }
 
-        [safeSelf showMessage:errorMessage];
 
-        }];
 
     } else{
+
+        [self HUDShow:@"正在提交信息"];
 
         ZHCreatTagsSubmitBaseClass *submitBaseClass= [[ZHCreatTagsSubmitBaseClass alloc] init];
 
@@ -98,10 +115,50 @@
         submitBaseClass.metaDescription=_tagsInfo.metaDescription;
         submitBaseClass.hidden=_tagsInfo.hidden;
 
+        if (_tagBackgroundImage){
 
-        [[ZHGhostManger manger] creatTags:@[submitBaseClass] success:^(ZHCreatTagsResponseBaseClass *response) {
+            [[ZHGhostManger manger] uploadImage:UIImagePNGRepresentation(_tagBackgroundImage) success:^(NSString *url) {
 
-            [self.navigationController popViewControllerAnimated:YES];
+                [safeSelf uploadNewTagImageSuccess:submitBaseClass url:url];
+
+            } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
+
+
+                [safeSelf HUDHide:ZHErrorMessage(error, errorMessage) afterDealy:2];
+
+            }];
+
+        } else{
+
+            [self subNewTagSubmitBaseClass:submitBaseClass];
+
+        }
+
+
+
+    }
+
+
+}
+
+- (void)uploadNewTagImageSuccess:(ZHCreatTagsSubmitBaseClass *)submitBaseClass url:(NSString *)url {
+    submitBaseClass.image=url;
+
+    [self subNewTagSubmitBaseClass:submitBaseClass];
+}
+
+- (void)subNewTagSubmitBaseClass:(ZHCreatTagsSubmitBaseClass *)submitBaseClass {
+
+
+
+    __weak typeof(self) safeSelf = self;
+
+    [[ZHGhostManger manger] creatTags:@[submitBaseClass] success:^(ZHCreatTagsResponseBaseClass *response) {
+
+
+        [safeSelf HUDHide:@"提交成功" afterDealy:.3];
+
+        [safeSelf.navigationController popViewControllerAnimated:YES];
 
 
         } failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
@@ -112,13 +169,38 @@
 
         }
 
-        [safeSelf showMessage:errorMessage];
+        [safeSelf HUDHide:errorMessage afterDealy:2];
 
         }];
+}
 
-    }
+- (void)uploadImageSuccess:(NSString *)url {
+    _tagsInfo.image=url;
+
+    [self subEditTag];
+}
+
+- (void)subEditTag {
+
+    __weak typeof(self) safeSelf = self;
+
+    [[ZHGhostManger manger] editTag:_tagsInfo success:^(ZHGTagsResponseTags *tags) {
+
+        [safeSelf HUDHide:@"更新成功" afterDealy:.3];
+
+        [safeSelf.navigationController popViewControllerAnimated:YES];
 
 
+    }  failed:^(NSError *error, NSString *errorMessage, NSInteger errorCode) {
+
+        if (errorMessage == nil) {
+
+            errorMessage = error.userInfo[@"NSLocalizedDescription"];
+        }
+
+        [safeSelf HUDHide:errorMessage afterDealy:2];
+
+    }];
 }
 
 - (UITableView *)tagInfoTableView {
@@ -128,7 +210,7 @@
         _tagInfoTableView.delegate=self;
         _tagInfoTableView.dataSource=self;
 
-        _tagInfoTableView.backgroundColor=[UIColor colorWithRed:0.988 green:0.988 blue:0.988 alpha:1];
+        _tagInfoTableView.backgroundColor= HOME_BG_COLOR;
         _tagInfoTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     }
 
@@ -162,6 +244,16 @@
 
        cell.zhTitlelabel.text=@"标签的背景图片";
 
+       [cell.zhImageButton addTarget:self action:@selector(takeTagImageClick) forControlEvents:UIControlEventTouchUpInside];
+
+
+       if (_tagBackgroundImage){
+           [cell.zhImageButton setBackgroundImage:_tagBackgroundImage forState:UIControlStateNormal];
+       } else if (_tagsInfo.image){
+           [cell.zhImageButton setBackgroundImageForState:cell.zhImageButton.state withURL:[NSURL URLWithString:_tagsInfo.image]];
+
+       }
+
        return cell;
 
    } else if (indexPath.row==1 || indexPath.row==2 || indexPath.row==4){
@@ -187,8 +279,13 @@
                break;
            }
 
+
+
            default:break;
        }
+
+       cell.zhInputFiled.tag=indexPath.row;
+       cell.zhInputFiled.delegate=self;
 
        return cell;
    } else if (indexPath.row==3 || indexPath.row==5){
@@ -211,11 +308,92 @@
            default:break;
        }
 
+       cell.zhTextView.tag=indexPath.row;
+       cell.zhTextView.delegate=self;
+
        return cell;
    }
 
     return nil;
 }
+
+/**
+* 选择图片
+*/
+- (void)takeTagImageClick {
+
+    UIActionSheet *actionSheet= [[UIActionSheet alloc] initWithTitle:@"选择图片方式" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"相机" otherButtonTitles:@"相册", nil];
+    [actionSheet showInView:self.view];
+
+
+}
+
+#pragma mark UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+
+    switch (buttonIndex){
+
+        case 0:{
+
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
+
+                UIImagePickerController *imagePickerController= [[UIImagePickerController alloc] init];
+                imagePickerController.sourceType=UIImagePickerControllerSourceTypeCamera;
+                imagePickerController.delegate=self;
+                [self presentViewController:imagePickerController animated:YES completion:nil];
+
+            } else{
+
+                ZHALertViewShow(@"打不开相机");
+            }
+
+            break;
+        }
+        case 1:{
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]){
+
+                UIImagePickerController *imagePickerController= [[UIImagePickerController alloc] init];
+                imagePickerController.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
+                imagePickerController.delegate=self;
+                [self presentViewController:imagePickerController animated:YES completion:nil];
+
+            } else{
+
+                ZHALertViewShow(@"打不开相册");
+            }
+
+            break;
+        }
+
+        default:break;
+    }
+
+}
+#pragma mark UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+
+
+
+
+
+    UIImage *image=info[UIImagePickerControllerOriginalImage];
+
+    _tagBackgroundImage=image;
+
+    [self.tagInfoTableView reloadData];
+
+    [picker dismissViewControllerAnimated:NO completion:nil];
+
+
+
+
+}
+
+- (void)reloadTableView {
+    [self.tagInfoTableView reloadData];
+}
+
 -(void)setZHTextFiledText:(NSString *)name textFiled:(UITextField *)textFiled{
     if (name.length>0){
 
@@ -226,13 +404,6 @@
     if (name.length>0){
         textView.text=name;
     }
-}
-- (void)switchOnClick:(UISwitch *)switchOnClick {
-
-    [self dismissCurreentKeyBoard];
-
-    _tagsInfo.hidden=switchOnClick.isOn;
-
 }
 #pragma UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -251,16 +422,16 @@
 
     switch (textField.tag){
 
-        case 0:{
+        case 1:{
 
             _tagsInfo.name=textField.text;
 
             break;
         }
-        case 1:{
+        case 2:{
             _tagsInfo.slug=textField.text;
         }
-        case 10:{
+        case 4:{
             _tagsInfo.metaTitle=textField.text;
         }
 
@@ -274,11 +445,11 @@
 
     switch (textView.tag){
 
-        case 2:{
+        case 3:{
             _tagsInfo.internalBaseClassDescription=textView.text;
             break;
         }
-        case 11:{
+        case 5:{
             _tagsInfo.metaDescription=textView.text;
             break;
         }
@@ -297,4 +468,22 @@ NSUInteger ZHRowIndex(NSIndexPath *indexPath) {
 
 
     return (NSUInteger) [[NSString stringWithFormat:@"%d%d",indexPath.section,indexPath.row] integerValue];
+}
+
+void ZHALertViewShow(NSString *message) {
+
+    UIAlertView * alertView= [[UIAlertView alloc] initWithTitle:@"提示" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alertView show];
+
+}
+
+NSString * ZHErrorMessage(NSError *error, NSString *errorMessage) {
+
+    if (!errorMessage){
+
+        errorMessage=error.userInfo[NSLocalizedDescriptionKey];
+    }
+
+    return errorMessage;
+
 }

@@ -10,6 +10,8 @@
 #import "ZHAllUserResponseBaseClass.h"
 #import "ZHTagTableViewCell.h"
 #import "ZHAllUserResponseUsers.h"
+#import "ZHAllUserResponseRoles.h"
+#import "StyleKitName.h"
 
 
 @implementation ZHAllUserViewController {
@@ -94,9 +96,26 @@
     ZHAllUserResponseUsers *users=_usersArray[indexPath.row];
 
 
+    NSArray *array=users.roles;
+
+    if (array.count>0){
+        ZHAllUserResponseRoles *roles=array[0];
+        [cell.numberImageView setBackgroundImage:[self imageNameRolesId:roles frame:cell.numberImageView.bounds] forState:UIControlStateNormal];
+    }
+
+
 
     cell.tagTitleLabel.text=users.name;
     return cell;
+}
+
+
+-(UIImage *)imageNameRolesId:(ZHAllUserResponseRoles *)roles frame:(CGRect)frame{
+
+
+
+    return [StyleKitName imageOfRolesButtonWithFrame:frame rolesText:roles.rolesDescription];
+
 }
 
 

@@ -8,7 +8,7 @@
 @class ZHGTagsResponseTags;
 
 
-@interface ZHAddOrEditTagViewController : ZHBaseViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
+@interface ZHAddOrEditTagViewController : ZHBaseViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate,UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (nonatomic, strong, readonly)UITableView *tagInfoTableView;
 
@@ -17,3 +17,7 @@
 @end
 
 static NSUInteger ZHRowIndex(NSIndexPath *indexPath);
+
+static void ZHALertViewShow(NSString *message);
+
+static NSString * ZHErrorMessage(NSError *error,NSString *errorMessage);

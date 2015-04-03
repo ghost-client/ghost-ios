@@ -29,6 +29,8 @@
         _zhTitlelabel= [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH- TAG_CELL_WIDTH* NumberSize())/2, 10, TAG_CELL_WIDTH* NumberSize(), 30)];
 
         _zhTitlelabel.font=[UIFont boldSystemFontOfSize:17];
+
+        _zhTitlelabel.textColor= NAV_COLOR;
     }
 
 

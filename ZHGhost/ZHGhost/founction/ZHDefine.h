@@ -172,4 +172,6 @@ typedef NS_ENUM(NSInteger , ZHIOSVersion){
 
 };
 
+#define NAV_COLOR [UIColor colorWithRed:0.188 green:0.675 blue:0.78 alpha:1]
+#define HOME_BG_COLOR [UIColor colorWithRed:0.953 green:0.965 blue:0.969 alpha:1]
 

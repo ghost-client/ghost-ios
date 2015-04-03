@@ -18,6 +18,7 @@
 @class ZHCreatTagsResponseBaseClass;
 @class ZHGTagsResponseTags;
 @class ZHAllUserResponseBaseClass;
+@class ZHGSettingResponseBaseClass;
 
 typedef void (^ZHFailed)(NSError *error,NSString *errorMessage,NSInteger errorCode);
 
@@ -71,5 +72,9 @@ typedef void (^ZHGResetPasswordSuccess)(void);
 */
 typedef void (^ZHGAllUserSuccess)(ZHAllUserResponseBaseClass *response);
 
+/**
+* 获取设置的列表
+*/
+typedef void (^ZHGSettingSuccess)(ZHGSettingResponseBaseClass *response);
 
 #endif

@@ -35,9 +35,11 @@
 - (UIButton *)leftButton {
     if (_leftButton== nil){
         _leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        _leftButton.frame= CGRectMake(0, ZHIOS7(), 44, 44);
+        _leftButton.frame= CGRectMake(10, ZHIOS7(), 44, 44);
 
         [_leftButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+
 
         
     }
@@ -55,9 +57,11 @@
         
         _titleLabel.textAlignment=NSTextAlignmentCenter;
         
-        _titleLabel.frame=CGRectMake(44, ZHIOS7(), SCREEN_WIDTH-88, 44);
+        _titleLabel.frame=CGRectMake(44, ZHIOS7(), SCREEN_WIDTH-88-20, 44);
         
-        _titleLabel.textColor=[UIColor blackColor];
+        _titleLabel.textColor=[UIColor whiteColor];
+
+        _titleLabel.font=[UIFont boldSystemFontOfSize:20];
     }
     
     return _titleLabel;
@@ -65,7 +69,7 @@
 - (UIButton *)rightButton {
     if (_rightButton== nil){
         _rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        _rightButton.frame= CGRectMake(SCREEN_WIDTH-44, ZHIOS7(), 44, 44);
+        _rightButton.frame= CGRectMake(SCREEN_WIDTH-54, ZHIOS7(), 44, 44);
         [_rightButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     

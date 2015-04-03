@@ -20,6 +20,8 @@
 #import "ZHGUserInfoResponseUsers.h"
 #import "ZHGUserInfoResponseBaseClass.h"
 #import "ZHAllUserViewController.h"
+#import "ZHSettingViewController.h"
+#import "ZHMarkDownEditController.h"
 
 #define ANMATION_TIME .3
 
@@ -63,15 +65,16 @@
 
 - (void)initView {
 
+    ZHAddLineView(CGRectMake(0, 0, SCREEN_WIDTH, ZHIOS7()), NAV_COLOR, self.view);
+
     _ghostManger=[ZHGhostManger manger];
 
     _contentItems=[NSMutableArray array];
-    UIImage *icon=[StyleKitName homeIcon];
     _itemViewArray =[NSMutableArray array];
 
     self.isHaveNotTap= YES;
 
-    self.view.backgroundColor=SCREEN_DEFINE_COLOR;
+    self.view.backgroundColor= HOME_BG_COLOR;
 
 
     NSArray *topTitles=@[@"首页",@"标签",@"作者"];
@@ -79,6 +82,11 @@
     NSArray *footTitle=@[@"设置",@"未登录"];
 
     float itemHeight=50.f;
+
+    NSArray * itemImageArray=@[[StyleKitName homeListHomeIcon],[StyleKitName homeListTagIcon],[StyleKitName homeListUserIcon],[StyleKitName homeListSettingIcon],[StyleKitName homeListMeIcon]];
+
+
+
 
     NSInteger index=0;
     for (int i = 0; i <topTitles.count; ++i) {
@@ -88,13 +96,9 @@
         [itemView setTitle:topTitles[i]];
         [self.view addSubview:itemView];
 
-        [itemView setItemIcon:icon];
+        [itemView setItemIcon:itemImageArray[index]];
 
-        if (i==1){
-            [itemView setItemIcon:[StyleKitName imageOfHomeIconTagsButtonWithFrame:itemView.bounds]];
-        } else if (i==2){
-            [itemView setItemIcon:[StyleKitName imageOfHomeAutherIconButtonWithFrame:itemView.bounds]];
-        }
+
 
         itemView.tag=index;
 
@@ -104,6 +108,12 @@
 
         [_itemViewArray addObject:itemView];
 
+        if (i==topTitles.count-1){
+
+            ZHAddLineView(CGRectMake(0, ZHFrameNextY(itemView), SCREEN_WIDTH, 1), NAV_COLOR, self.view);
+        }
+
+
     }
 
     for (int j = 0; j < footTitle.count; ++j) {
@@ -112,14 +122,9 @@
 
         [itemView setTitle:footTitle[j]];
         [self.view addSubview:itemView];
-        [itemView setItemIcon:icon];
+        [itemView setItemIcon:itemImageArray[index]];
         itemView.tag=index;
 
-        if (j==0){
-            [itemView setItemIcon:[StyleKitName homeIconSetting]];
-        } else{
-            [itemView setItemIcon:[StyleKitName hommIconUser]];
-        }
         [itemView addTarget:self action:@selector(itemButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 
         index++;
@@ -133,6 +138,22 @@
     [self.view addSubview:self.homeViewcontroller.view];
 
     [self.homeViewcontroller.navgationView.leftButton addTarget:self action:@selector(showView) forControlEvents:UIControlEventTouchUpInside];
+
+
+    [self.homeViewcontroller.navgationView.rightButton setBackgroundImage:[StyleKitName homeRightButton] forState:UIControlStateNormal];
+
+
+    [self.homeViewcontroller.navgationView.rightButton addTarget:self action:@selector(gotoEditController) forControlEvents:UIControlEventTouchUpInside];
+
+
+}
+
+
+- (void)gotoEditController {
+
+    ZHMarkDownEditController *editController= [[ZHMarkDownEditController alloc] init];
+
+    [self.navigationController pushViewController:editController animated:YES];
 
 }
 
@@ -195,6 +216,11 @@
             [self.navigationController pushViewController:userViewController animated:YES];
 
             break;
+        }
+        case 3:{
+            ZHSettingViewController *settingViewController= [[ZHSettingViewController alloc] init];
+
+            [self.navigationController pushViewController:settingViewController animated:YES];
         }
 
         default:break;

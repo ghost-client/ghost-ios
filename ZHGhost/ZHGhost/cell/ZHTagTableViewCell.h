@@ -14,7 +14,10 @@
 
 @property (nonatomic, strong, readonly)UILabel *tagURLTitleLabel;
 
-@property (nonatomic, strong, readonly)UIImageView * numberImageView;
+@property (nonatomic, strong, readonly)UIButton * numberImageView;
+
+@property (nonatomic, strong, readonly)UIImageView * tagIconImageView;
+
 
 @property (nonatomic, strong, readonly)PanDeleteButton *panDeleteButton;
 

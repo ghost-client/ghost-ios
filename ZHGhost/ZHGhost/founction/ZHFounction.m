@@ -117,7 +117,7 @@ FOUNDATION_EXPORT float ZHIOS7(void){
 FOUNDATION_EXPORT void   ZHAddLineView(CGRect rect,UIColor *bgColor,UIView *superView){
 
     UIView *view= [[UIView alloc] initWithFrame:rect];
-    bgColor= [UIColor colorWithRed:0.796f green:0.796f blue:0.796f alpha:1.00f];
+
 
     view.backgroundColor=bgColor;
 
@@ -302,4 +302,8 @@ void ZHAlertView(NSString *title, id target) {
 
     [alertView show];
 
+}
+
+NSUInteger ZHUINT(float floatNumber) {
+    return (NSUInteger) floatNumber;
 }

@@ -5,6 +5,7 @@
 
 #import "HomeItemView.h"
 #import "ZHFounction.h"
+#import "ZHDefine.h"
 
 @interface HomeItemView()
 
@@ -25,7 +26,7 @@
     if (self){
 
 
-        self.backgroundColor=[UIColor whiteColor];
+        self.backgroundColor=[UIColor clearColor];
 
         NSParameterAssert(ZHFrameHeight(self)>0);
 
@@ -35,7 +36,7 @@
 
         [self addSubview:self.iconTitleLabel];
 
-        ZHAddLineView(CGRectMake(0, 0, ZHFrameWidth(self), 1), [UIColor blackColor], self);
+        ZHAddLineView(CGRectMake(0, 0, ZHFrameWidth(self), 1), NAV_COLOR, self);
 
 
     }
@@ -68,6 +69,7 @@
 
         _iconTitleLabel.textAlignment=NSTextAlignmentLeft;
         //_iconTitleLabel.userInteractionEnabled= YES;
+        _iconTitleLabel.textColor= NAV_COLOR;
     }
 
     return _iconTitleLabel;
@@ -79,7 +81,8 @@
 
         _iconImageView= [[UIImageView alloc] init];
 
-        _iconImageView.frame= CGRectMake(0, 0, ZHFrameHeight(self), ZHFrameHeight(self));
+        float spanceY=(ZHFrameHeight(self)-30)/2.f;
+        _iconImageView.frame= CGRectMake(spanceY, spanceY, 30, 30);
 
        // _iconImageView.userInteractionEnabled= YES;
     }

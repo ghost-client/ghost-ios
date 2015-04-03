@@ -7,14 +7,16 @@
 #import "ZHDefine.h"
 #import "ZHFounction.h"
 #import "PanDeleteButton.h"
+#import "StyleKitName.h"
 
 
 @implementation ZHTagTableViewCell {
     
-    UIImageView *_numberImageView;
+    UIButton *_numberImageView;
     UILabel *_tagTitleLabel;
     PanDeleteButton *_panDeleteButton;
     UILabel *_tagURLTitleLabel;
+    UIImageView *_tagIconImageView;
 }
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -25,12 +27,15 @@
         [self.panDeleteButton addDeleteButtonInSuperView:self];
         [self addSubview:self.panDeleteButton];
 
+        [self addSubview:self.tagIconImageView];
+        self.tagIconImageView.image=[StyleKitName homeListTagIcon];
+
         [self.panDeleteButton addSubview:self.tagTitleLabel];
         [self.panDeleteButton addSubview:self.numberImageView];
 
         //[self.panDeleteButton addSubview:self.tagURLTitleLabel];
 
-        ZHAddLineView(CGRectMake(0, 49, SCREEN_WIDTH, 1), [UIColor colorWithRed:0.929 green:0.925 blue:0.894 alpha:1], self);
+        ZHAddLineView(CGRectMake(0, 44, SCREEN_WIDTH, 1), NAV_COLOR, self);
 
     }
 
@@ -40,9 +45,11 @@
 - (UILabel *)tagTitleLabel {
 
     if (_tagTitleLabel== nil){
-        _tagTitleLabel= [[UILabel alloc] initWithFrame:CGRectMake(10,5, SCREEN_WIDTH-20-80,30)];
+        _tagTitleLabel= [[UILabel alloc] initWithFrame:CGRectMake(ZHFrameNextX(self.tagIconImageView)+10,5, SCREEN_WIDTH- ZHFrameNextX(self.tagIconImageView)-90,35)];
 
-        _tagTitleLabel.font=[UIFont boldSystemFontOfSize:17];
+        //_tagTitleLabel.font=[UIFont boldSystemFontOfSize:17];
+
+        _tagTitleLabel.textColor= NAV_COLOR;
     }
 
 
@@ -60,14 +67,25 @@
 }
 
 
-- (UIImageView *)numberImageView {
+- (UIButton *)numberImageView {
 
      if (_numberImageView== nil){
-        _numberImageView= [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-10-80, 5, 80, 44)];
+        _numberImageView= [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-10-80, 0.5, 80, 44)];
+
+
     }
 
     return _numberImageView;
 }
+
+- (UIImageView *)tagIconImageView {
+    if (_tagIconImageView== nil){
+        _tagIconImageView= [[UIImageView alloc] initWithFrame:CGRectMake(10, 7.5, 30, 30)];
+    }
+
+    return _tagIconImageView;
+}
+
 
 - (PanDeleteButton *)panDeleteButton {
     

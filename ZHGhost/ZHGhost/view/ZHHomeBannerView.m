@@ -39,7 +39,7 @@
     
     lineView.frame=CGRectMake(0, ZHFrameHeight(self)-1, ZHFrameWidth(self), 1);
 
-    self.bannerScroolView.frame= CGRectMake(10, 0, frame.size.width-20, frame.size.height-20);
+    self.bannerScroolView.frame= CGRectMake(0, 0, frame.size.width, frame.size.height-20);
 
     
     
@@ -56,14 +56,17 @@
     
         
         lineView=[[UIView alloc]initWithFrame:CGRectMake(0, ZHFrameHeight(self)-1, ZHFrameWidth(self), 1)];
-        lineView.backgroundColor=[UIColor colorWithRed:0.827f green:0.827f blue:0.827f alpha:1.00f];
+        lineView.backgroundColor= NAV_COLOR;
 
         [self addSubview:lineView];
         ImageViewArray=[NSMutableArray array];
 
         [self addSubview:self.bannerScroolView];
 
-    [self addSubview:self.pageControl];
+        [self addSubview:self.pageControl];
+
+         self.pageControl.pageIndicatorTintColor=[UIColor whiteColor];
+         self.pageControl.currentPageIndicatorTintColor= NAV_COLOR;
 
 
     

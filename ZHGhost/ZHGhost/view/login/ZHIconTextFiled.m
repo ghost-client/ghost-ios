@@ -52,9 +52,14 @@
 
     if (_textFiled== nil){
 
-        _textFiled= [[UITextField alloc] initWithFrame:CGRectMake(ZHFrameNextX(self.iconImageView), 0, ZHFrameWidth(self)- ZHFrameHeight(self), ZHFrameHeight(self))];
+        _textFiled= [[UITextField alloc] initWithFrame:CGRectMake(ZHFrameNextX(self.iconImageView), 0, ZHFrameWidth(self)- ZHFrameHeight(self)-5, ZHFrameHeight(self))];
 
         _textFiled.textAlignment=NSTextAlignmentCenter;
+
+        _textFiled.layer.borderColor=[UIColor colorWithRed:0.878 green:0.875 blue:0.843 alpha:1].CGColor;
+        _textFiled.layer.borderWidth=1;
+        _textFiled.layer.masksToBounds= YES;
+        _textFiled.layer.cornerRadius=5;
 
     }
 

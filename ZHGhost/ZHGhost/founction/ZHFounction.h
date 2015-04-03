@@ -95,4 +95,8 @@ FOUNDATION_EXPORT NSString *smallImageFromBigString(NSString *bigString);
 
 FOUNDATION_EXPORT  void  ZHAlertView(NSString *title,id target);
 
+FOUNDATION_EXPORT NSUInteger ZHUINT(float floatNumber);
+
+
+
 
