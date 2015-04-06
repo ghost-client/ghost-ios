@@ -27,7 +27,7 @@
 
     [self.view addSubview:self.markDownTextView];
 
-    [self.navgationView.rightButton setBackgroundImage:[StyleKitName editMoreButton] forState:UIControlStateNormal];
+    [self.navgationView.rightButton setBackgroundImage:[StyleKitName addTagRightButton] forState:UIControlStateNormal];
 
     [self.navgationView.rightButton addTarget:self action:@selector(gotoEditController) forControlEvents:UIControlEventTouchUpInside];
 

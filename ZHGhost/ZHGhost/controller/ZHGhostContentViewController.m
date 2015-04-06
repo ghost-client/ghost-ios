@@ -12,6 +12,7 @@
 #import "ZHMarkDownTextView.h"
 #import "ZHMarkDownEditController.h"
 #import "ZHGhostManger.h"
+#import "StyleKitName.h"
 
 
 @implementation ZHGhostContentViewController
@@ -37,7 +38,7 @@
 
     [self.markdownWebView loadHTMLString:_markdownContent.html baseURL:[NSURL URLWithString:[ZHGhostManger manger].currentLoginHost]];
 
-    [self.navgationView.rightButton setTitle:@"编辑" forState:UIControlStateNormal];
+    [self.navgationView.rightButton setBackgroundImage:[StyleKitName markdownContentRightButton] forState:UIControlStateNormal];
 
     [self.navgationView.rightButton addTarget:self action:@selector(gotoEditController) forControlEvents:UIControlEventTouchUpInside];
 

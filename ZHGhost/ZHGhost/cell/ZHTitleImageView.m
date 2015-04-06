@@ -44,7 +44,7 @@
         _zhImageButton=[UIButton buttonWithType:UIButtonTypeCustom];
         _zhImageButton.frame= CGRectMake(ZHFrameX(self.zhTitlelabel), ZHFrameNextY(self.zhTitlelabel)+10, ZHFrameWidth(self.zhTitlelabel), 200);
 
-        [_zhImageButton setBackgroundImage:[StyleKitName imageOfTagImageButtonWithFrame:_zhImageButton.bounds] forState:UIControlStateNormal];
+        [_zhImageButton setBackgroundImage:[UIImage imageNamed:ZHLoadImageName(@"addImageButton")] forState:UIControlStateNormal];
     }
 
     return _zhImageButton;

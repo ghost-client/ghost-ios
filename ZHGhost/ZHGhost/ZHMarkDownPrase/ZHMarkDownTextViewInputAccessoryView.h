@@ -9,10 +9,6 @@
 
 @interface ZHMarkDownTextViewInputAccessoryView:UIView
 
-@property (nonatomic, strong, readonly)UIButton *dismissButton;
-
-@property (nonatomic, strong, readonly)UIButton *markDownButton;
-
-@property (nonatomic, strong, readonly)UIButton *formatterButton;
+-(instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)array;
 
 @end
