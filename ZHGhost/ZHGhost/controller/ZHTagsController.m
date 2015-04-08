@@ -24,6 +24,7 @@
     NSMutableArray * _tagsArray;
 
     ZHGhostManger *_ghostManger;
+    NSIndexPath *_deleteIndexPath;
 }
 - (void)viewDidLoad {
 
@@ -141,6 +142,11 @@
 
     }];
 
+    if (_deleteIndexPath== nil){
+
+        [cell.panDeleteButton setCannelEdit];
+    }
+
 
     return cell;
 }
@@ -162,6 +168,8 @@
 }
 
 - (void)willDeleteTag:(NSIndexPath *)deleteIndexPath {
+    
+    _deleteIndexPath=deleteIndexPath;
     ZHGTagsResponseTags *tags= _tagsArray[(NSUInteger) deleteIndexPath.row];
    __weak typeof(self) safeSelf = self;
 
@@ -183,6 +191,8 @@
 }
 
 - (void)deleteTagsSuccess:(ZHGTagsResponseTags *)tags {
+
+    _deleteIndexPath= nil;
     [_tagsArray removeObject:tags];
 
     [self.tagsTableView reloadData];

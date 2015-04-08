@@ -7,14 +7,21 @@
 
 
 typedef NS_ENUM(NSUInteger , MarkDownToolType){
-    MarkDownToolTypeH=0,
-    MarkDownToolTypeStrong=1,
-    MarkDownToolTypeEm=2,
-    MarkDownToolTypeDel=3,
-    MarkDownToolTypeCode=4,
-    MarkDownToolTypeA=5,
-    MarkDownToolTypeImg=6,
-    MarkDownToolTypeList=7
+    MarkDownToolTypeH1=0,
+    MarkDownToolTypeH2=1,
+    MarkDownToolTypeH3=2,
+    MarkDownToolTypeH4=3,
+    MarkDownToolTypeH5=4,
+    MarkDownToolTypeH6=5,
+    MarkDownToolTypeStrong=6,
+    MarkDownToolTypeEm=7,
+    MarkDownToolTypeDel=8,
+    MarkDownToolTypeA=9,
+    MarkDownToolTypeImg=10,
+    MarkDownToolTypeList=11,
+    MarkDownToolTypeLigith=12,
+    MarkDownToolTypeCode=13,
+    MarkDownToolTypeComplete=14
 
 };
 typedef  void (^ZHMarkDownToolViewChooseComplete)(MarkDownToolType type);

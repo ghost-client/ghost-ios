@@ -6,6 +6,7 @@
 #import "ZHMarkDownToolView.h"
 #import "StyleKitName.h"
 #import "ZHFounction.h"
+#import "ZHDefine.h"
 
 
 @implementation ZHMarkDownToolView {
@@ -15,22 +16,38 @@
 - (instancetype)initWithFrame:(CGRect)frame {
 
     self=[super initWithFrame:frame];
-    if (self){
+    if (self) {
 
 
-        self.backgroundColor=[UIColor whiteColor];
+        self.backgroundColor = [UIColor whiteColor];
 
-        for (int i = 0; i < 8; ++i) {
-            UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
-            button.frame= CGRectMake(0, 0+44*i, 44, 44);
+        float buttonWidth = (float) (SCREEN_WIDTH / 3.0);
 
-            button.tag=i;
+        int index=1;
 
-            [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        for (int i = 0; i < 5; ++i) {
+            for (int j = 0; j < 3; ++j) {
 
-            [button setBackgroundImage:[StyleKitName editButton] forState:UIControlStateNormal];
+                UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+                button.frame = CGRectMake(0 + buttonWidth * j, 0 + 44 * i, buttonWidth, 44);
 
-            [self addSubview:button];
+                button.layer.borderColor = NAV_COLOR.CGColor;
+                button.layer.borderWidth = 0.5;
+
+                [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+
+
+                button.tag=index;
+
+                UIImage *image=[UIImage imageNamed:ZHLoadImageName([NSString stringWithFormat:@"md%d",index])];
+
+                [button setBackgroundImage:image forState:UIControlStateNormal];
+
+                index++;
+
+                [self addSubview:button];
+
+            }
         }
 
     }
@@ -44,17 +61,11 @@
 
     if (_complete){
 
-        _complete((MarkDownToolType) buttonClick.tag);
+        _complete((MarkDownToolType) buttonClick.tag-1);
 
     }
 
-    [UIView animateWithDuration:.3 animations:^{
 
-        self.frame= CGRectMake(0, ZHFrameY(self), ZHFrameWidth(self), ZHFrameHeight(self));
-    } completion:^(BOOL complete){
-
-        [self removeFromSuperview];
-    }];
 
 
 }
@@ -64,6 +75,8 @@
     _complete=markDownComplete;
 
 }
+
+
 
 
 @end

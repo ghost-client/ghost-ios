@@ -70,25 +70,36 @@
 
     [self.loginButton addTarget:self action:@selector(gotoLogin) forControlEvents:UIControlEventTouchUpInside];
 
+    self.textFieldYArray=[NSMutableArray arrayWithArray:@[@(ZHFrameNextY(self.loginTextFiled)-40+10),@(ZHFrameNextY(self.loginTextFiled)+10)]];
+
 
 }
 
 - (void)changeFrame:(NSUInteger)selectIndex {
     if (selectIndex==0){
 
-            [self.configTextFiled removeFromSuperview];
+        [self.configTextFiled removeFromSuperview];
+
+
 
         [self.view addSubview:self.loginTextFiled];
 
-            self.loginButton.frame= CGRectMake(ZHFrameX(self.loginButton), ZHFrameNextY(self.loginTextFiled)+20, ZHFrameWidth(self.loginButton), ZHFrameHeight(self.loginButton));
+         if (self.textFieldYArray.count==3){
+
+            [self.textFieldYArray removeObjectAtIndex:2];
+        }
+
+        self.loginButton.frame= CGRectMake(ZHFrameX(self.loginButton), ZHFrameNextY(self.loginTextFiled)+20, ZHFrameWidth(self.loginButton), ZHFrameHeight(self.loginButton));
 
         } else{
 
-            [self.loginTextFiled removeFromSuperview];
+        [self.loginTextFiled removeFromSuperview];
 
         [self.view addSubview:self.configTextFiled];
 
-            self.loginButton.frame= CGRectMake(ZHFrameX(self.loginButton), ZHFrameNextY(self.configTextFiled)+20, ZHFrameWidth(self.loginButton), ZHFrameHeight(self.loginButton));
+        [self.textFieldYArray addObject:@(ZHFrameNextY(self.configTextFiled)+10)];
+
+        self.loginButton.frame= CGRectMake(ZHFrameX(self.loginButton), ZHFrameNextY(self.configTextFiled)+20, ZHFrameWidth(self.loginButton), ZHFrameHeight(self.loginButton));
 
 
         }
@@ -99,9 +110,6 @@
 
 
     [[ZHGhostManger manger] congfigHost:@"http://js.uiapple.com"];
-
-
-
 
     __weak typeof(self) safeSelf = self;
 

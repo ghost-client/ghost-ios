@@ -14,6 +14,7 @@
     UIButton *_markDownButton;
     UIButton *_formatterButton;
     CGFloat _spanceY;
+    ZHMarkDownTextViewInputAccessoryViewButtonComplete _complete;
 }
 - (instancetype)initWithFrame:(CGRect)frame titles:(NSArray *)array {
 
@@ -31,11 +32,38 @@
 
             [button setTitle:array[i] forState:UIControlStateNormal];
 
+            [button setTitleColor:NAV_COLOR forState:UIControlStateNormal];
+
+            button.backgroundColor=[UIColor whiteColor];
+
+            button.tag=i;
+
+            [button addTarget:self action:@selector(markDownAccessoryButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+
             [self addSubview:button];
         }
 
     }
     return self;
+}
+
+- (void)setMarkDownTextViewAccessoryButtonComplete:(ZHMarkDownTextViewInputAccessoryViewButtonComplete)complete {
+    
+    _complete=complete;
+
+}
+
+
+- (void)markDownAccessoryButtonClick:(UIButton *)markDownAccessoryButtonClick {
+
+
+    if (_complete){
+
+        _complete((ZHMarkDownTextViewInputAccessoryViewButtonType) markDownAccessoryButtonClick.tag);
+    }
+
+
+
 }
 
 
