@@ -388,7 +388,6 @@
             [self reloadInputView];
 
 
-           // self.selectedRange= NSMakeRange(self.selectedRange.location-string.length+2, 0);
 
         }
             break;
@@ -401,7 +400,7 @@
              [textViewMutableAttributedString insertAttributedString:[self AttributedStringWithString:string] atIndex:textRange.location];
 
 
-            [self stringAddTrributes:NSMakeRange(textRange.location + 2, string.length)
+            [self stringAddTrributes:NSMakeRange(textRange.location, string.length)
                               string:textViewMutableAttributedString
                    fontAttributeName:[UIFont boldSystemFontOfSize:DEFINE_MARKDOWN_FONT_SIZE]
         foregroundColorAttributeName:MarkDownHColor
@@ -410,8 +409,6 @@
         backgroundColorAttributeName:nil];
             [self reloadInputView];
 
-
-           // self.selectedRange= NSMakeRange(self.selectedRange.location-string.length+2, 0);
 
         }
             break;
